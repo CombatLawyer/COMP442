@@ -1,111 +1,222 @@
-import re
+# COMP 442 compiler design assignment 1 lexical analyzer
 
-# Function will determine if the number provided is a proper fraction number
-def checkFraction(number):
-    # Check after the fraction if it is only numbers present, no second period
-    fractionMatch = re.search('^[0-9]+$', number[1:])
-    if (fractionMatch != None):
-            
-        # Checking if a trailing zero is present
-        trailingMatch = re.search('^[0]+$', number[-1])
-            
-        if (trailingMatch != None):
-                
-            # This indicates the fraction is .0 since it needs to start with a period then end with a 0 and be of length 2
-            if len(number) == 2:
-                print(f"fraction: {number}")
-                
-            # Fraction has a trailing zero and is hence refused
-            else:
-                print(f"invalid fraction: {number}, cannot have a trailing zero")
-        else:
-            print(f"fraction: {number}")
-    else:
-        print(f"invalid fraction: {number}, contains invalid characters after the period")
-        
-def checkInteger(number):
-    # Check if the integer is specifically 0
-    if (number == "0"):
-        print(f"integer: {number}")
-    # Otherwise leading zeros are not allowed in an integer
-    else:
-        if (number[0] == "0"):
-            print(f"Invalid integer: {number}, cannot have leading zeros")
-        else:
-            print(f"integer: {number}")
+# This contains every reserved symbol that is expected to only be a single character, the ones with 2 characters are seperate entities in the dfa
+reserved = ["|", "&", "!", "(", ")", "{", "}", "[", "]", ";", ",", ":"]
 
-def checkFloat(number):
-    floatNumber = re.split('.', number)
-    checkInteger(floatNumber[0])
-    floatExponent = re.split('e', floatNumber[1])
-    checkFraction("." + floatExponent[0])
-    
-    exponentMatch = re.search('^[+-]+$', floatExponent[1][0])
-    if (exponentMatch != None):
-        checkInteger(floatExponent[1][1:])
-    else:
-        print(f"invalid float: {number}, exponent is not written correctly")
+# Reserved words that have a specified meaning outside of just a normal lexeme
+reservedWords = ["if", "then", "else", "integer", "float", "void", "public", "private", "func", "var", "struct", "while", "read", "write", "return", "self", "inherits", "let", "impl"]
+
+# Non zero digits, zero is not included as it is its own letter in the dfa's alphabet
+digit = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+# letters, e is not included as it is its own letter in the dfa's alphabet
+letter = ["a", "b", "c", "d", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         
-reserved = ["==", "<>", "<", ">", "<=", ">=", "+", "-", "*", "/", "=", "|", "&", "!", "(", ")", "{", "}", "[", "]", ";", ",", ".", ":", "->", "if", "then", "else", "integer", "float", "void", "public", "private", "func", "var", "struct", "while", "read", "write", "return", "self", "inherits", "let", "impl"]
+dfa = {0:{"*":27, "+":29, "-":22, ".":"trap", "/":24, "0":1, "<":20, "=":15, ">":17, "_":"trap", "d":2, "e":3, "l":3, "s":14, "state":"initial"},
+       1:{"*":"trap", "+":"trap", "-":"trap", ".":4, "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"number"},
+       2:{"*":"trap", "+":"trap", "-":"trap", ".":4, "/":"trap", "0":5, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":5, "e":"trap", "l":"trap", "s":"trap", "state":"number"},
+       3:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":6, "<":"trap", "=":"trap", ">":"trap", "_":6, "d":6, "e":6, "l":6, "s":"trap", "state":"id"},
+       4:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":7, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":7, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
+       5:{"*":"trap", "+":"trap", "-":"trap", ".":4, "/":"trap", "0":5, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":5, "e":"trap", "l":"trap", "s":"trap", "state":"number"},
+       6:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":6, "<":"trap", "=":"trap", ">":"trap", "_":6, "d":6, "e":6, "l":6, "s":"trap", "state":"id"},
+       7:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":8, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":7, "e":9, "l":"trap", "s":"trap", "state":"float"},
+       8:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":7, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
+       9:{"*":"trap", "+":12, "-":12, ".":"trap", "/":"trap", "0":10, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":11, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
+       10:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":14, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
+       11:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":13, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":13, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
+       12:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":10, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":11, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
+       13:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":13, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":13, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
+       14:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       15:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":16, ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       16:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       17:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":18, ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       18:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       19:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       20:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":19, ">":21, "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       21:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       22:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":23, "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       23:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       24:{"*":26, "+":"trap", "-":"trap", ".":"trap", "/":25, "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       25:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       26:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       27:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":28, "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       28:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
+       29:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"}}
+
+# Initial states of the dfa
+initialState = [0]
+
+# Acceptable end stated in the dfa
+finalStates = {1:"number", 2:"number", 3:"id", 5:"number", 6:"id", 7:"float", 10:"float", 11:"float", 13:"float", 14:"symbol", 15:"=", 16:"==", 17:">", 18:">=", 19:"<", 20:"<=", 21:"<>", 22:"-", 23:"->", 24:"/", 25:"//", 26:"/*", 27:"*", 28:"*/", 29:"+"}
+
 comments = ["/*", "//"]
 
+# Allows input for the file to be used
 filename = input("Enter filename: ")
 file = open(f"{filename}.txt", "r")
 
-for line in file:
+# Will keep track of the position of read() in the file
+line = 1
+col = 1 
+
+def nextToken():
+    global file
+    global line
+    global col
+    state = initialState[0]
+    token = ""
+    lookUp = file.read(1).lower()
+    colstart = col
+    linestart = line
     
-    # Regex pattern splits on spaces, semicolons, newlines, whitespaces and colons, list comprehension is used to remove any additional white space
-    lexemes = [x for x in re.split('; |, |\*|\n|\s|:', line.strip()) if x]
-    
-    for lexeme in lexemes:
+    # While there is still text to read in the file    
+    while lookUp:
         
-        # The following line is a comment, deal with it accordingly
-        if (lexeme in comments):
+        # These symbols are spacers in the file, upon encountering them need evaluate the token
+        if lookUp in ["\n", " ", "\t"]:
             
-            # Line comment, will ignore the rest of the line
-            if (lexeme == "//"): 
-                break
-            # This means it is a block comment, will need to keep searching for the end of the block comment or that start of another nested comment TODO
-            else:
-                blockComment = True
-                continue
+            # If the end of a line is reached, increment the position of the reader accordingly
+            if lookUp == "\n":
+                line += 1
+                col = 1
             
-        # Proccess lexeme, under this regex all valid strings should be accepted
-        match = re.search('^[0-9a-zA-Z_.+-]+$', lexeme)
-        
-        # This means that there is an invalid character present in the string, thus making it invalid
-        if (match == None):
-            print(f"Invalid element: {lexeme}")
-        
-        # This means that the lexeme is either an integer, float, fraction or digit/nonzero
-        numberMatch = re.search('^[0-9e.+-]+$', lexeme)
-        if (numberMatch != None):
-            print(f"number: {lexeme}")
-            
-            # This indicates that the first character is a period, must be a fraction.
-            if (lexeme[0] == "."):
-                checkFraction(lexeme)
-            
-            # Check if the whole number is an integer
-            integerMatch = re.search('^[0-9]+$', lexeme)
-            if (integerMatch != None):
-                checkInteger(lexeme)
+            # If just a space is encountered, increment the position in the column by 1
+            elif lookUp == " ":
+                col += 1
                 
-            # The only remaining option now is to check if its a float
+            # If a tab is encountered, increment the position in the column by 4
             else:
-                checkFloat(lexeme)    
+                col += 4
                 
-        # Since it passes the valid strings and isnt in the above category, it must be an id, alphanum or letter
-        letterMatch = re.search('^[a-zA-Z_]+$', lexeme)
-        if (letterMatch != None):
+            # If the token is still empty, that means the previous lexeme was finished and we can skip the spacer and move on to the next valid character
+            if token == "":
+                lookUp = file.read(1).lower()
+                colstart = col
             
-            # Determine if the string is an id or alphanum by looking at the first character of the string
-            leadingCharacterMatch = re.search('^[a-zA-Z]+$', lexeme[0])
-            if (leadingCharacterMatch != None):
-                print(f"id: {lexeme}")
+            # If the token is reserved, ensure that the output indicates that a reserve word was found and not a normal id
+            elif token in reservedWords:
+                return token, token, linestart, colstart
+            
+            # This is if the start of a comment is found
+            elif token in comments:
+                
+                # This means the comment is a line commment
+                if token == "//":
+                    
+                    # Read until either end of the line or 
+                    while lookUp not in ["\n", ""]:
+                        token = token + lookUp
+                        lookUp = file.read(1).lower()
+                    return token, "comment", linestart, colstart 
+                
+                # This means the comment is a nested comment
+                else:
+                    nestedCount = 1
+                    
+                    # While there is still text available
+                    while lookUp != [""]:
+                        token = token + lookUp
+                        col += 1
+                        lookUp = file.read(1).lower()
+                        
+                        # Only these two symbols are relevant during the scan, one indicates another nested block, the other will close a block
+                        if lookUp in ["/", "*"]:
+                            symbol = lookUp + file.read(1).lower()
+                            
+                            # Indicated that another block comment is present in the block comment, increases the nested count number to accommodate the extra block
+                            if symbol == "/*":
+                                token = token + symbol
+                                nestedCount += 1
+                            
+                            # This indicated the end of a block comment is found, will continue unless it closes the outer most block
+                            elif symbol == "*/":
+                                token = token + symbol
+                                nestedCount -= 1
+                                if nestedCount == 0:
+                                    return token, "block comment", linestart, colstart
+                                
+                            # This is specifically for really weird comments, since its taken two at a time if **/ or //* is used itll skip over the correct sequence of symbols
+                            elif symbol in ["**", "//"]:
+                                # Only use the first symbol and begin the process again on the second symbol
+                                token = token + symbol[0]
+                                file.seek(-1, 1)
+                        elif lookUp == "\n":
+                            line += 1
+                            col = 1
+                    
+                    # Indicates the file ended before closing the block, hence invalid comment block            
+                    return token, "invlaid block comment", linestart, colstart
+            
+            # Properly send back the completed token and its state/position in the file
             else:
-                print(f"alphanumber: {lexeme}")
-        
-        # This means it was ultimately invalid as it was alphanum + period which is invalid   
+                return token, finalStates[state], linestart, colstart
+            
+        # If none of the spacer characters are found it means we have a text character
         else:
-            print(f"Invalid combination: {lexeme}. Contains both alphanum and period")
+            
+            # Store the current working character in the growing token
+            token = token + lookUp
+            col += 1
+            
+            # Translate token if its a letter or digit, keep in mind that zero is its own entity and is not included in digits and that e is its own symbol and not in letters
+            if (lookUp in digit):
+                lookUp = "d"
+            elif (lookUp in letter):
+                lookUp = "l"
+            elif (lookUp in reserved):
+                lookUp = "s"
+            
+            # If the symbol is not recognizable in the dfa then return this error
+            if lookUp not in dfa[0].keys():
+                return token, "unrecognized symbol", linestart, colstart
+            
+            # Keep the previous state
+            prevstate = state
+            
+            # Using the current symbol look up at what position the next character will result in the dfa
+            state = dfa[state][lookUp]
+            
+            # If the move leads to entering a trap state then the string is invalid and we can stop evalutaiton here
+            if state == 'trap':
+                
+                # Finish the rest of the token
+                lookUp = file.read(1).lower()
+                col += 1
+                while lookUp not in ["\n", " ", "", "\t"]:
+                    token = token + lookUp
+                    lookUp = file.read(1).lower()
+                    col += 1
+                    
+                # Increment the line if it was the last token on the current line
+                if lookUp == "\n":
+                    line += 1
+                    col = 1
+                    
+                # Return the erroneous token
+                return token, f'invalid {dfa[prevstate]["state"]}', linestart, colstart
+            
+            # Continue with the next character in the file
+            lookUp = file.read(1).lower()
+        
+    # This is to deal specifically with the last token of the file, as the loop above is broken, if there is a token that is being built it needs to sent out
+    if token != "":
+        
+        # Ensures that a reserved word is still recognized
+        if token in reservedWords:
+            return token, token, linestart, colstart
+        
+        # Otherwise the output is a normal token
+        else:
+            return token, finalStates[state], linestart, colstart
+    
+    # Indicates that the end of the file is reached    
+    else:
+        return -1
+    
+while 1:
+    lexeme = nextToken()
+    print(lexeme)
+    if lexeme == -1:
+        break
+  
+file.close()
