@@ -2,7 +2,7 @@
 <>	-	&	)	,	then	private	write
 <	*	!	{	.	else	func	return
 >	/		}	:	integer	var	self
-<=	=		[	::	float	struct	inherits
+<=	=		[		float	struct	inherits
 >=			]	->	void	while	let
 						func	impl
 

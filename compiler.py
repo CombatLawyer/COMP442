@@ -100,6 +100,7 @@ def nextToken():
             if token == "":
                 lookUp = file.read(1).lower()
                 colstart = col
+                linestart = line
             
             # If the token is reserved, ensure that the output indicates that a reserve word was found and not a normal id
             elif token in reservedWords:
@@ -115,6 +116,7 @@ def nextToken():
                     while lookUp not in ["\n", ""]:
                         token = token + lookUp
                         lookUp = file.read(1).lower()
+                    line += 1
                     return token, "cmt", linestart, colstart 
                 
                 # This means the comment is a nested comment
@@ -148,6 +150,8 @@ def nextToken():
                                 # Only use the first symbol and begin the process again on the second symbol
                                 token = token + symbol[0]
                                 file.seek(-1, 1)
+                                
+                        # Keep incrementing the line count
                         elif lookUp == "\n":
                             line += 1
                             col = 1
