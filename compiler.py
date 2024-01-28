@@ -19,13 +19,12 @@ letter = ["a", "b", "c", "d", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", 
         
 dfa = {0:{"*":27, "+":29, "-":22, ".":30, "/":24, "0":1, "<":20, "=":15, ">":17, "_":"trap", "d":2, "e":3, "l":3, "s":14, "state":"id"},
        1:{"*":"trap", "+":"trap", "-":"trap", ".":4, "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"number"},
-       2:{"*":"trap", "+":"trap", "-":"trap", ".":4, "/":"trap", "0":5, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":5, "e":"trap", "l":"trap", "s":"trap", "state":"number"},
+       2:{"*":"trap", "+":"trap", "-":"trap", ".":4, "/":"trap", "0":2, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":2, "e":"trap", "l":"trap", "s":"trap", "state":"number"},
        3:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":6, "<":"trap", "=":"trap", ">":"trap", "_":6, "d":6, "e":6, "l":6, "s":"trap", "state":"id"},
        4:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":7, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":7, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
-       5:{"*":"trap", "+":"trap", "-":"trap", ".":4, "/":"trap", "0":5, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":5, "e":"trap", "l":"trap", "s":"trap", "state":"number"},
        6:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":6, "<":"trap", "=":"trap", ">":"trap", "_":6, "d":6, "e":6, "l":6, "s":"trap", "state":"id"},
        7:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":8, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":7, "e":9, "l":"trap", "s":"trap", "state":"float"},
-       8:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":7, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
+       8:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":8, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":7, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
        9:{"*":"trap", "+":12, "-":12, ".":"trap", "/":"trap", "0":10, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":11, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
        10:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"float"},
        11:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":13, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":13, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
@@ -53,7 +52,7 @@ dfa = {0:{"*":27, "+":29, "-":22, ".":30, "/":24, "0":1, "<":20, "=":15, ">":17,
 initialState = [0]
 
 # Acceptable end stated in the dfa
-finalStates = {1:"number", 2:"number", 3:"id", 5:"number", 6:"id", 7:"float", 10:"float", 11:"float", 13:"float", 14:"symbol", 15:"symbol", 16:"symbol", 17:"symbol", 18:"symbol", 19:"symbol", 20:"symbol", 21:"symbol", 22:"symbol", 23:"symbol", 24:"symbol", 25:"//", 26:"/*", 27:"symbol", 28:"*/", 29:"symbol", 30:"symbol"}
+finalStates = {1:"number", 2:"number", 3:"id", 6:"id", 7:"float", 10:"float", 11:"float", 13:"float", 14:"symbol", 15:"symbol", 16:"symbol", 17:"symbol", 18:"symbol", 19:"symbol", 20:"symbol", 21:"symbol", 22:"symbol", 23:"symbol", 24:"symbol", 25:"//", 26:"/*", 27:"symbol", 28:"*/", 29:"symbol", 30:"symbol"}
 
 comments = ["/*", "//"]
 
@@ -80,6 +79,9 @@ def nextToken():
         
         # These symbols are spacers in the file, upon encountering them need evaluate the token
         if lookUp in ["\n", " ", "\t"]:
+            
+            # Used to locate errors if they end in an invalid state
+            tokenLastPos = col - 1
             
             # If the end of a line is reached, increment the position of the reader accordingly
             if lookUp == "\n":
@@ -156,7 +158,7 @@ def nextToken():
             # Properly send back the completed token and its state/position in the file, check if state is a final position, if not classify it an error
             else:
                 if state not in finalStates.keys():
-                    return token, {"error":dfa[state]["state"]}, linestart, colstart
+                    return token, {"error":dfa[state]["state"]}, linestart, tokenLastPos
                 else:
                     if finalStates[state] == "symbol":
                         return token, reservedSymbolsNames[token], linestart, colstart
@@ -165,6 +167,9 @@ def nextToken():
             
         # If none of the spacer characters are found it means we have a text character
         else:
+            
+            # Store the position of the error
+            errorPos = col
             
             # Store the current working character in the growing token
             token = token + lookUp
@@ -205,7 +210,7 @@ def nextToken():
                     col = 1
                     
                 # Return the erroneous token
-                return token, {"error":dfa[prevstate]["state"]}, linestart, colstart
+                return token, {"error":dfa[prevstate]["state"]}, linestart, errorPos
             
             # Continue with the next character in the file
             lookUp = file.read(1).lower()
@@ -213,13 +218,16 @@ def nextToken():
     # This is to deal specifically with the last token of the file, as the loop above is broken, if there is a token that is being built it needs to sent out
     if token != "":
         
+        # Used to locate errors if they end in an invalid state
+        tokenLastPos = col - 1
+        
         # Ensures that a reserved word is still recognized
         if token in reservedWords:
             return token, token, linestart, colstart
         
         # Otherwise the output is a normal token, check if state is a final position, if not classify it an error
         if state not in finalStates.keys():
-            return token, {"error":dfa[state]["state"]}, linestart, colstart
+            return token, {"error":dfa[state]["state"]}, linestart, tokenLastPos
         else:
             if finalStates[state] == "symbol":
                 return token, reservedSymbolsNames[token], linestart, colstart
