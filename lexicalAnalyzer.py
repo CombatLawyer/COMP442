@@ -1,12 +1,10 @@
 # COMP 442 compiler design assignment 1 lexical analyzer
 
-import os
-
 # This contains every reserved symbol that is expected to only be a single character, the ones with 2 characters are seperate entities in the dfa
 reservedSymbols = ["|", "&", "!", "(", ")", "{", "}", "[", "]", ";", ",", ":"]
 
 # This is a dictionary containing the names of the reserved symbols
-reservedSymbolsNames = {"==":"eq", "+":"plus", "|":"or", "(":"openpar", ";":"semi", "<>":"noteq", "-":"minus", "&":"and", ")":"closepar", ",":"comma", "<":"lt", "*":"mult", "!":"not", "{":"opencubr", ".":"dot", ">":"gt", "/":"div", "}":"closecubr", ":":"colon", "<=":"leq", "=":"assign", "[":"opensqbr", ">=":"geq", "]":"closesqbr", "->":"arrow"}
+reservedSymbolsNames = {"==":"eq", "+":"plus", "|":"or", "(":"lpar", ";":"semi", "<>":"neq", "-":"minus", "&":"and", ")":"rpar", ",":"comma", "<":"lt", "*":"mult", "!":"not", "{":"lcurbr", ".":"dot", ">":"gt", "/":"div", "}":"rcurbr", ":":"colon", "<=":"leq", "=":"equal", "[":"lsqbr", ">=":"geq", "]":"rsqbr", "->":"arrow"}
 
 # Reserved words that have a specified meaning outside of just a normal lexeme
 reservedWords = ["if", "then", "else", "integer", "float", "void", "public", "private", "func", "var", "struct", "while", "read", "write", "return", "self", "inherits", "let", "impl"]
@@ -18,18 +16,18 @@ digit = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 letter = ["a", "b", "c", "d", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         
 dfa = {0:{"*":27, "+":29, "-":22, ".":30, "/":24, "0":1, "<":20, "=":15, ">":17, "_":"trap", "d":2, "e":3, "l":3, "s":14, "state":"id"},
-       1:{"*":"trap", "+":"trap", "-":"trap", ".":4, "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"number"},
-       2:{"*":"trap", "+":"trap", "-":"trap", ".":4, "/":"trap", "0":2, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":2, "e":"trap", "l":"trap", "s":"trap", "state":"number"},
+       1:{"*":"trap", "+":"trap", "-":"trap", ".":4, "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"intlit"},
+       2:{"*":"trap", "+":"trap", "-":"trap", ".":4, "/":"trap", "0":2, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":2, "e":"trap", "l":"trap", "s":"trap", "state":"intlit"},
        3:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":6, "<":"trap", "=":"trap", ">":"trap", "_":6, "d":6, "e":6, "l":6, "s":"trap", "state":"id"},
-       4:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":7, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":7, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
+       4:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":7, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":7, "e":"trap", "l":"trap", "s":"trap", "state":"floatlit"},
        6:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":6, "<":"trap", "=":"trap", ">":"trap", "_":6, "d":6, "e":6, "l":6, "s":"trap", "state":"id"},
-       7:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":8, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":7, "e":9, "l":"trap", "s":"trap", "state":"float"},
-       8:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":8, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":7, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
-       9:{"*":"trap", "+":12, "-":12, ".":"trap", "/":"trap", "0":10, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":11, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
-       10:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"float"},
-       11:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":13, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":13, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
-       12:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":10, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":11, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
-       13:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":13, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":13, "e":"trap", "l":"trap", "s":"trap", "state":"float"},
+       7:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":8, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":7, "e":9, "l":"trap", "s":"trap", "state":"floatlit"},
+       8:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":8, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":7, "e":"trap", "l":"trap", "s":"trap", "state":"floatlit"},
+       9:{"*":"trap", "+":12, "-":12, ".":"trap", "/":"trap", "0":10, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":11, "e":"trap", "l":"trap", "s":"trap", "state":"floatlit"},
+       10:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"floatlit"},
+       11:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":13, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":13, "e":"trap", "l":"trap", "s":"trap", "state":"floatlit"},
+       12:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":10, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":11, "e":"trap", "l":"trap", "s":"trap", "state":"floatlit"},
+       13:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":13, "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":13, "e":"trap", "l":"trap", "s":"trap", "state":"floatlit"},
        14:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
        15:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":16, ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
        16:{"*":"trap", "+":"trap", "-":"trap", ".":"trap", "/":"trap", "0":"trap", "<":"trap", "=":"trap", ">":"trap", "_":"trap", "d":"trap", "e":"trap", "l":"trap", "s":"trap", "state":"symbol"},
@@ -52,22 +50,21 @@ dfa = {0:{"*":27, "+":29, "-":22, ".":30, "/":24, "0":1, "<":20, "=":15, ">":17,
 initialState = [0]
 
 # Acceptable end stated in the dfa
-finalStates = {1:"number", 2:"number", 3:"id", 6:"id", 7:"float", 10:"float", 11:"float", 13:"float", 14:"symbol", 15:"symbol", 16:"symbol", 17:"symbol", 18:"symbol", 19:"symbol", 20:"symbol", 21:"symbol", 22:"symbol", 23:"symbol", 24:"symbol", 25:"//", 26:"/*", 27:"symbol", 28:"*/", 29:"symbol", 30:"symbol"}
+finalStates = {1:"intlit", 2:"intlit", 3:"id", 6:"id", 7:"floatlit", 10:"floatlit", 11:"floatlit", 13:"floatlit", 14:"symbol", 15:"symbol", 16:"symbol", 17:"symbol", 18:"symbol", 19:"symbol", 20:"symbol", 21:"symbol", 22:"symbol", 23:"symbol", 24:"symbol", 25:"//", 26:"/*", 27:"symbol", 28:"*/", 29:"symbol", 30:"symbol"}
 
 comments = ["/*", "//"]
-
-# Allows input for the file to be used
-filename = input("Enter filename: ")
-file = open(f"{filename}.src", "r")
 
 # Will keep track of the position of read() in the file
 line = 1
 col = 1 
 
-def nextToken():
+def nextToken(filename):
     global file
     global line
     global col
+    global terminating
+    file = filename
+    terminating = False
     state = initialState[0]
     token = ""
     lookUp = file.read(1).lower()
@@ -78,7 +75,9 @@ def nextToken():
     while lookUp:
         
         # These symbols are spacers in the file, upon encountering them need evaluate the token
-        if lookUp in ["\n", " ", "\t"]:
+        if (lookUp in ["\n", " ", "\t"]) or terminating:
+            
+            terminating = False
             
             # Used to locate errors if they end in an invalid state
             tokenLastPos = col - 1
@@ -93,7 +92,7 @@ def nextToken():
                 col += 1
                 
             # If a tab is encountered, increment the position in the column by 4
-            else:
+            elif lookUp == "\t":
                 col += 4
                 
             # If the token is still empty, that means the previous lexeme was finished and we can skip the spacer and move on to the next valid character
@@ -149,7 +148,7 @@ def nextToken():
                             elif symbol in ["**", "//"]:
                                 # Only use the first symbol and begin the process again on the second symbol
                                 token = token + symbol[0]
-                                file.seek(-1, 1)
+                                file.seek(file.tell()-1, 0)
                                 
                         # Keep incrementing the line count
                         elif lookUp == "\n":
@@ -215,10 +214,46 @@ def nextToken():
                     
                 # Return the erroneous token
                 return token, {"error":dfa[prevstate]["state"]}, linestart, errorPos
+          
+            # These are to evaluate lexemes without spaces between them
+            # First if we have a number      
+            if state in [1, 2, 7, 10, 11, 13]:
+                
+                # Continue with the next character in the file
+                lookUp = file.read(1).lower()
+                
+                # If we swap to symbols, immedaitely flag the letter as done        
+                if lookUp in (reservedSymbols + ["*", "+", "-", "/", "<", "=", ">"]):
+                    file.seek(file.tell()-1, 0)
+                    terminating = True
             
-            # Continue with the next character in the file
-            lookUp = file.read(1).lower()
-        
+            # Next if we have an id     
+            elif state in [3, 6]:
+                
+                # Continue with the next character in the file
+                lookUp = file.read(1).lower()
+                
+                # If we swap to symbols, immedaitely flag the letter as done        
+                if lookUp in (reservedSymbols + ["*", "+", "-", "/", "<", "=", ">", "."]):
+                    file.seek(file.tell()-1, 0)
+                    terminating = True
+
+            # Else if we have a symbol
+            elif state in [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]:
+                
+                # Continue with the next character in the file
+                lookUp = file.read(1).lower()
+
+                if lookUp not in ["", "\n"]:
+                    # if we swap to letters or digits or if the next symbol does not lead to a two character symbol,
+                    # immediately flag the symbol as done       
+                    if (lookUp in (digit + letter + ["e", "0"])) | (token + lookUp not in ["==", "<>", "<=", ">=", "->", "//", "/*"]):
+                        file.seek(file.tell()-1, 0)
+                        terminating = True
+            
+            else:
+                lookUp = file.read(1).lower()
+
     # This is to deal specifically with the last token of the file, as the loop above is broken, if there is a token that is being built it needs to sent out
     if token != "":
         
@@ -241,45 +276,3 @@ def nextToken():
     # Indicates that the end of the file is reached    
     else:
         return -1
-
-# Dictionary that will contain all the lexemes, keyed by which line the word is on
-lexicon = {}
-
-# Names of the output and error files created by the compiler
-outputFileName = f"{filename}.outlextokens"
-outputErrorName = f"{filename}.outlexerrors"
-
-# If file does not exist, create it, otherwise overwrite the old one
-if not os.path.exists(outputFileName):
-    f = open(outputFileName, "x")
-else:
-    f = open(outputFileName, "w")
-
-# If file does not exist, create it, otherwise overwrite the old one    
-if not os.path.exists(outputErrorName):
-    e = open(outputErrorName, "x")
-else:
-    e = open(outputErrorName, "w")
-    
-while 1:
-    lexeme = nextToken()
-    
-    # Until the nextToken function reaches the end of the file
-    if lexeme == -1:
-        break
-    
-    # If the lexeme is classified as an error print it to the error file otherwise store it in the dictionary
-    if isinstance(lexeme[1], dict):
-        e.write(f'Lexical Error: Invalid {lexeme[1]["error"]}: \"{lexeme[0]}\", found at line {lexeme[2]}, col {lexeme[3]}.\n')
-    else:
-        if lexeme[2] not in lexicon.keys():
-            lexicon[lexeme[2]] = []
-        lexicon[lexeme[2]].append([lexeme[1], lexeme[0], lexeme[2], lexeme[3]])
-
-for line in lexicon:
-    print(*lexicon[line], file=f)
-    
-# Close all the files that were open  
-file.close()
-f.close()
-e.close()
