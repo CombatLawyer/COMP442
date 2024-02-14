@@ -19,12 +19,7 @@ else:
     e = open(outputErrorName, "w")
 
 # Queue that will contain all the lexemes
-lexicon = deque()
-
-# Initialize the stack used by the parser    
-stack = deque()
-stack.append("$")
-stack.append("START")
+lexicon = deque()    
     
 while 1:
     lexeme = lexicalAnalyzer.nextToken(file)
@@ -42,18 +37,18 @@ while 1:
         e.write(f'Lexical Error: Invalid {lexeme[1]["error"]}: \"{lexeme[0]}\", found at line {lexeme[2]}, col {lexeme[3]}.\n')
         continue
     
+    # Append all lexemes into the queue
     lexicon.append([lexeme[0], lexeme[1], lexeme[2], lexeme[3]])
 
-grammarParser.parseToken(stack, lexicon, filename)
-
-if stack[-1] == "$":
-    print("compiled")    
+# Send lexicon to be parsed
+grammarParser.parseToken(lexicon, filename)
 
 # Close all the files that were open  
 file.close()
 e.close()
 
 '''
+Legacy code for printing productions
 outputFileName = f"{filename}.outlextokens"
 # If file does not exist, create it, otherwise overwrite the old one
 if not os.path.exists(outputFileName):
@@ -66,4 +61,5 @@ else:
     lexicon[lexeme[2]].append([lexeme[1], lexeme[0], lexeme[2], lexeme[3]])
 for line in lexicon:
     print(*lexicon[line], file=f)
+f.close()
 '''

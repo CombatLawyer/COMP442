@@ -2,7 +2,6 @@
 
 import os
 from collections import deque
-import sys
 
 # This is the lookup table which dictates what to do upon seeing a certain symbol on the stack
 table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
@@ -297,6 +296,7 @@ follow = {"ADDOP": ["id", "intlit", "floatlit", "lpar", "not", "plus", "minus"],
          "equal": [],
          "or": []}
 
+# List of all productions used to determine if on top of the stack is a production or a character
 productions = ["ADDOP", "ENDBR", "FUNCBODY", "FUNCHEAD", "FPARAMS", "FUNCDECL", "RELEXPREND", "ARITHEXPR", "RELOP", "APARAMSTAIL", "REPTAPARAMS1", 
                "IDNEST", "REPTFACTOR2", "REPTFPARAMS3", "FPARAMSTAIL", "REPTFPARAMS4", "REPTFPARAMSTAIL4", "REPTFUNCBODY1", "REPTIMPLDEF3", 
                "REPTOPTSTRUCTDECL22", "REPTPROG0", "ASSIGNOP", "MEMBERDECL", "ARRAYSIZE", "INDICE", "RETURNTYPE", "RIGHTRECARITHEXPR", "MULTOP",
@@ -305,12 +305,16 @@ productions = ["ADDOP", "ENDBR", "FUNCBODY", "FUNCHEAD", "FPARAMS", "FUNCDECL", 
                "TERM", "FACTOR", "RIGHTRECTERM","TYPE", "REPTVARDECL4", "VARDECLORSTAT", "VARDECL", "STATEMENT", "VARIABLE", "VARIABLE2",
                "REPTVARIABLE20", "REPTVARIABLE", "VARIDNEST2", "REPTVARIDNEST20", "VARIDNEST", "VARORFUNC", "REPTVARORFUNC0", "APARAMS", "VISIBILITY"]
 
+# List of nullable productions
 nullable = ["APARAMS", "FPARAMS", "OPTSTRUCTDECL2", "PROG", "RELEXPREND", "REPTAPARAMS1", "REPTFACTOR2", "REPTFPARAMS3", "REPTFPARAMS4", "REPTFPARAMSTAIL4",
             "REPTFUNCBODY1", "REPTIMPLDEF3", "REPTOPTSTRUCTDECL22", "REPTPROG0", "REPTSTATBLOCK1", "REPTSTATEFUNC", "REPTSTATEVARORFUNC0",
             "REPTSTRUCTDECL4", "REPTVARDECL4", "REPTVARIABLE", "REPTVARIABLE20", "REPTVARIDNEST20", "REPTVARORFUNC0", "RIGHTRECARITHEXPR",
             "RIGHTRECTERM", "START", "STATBLOCK", "VARIABLE2", "VARIDNEST2", "VARORFUNC"]
-        
-def parseToken(passedStack, passedLexicon, filename):
+
+"""
+Function will attempt to parse the passed lexicon using the stack
+"""      
+def parseToken(passedLexicon, filename):
     
     # Names of the output and error files created by the compiler
     parserProductions = f"{filename}.outderivation"
@@ -328,65 +332,96 @@ def parseToken(passedStack, passedLexicon, filename):
     else:
         file = open(parserErrors, "w")
     
+    # Global variables to allow usage during error recovery
     global lexicon
     lexicon = passedLexicon
     
     global stack
-    stack = passedStack
+
+    # Initialize the stack used by the parser    
+    stack = deque()
+    stack.append("$")
+    stack.append("START")
     
     global errorFile
     errorFile = file
     
+    # Used to hold the value of the production that will be placed on the stack before the stack is popped
     nextProduction = ""
     
+    # While there is still content in the lexicon
     while lexicon:
         
+        # Progress lexicon by removing the top of the queue
         lexeme = lexicon.popleft()
         while 1:
             
+            # While the top of the stack is a production and not a character
             while list(set([stack[-1]]) & set(productions)) != []:
                 
+                # Indicates that the top of the stack is a dictionary and not a list (i.e. still going down the chain of productions)
                 if isinstance(table[stack[-1]], dict):
                     
+                    # If the current lexeme is expected among the keys in the parsing table
                     if lexeme[1] in table[stack[-1]].keys():
+
+                        # Print the current stack and then the modifications done by fufulling the production
                         print(stack, file=g)
                         print(f"{stack[-1]} --> {table[stack[-1]][lexeme[1]]}", file=g)
+
+                        # Get the production before removing it from the stack
                         nextProduction = table[stack[-1]][lexeme[1]]
                         stack.pop()
+
+                        # Push contents of the result of the production onto the stack, reversed so that the order remains correct for the stack
                         for production in reversed(nextProduction):
                             stack.append(production)
-                        
+
+                    # Else this means its an error and move to error recovery    
                     else:
                         recoveryLexeme = skipErrors(lexeme)
                         if recoveryLexeme != "":
                             lexeme = recoveryLexeme
-                        
+
+            # If the top of the stack contains epsilon            
             if stack[-1] == "epsilon":
+
+                # Keep removing epsilons while transcribing to the file that the epsilons have been removed
                 while stack[-1] == "epsilon":
                     print(stack, file=g)
                     print(f"{stack[-1]} --> epsilon", file=g)
                     stack.pop()
                 continue
             
+            # If the top of the stack contains the lexeme we currently have, we have a match, print production to derivation file
             elif lexeme[1] == stack[-1]:
                 print(stack, file=g)
                 print(f"{stack[-1]} --> {lexeme[1]}", file=g)
                 stack.pop()
                 break
             
+            # If the top of the stack is the EOF symbol then end here
             elif stack[-1] == "$":
                 break
             
+            # Otherwise we have a mismatch (top of the stack is not the same as the lexeme we have), so move to error recovery
             else:
                 recoveryLexeme = skipErrors(lexeme)
                 if recoveryLexeme != "":
                     lexeme = recoveryLexeme
     
+    # Remove nullable productions from the stack on the way out, this should ideally clear everything other than the $ that the stack was initialized
     while list(set([stack[-1]]) & set(productions)) != []:
         while list(set([stack[-1]]) & set(nullable)) != []:
             stack.pop()
+
+    # If the stack only has the $ which was placed on it initially, then the file is sucessfully parsed
+    if stack[-1] == "$":
+        print("Compiled successfully")
             
     g.close()
+
+
             
 def skipErrors(lexeme):
     global stack
