@@ -2,15 +2,14 @@ func main() -> void
 {
   let f1: LINEAR;
   let f2: QUADRATIC;
-  let counter: integer;
-  f1 = f1.build(2, 3.5);
-  f2 = f2.build(-2.0, 1.0, 0.0);
-  counter = 1;
-	
-  while(counter <= 10)
-  {
-    write(counter);
-    write(f1.evaluate(counter));
-    write(f2.evaluate(counter));
-  };
+  f1 = f1.build(2, 3.5).id;
+  f2 = f2.build(-2.0, 1.0, 0.0).id();
+  f1 = f1.build[id];
+  f2 = f2[id].build[id];
+  f1 = f1[id].build(2, 3.5).id;
+  f2 = f2.build[id][id];
+  f1 = f1[id][id].id;
+  f2 = f2[id][id].id;
+  f1 = id(id).id[id];
+  f2 = id(id).id[id][id];
 }

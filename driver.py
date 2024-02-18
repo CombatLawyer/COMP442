@@ -19,7 +19,7 @@ else:
     e = open(outputErrorName, "w")
 
 # Queue that will contain all the lexemes
-lexicon = deque()    
+lexicon = deque()
     
 while 1:
     lexeme = lexicalAnalyzer.nextToken(file)

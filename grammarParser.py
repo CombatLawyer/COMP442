@@ -371,7 +371,7 @@ def parseToken(passedLexicon, filename):
     nextProduction = ""
     
     # While there is still content in the lexicon
-    while lexicon:
+    while len(lexicon) >= 1:
         
         # Progress lexicon by removing the top of the queue
         lexeme = lexicon.popleft()
@@ -382,6 +382,9 @@ def parseToken(passedLexicon, filename):
                 
                 # Indicates that the top of the stack is a dictionary and not a list (i.e. still going down the chain of productions)
                 if isinstance(table[stack[-1]], dict):
+                    
+                    if lexeme == None:
+                        break
                     
                     # If the current lexeme is expected among the keys in the parsing table
                     if lexeme[1] in table[stack[-1]].keys():
@@ -413,6 +416,9 @@ def parseToken(passedLexicon, filename):
                     print(f"{stack[-1]} --> epsilon", file=g)
                     stack.pop()
                 continue
+            
+            if (lexeme == None):
+                break
             
             # If the top of the stack contains the lexeme we currently have, we have a match, print production to derivation file
             elif lexeme[1] == stack[-1]:
@@ -449,8 +455,10 @@ def parseToken(passedLexicon, filename):
     
     # Remove nullable productions from the stack on the way out, this should ideally clear everything other than the $ that the stack was initialized
     while list(set([stack[-1]]) & set(productions)) != []:
-        while list(set([stack[-1]]) & set(nullable)) != []:
+        if list(set([stack[-1]]) & set(nullable)) != []:
             stack.pop()
+        else:
+            break
 
     # If the stack only has the $ which was placed on it initially, then the file is sucessfully parsed
     if stack[-1] == "$":
@@ -482,7 +490,7 @@ def skipErrors(lexeme):
         print(f"Syntax error at row {lexeme[2]}, position {lexeme[3]}. Expected \"{characters[stack[-1]]}\" but instead got \"{lexeme[0]}\".", file=errorFile)
     
     # As long as there are lexemes left in the file to process
-    if len(lexicon) != 0:
+    if (len(lexicon) != 0) or (isinstance(lexeme, list)):
         
         # Create a temp copy of the stack
         tempStack = stack.copy()

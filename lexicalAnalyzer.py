@@ -116,6 +116,7 @@ def nextToken(filename):
                         token = token + lookUp
                         lookUp = file.read(1).lower()
                     line += 1
+                    col = 1
                     return token, "cmt", linestart, colstart 
                 
                 # This means the comment is a nested comment
