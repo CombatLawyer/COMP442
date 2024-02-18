@@ -311,26 +311,43 @@ nullable = ["APARAMS", "FPARAMS", "OPTSTRUCTDECL2", "PROG", "RELEXPREND", "REPTA
             "REPTSTRUCTDECL4", "REPTVARDECL4", "REPTVARIABLE", "REPTVARIABLE20", "REPTVARIDNEST20", "REPTVARORFUNC0", "RIGHTRECARITHEXPR",
             "RIGHTRECTERM", "START", "STATBLOCK", "VARIABLE2", "VARIDNEST2", "VARORFUNC"]
 
+# Used to translate chracters into their symbol for error output
+characters = {"private":"private", "public":"public", "rpar":")", "lpar":"(", "id":"id", "dot":".",	"semi":";",	"colon":":", "let":"let",
+              "float":"float", "integer":"interger", "rcurbr":"}", "lcurbr":"{", "struct":"struct",	"return":"return", "write":"write","read":"read",
+              "while":"while", "else":"else", "then":"then", "comma":",", "geq":">=", "leq":"<=", "gt":">", "lt":"<", "neq":"<>","eq":"==", 
+              "inherits":"inherits", "and":"and", "div":"div", "mult":"mult", "if":"if", "minus":"minus", "plus":"+", "void":"void", "rsqbr":"]",
+              "lsqbr":"[",	"impl":"impl", "arrow":"->", "func":"func", "not":"not", "floatlit":"floatlit",	"intlit":"intlit", "intnum":"intnum", 
+              "equal":"equal", "or":"or"}
+
 """
 Function will attempt to parse the passed lexicon using the stack
+passedLexicon: queue which contains the tokens to process
+filename: name to give to the output files
 """      
 def parseToken(passedLexicon, filename):
     
     # Names of the output and error files created by the compiler
     parserProductions = f"{filename}.outderivation"
     parserErrors = f"{filename}.outsyntaxerrors"
+    parserReconstruction = f"{filename}.outparsedtext"
 
     # If file does not exist, create it, otherwise overwrite the old one
     if not os.path.exists(parserProductions):
         g = open(parserProductions, "x")
     else:
         g = open(parserProductions, "w")
-
-    # If file does not exist, create it, otherwise overwrite the old one    
+  
     if not os.path.exists(parserErrors):
         file = open(parserErrors, "x")
     else:
         file = open(parserErrors, "w")
+        
+    if not os.path.exists(parserReconstruction):
+        h = open(parserReconstruction, "x")
+    else:
+        h = open(parserReconstruction, "w")
+        
+    parsedContent = ""
     
     # Global variables to allow usage during error recovery
     global lexicon
@@ -345,6 +362,10 @@ def parseToken(passedLexicon, filename):
     
     global errorFile
     errorFile = file
+    
+    # Used to reconstructed the parsed output
+    line = 1
+    col = 1
     
     # Used to hold the value of the production that will be placed on the stack before the stack is popped
     nextProduction = ""
@@ -397,6 +418,22 @@ def parseToken(passedLexicon, filename):
             elif lexeme[1] == stack[-1]:
                 print(stack, file=g)
                 print(f"{stack[-1]} --> {lexeme[1]}", file=g)
+                
+                # This is to reconstruct the parsed tokens as the original file and also prints to the derivation a working copy
+                while line < lexeme[2]:
+                    line += 1
+                    col = 1
+                    print("\n", file=h, end="")
+                    parsedContent += "\n"
+                while col < lexeme[3]:
+                    col +=1
+                    print(" ", file=h, end="")
+                    parsedContent += " "
+                print(lexeme[0], file=h, end="")
+                parsedContent += f"{lexeme[0]}"
+                col += len(lexeme[0])
+                print(parsedContent, file=g)
+                
                 stack.pop()
                 break
             
@@ -418,35 +455,58 @@ def parseToken(passedLexicon, filename):
     # If the stack only has the $ which was placed on it initially, then the file is sucessfully parsed
     if stack[-1] == "$":
         print("Compiled successfully")
+    else:
+        while len(stack) > 1:
+            
+            # Indicates that the top of the stack is a character
+            if list(set([stack[-1]]) & set(productions)) == []:
+                print(f"Syntax error at the end of the file. Expected \"{characters[stack[-1]]}\" before reaching the end of the file.", file=errorFile)
+            stack.pop()
             
     g.close()
-
-
             
 def skipErrors(lexeme):
     global stack
     global lexicon
     global errorFile
+    
+    # First determine if the parser was looking for a list of valid characters or just 1 character for prinitng format
     if list(set([stack[-1]]) & set(productions)) != []:
-        print(f"Syntax error at row {lexeme[2]}, position {lexeme[3]}. Expected {table[stack[-1]].keys()} but instead got {lexeme[0]}.", file=errorFile)
+        expectedLexemes = ""
+        keys = list(table[stack[-1]].keys())
+        for symbol in keys[:-1]:
+            expectedLexemes += f"\"{characters[symbol]}\", "
+        expectedLexemes += f"or \"{characters[keys[-1]]}\""
+        print(f"Syntax error at row {lexeme[2]}, position {lexeme[3]}. Expected {expectedLexemes} but instead got \"{lexeme[0]}\".", file=errorFile)
     else:
-        print(f"Syntax error at row {lexeme[2]}, position {lexeme[3]}. Expected {stack[-1]} but instead got {lexeme[0]}.", file=errorFile)
+        print(f"Syntax error at row {lexeme[2]}, position {lexeme[3]}. Expected \"{characters[stack[-1]]}\" but instead got \"{lexeme[0]}\".", file=errorFile)
+    
+    # As long as there are lexemes left in the file to process
     if len(lexicon) != 0:
-        pops = 0
+        
+        # Create a temp copy of the stack
         tempStack = stack.copy()
+        
+        # Remove all nullable productions
         while list(set([tempStack[-1]]) & set(nullable)) != []:
             tempStack.pop()
-            pops += 1
+            
+        # If you make it to the end of the file end it here
         if (tempStack[-1] == "$"):
-            for i in range(pops):
-                stack.pop()
             return ""
+        
+        # Look at the production under the top of the stack
         lookahead = tempStack[-2]
+        
+        # If that production is the last production or the current lexeme matches the follow set of it, pop the current top of the stack off
         if (lookahead == "$") or (lexeme[1] in follow[lookahead]):
-            for i in range(pops):
-                stack.pop()
-            stack.pop()
+            tempStack.pop()
+            
+            # Finilize changes by changing the original stack
+            stack = tempStack
             return ""
+        
+        # Otherwise scan through the file for the right token
         else:
             nextLexeme = lexicon.popleft()
             lookahead = nextLexeme[1]
@@ -455,6 +515,3 @@ def skipErrors(lexeme):
                 if len(lexicon) == 0:
                     return nextLexeme
             return nextLexeme
-    else:
-        while len(stack) > 1:
-            stack.pop()

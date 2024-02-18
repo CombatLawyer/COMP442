@@ -149,6 +149,7 @@ def nextToken(filename):
                                 # Only use the first symbol and begin the process again on the second symbol
                                 token = token + symbol[0]
                                 file.seek(file.tell()-1, 0)
+                                col -= 1
                                 
                         # Keep incrementing the line count
                         elif lookUp == "\n":
@@ -244,7 +245,7 @@ def nextToken(filename):
                 # Continue with the next character in the file
                 lookUp = file.read(1).lower()
 
-                if lookUp not in ["", "\n"]:
+                if lookUp not in ["", "\n", " ", "\t"]:
                     # if we swap to letters or digits or if the next symbol does not lead to a two character symbol,
                     # immediately flag the symbol as done       
                     if (lookUp in (digit + letter + ["e", "0"])) | (token + lookUp not in ["==", "<>", "<=", ">=", "->", "//", "/*"]):
