@@ -1,15 +1,11 @@
-func main() -> void
+func printArray(arr: integer[], size: integer) -> void 
 {
-  let f1: LINEAR;
-  let f2: QUADRATIC;
-  f1 = f1.build(2, 3.5).id;
-  f2 = f2.build(-2.0, 1.0, 0.0).id();
-  f1 = f1.build[id];
-  f2 = f2[id].build[id];
-  f1 = f1[id].build(2, 3.5).id;
-  f2 = f2.build[id][id];
-  f1 = f1[id][id].id;
-  f2 = f2[id][id].id;
-  f1 = id(id).id[id];
-  f2 = id(id).id[id][id];
-}
+  let n: integer;
+  let i: integer; 
+  n = size;
+  i = 0; 
+  while (i<n) { 
+    write(arr[i]);
+      i = i+1;
+  };
+} 

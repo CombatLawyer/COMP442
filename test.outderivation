@@ -1,0 +1,752 @@
+deque(['$', 'START'])
+START --> ['PROG']
+deque(['$', 'PROG'])
+PROG --> ['REPTPROG0']
+deque(['$', 'REPTPROG0'])
+REPTPROG0 --> ['STRUCTORIMPLORFUNC', 'REPTPROG0']
+deque(['$', 'REPTPROG0', 'STRUCTORIMPLORFUNC'])
+STRUCTORIMPLORFUNC --> ['FUNCDEF']
+deque(['$', 'REPTPROG0', 'FUNCDEF'])
+FUNCDEF --> ['FUNCHEAD', 'FUNCBODY']
+deque(['$', 'REPTPROG0', 'FUNCBODY', 'FUNCHEAD'])
+FUNCHEAD --> ['func', 'id', <function createLeaf at 0x00000221B1B7C940>, 'lpar', 'FPARAMS', <function createParamListNode at 0x00000221B1B7CD30>, 'rpar', 'arrow', 'RETURNTYPE', <function createLeafType at 0x00000221B1B7C790>, <function createFuncDefNode at 0x00000221B1B7CDC0>]
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'FPARAMS', 'lpar', <function createLeaf at 0x00000221B1B7C940>, 'id', 'func'])
+func --> func
+func
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'FPARAMS', 'lpar', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'FPARAMS', 'lpar'])
+lpar --> lpar
+func printarray(
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'FPARAMS'])
+FPARAMS --> ['id', <function createLeaf at 0x00000221B1B7C940>, 'colon', 'TYPE', <function createLeafType at 0x00000221B1B7C790>, 'REPTFPARAMS3', <function createDimNode at 0x00000221B1B7CC10>, <function createVardeclNode at 0x00000221B1B7CCA0>, 'REPTFPARAMS4']
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMS3', <function createLeafType at 0x00000221B1B7C790>, 'TYPE', 'colon', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray(arr
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMS3', <function createLeafType at 0x00000221B1B7C790>, 'TYPE', 'colon'])
+colon --> colon
+func printarray(arr:
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMS3', <function createLeafType at 0x00000221B1B7C790>, 'TYPE'])
+TYPE --> ['integer']
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMS3', <function createLeafType at 0x00000221B1B7C790>, 'integer'])
+integer --> integer
+func printarray(arr: integer
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMS3'])
+REPTFPARAMS3 --> ['ARRAYSIZE', 'REPTFPARAMS3']
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMS3', 'ARRAYSIZE'])
+ARRAYSIZE --> ['lsqbr', 'ENDBR']
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMS3', 'ENDBR', 'lsqbr'])
+lsqbr --> lsqbr
+func printarray(arr: integer[
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMS3', 'ENDBR'])
+ENDBR --> ['rsqbr']
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMS3', 'rsqbr'])
+rsqbr --> rsqbr
+func printarray(arr: integer[]
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMS3'])
+REPTFPARAMS3 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4'])
+REPTFPARAMS4 --> ['FPARAMSTAIL', <function createVardeclNode at 0x00000221B1B7CCA0>, 'REPTFPARAMS4']
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, 'FPARAMSTAIL'])
+FPARAMSTAIL --> ['comma', 'id', <function createLeaf at 0x00000221B1B7C940>, 'colon', 'TYPE', <function createLeafType at 0x00000221B1B7C790>, 'REPTFPARAMSTAIL4', <function createDimNode at 0x00000221B1B7CC10>]
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000221B1B7C790>, 'TYPE', 'colon', <function createLeaf at 0x00000221B1B7C940>, 'id', 'comma'])
+comma --> comma
+func printarray(arr: integer[],
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000221B1B7C790>, 'TYPE', 'colon', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray(arr: integer[], size
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000221B1B7C790>, 'TYPE', 'colon'])
+colon --> colon
+func printarray(arr: integer[], size:
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000221B1B7C790>, 'TYPE'])
+TYPE --> ['integer']
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000221B1B7C790>, 'integer'])
+integer --> integer
+func printarray(arr: integer[], size: integer
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTFPARAMSTAIL4'])
+REPTFPARAMSTAIL4 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'REPTFPARAMS4'])
+REPTFPARAMS4 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000221B1B7CD30>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow', 'rpar'])
+rpar --> rpar
+func printarray(arr: integer[], size: integer)
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE', 'arrow'])
+arrow --> arrow
+func printarray(arr: integer[], size: integer) ->
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'RETURNTYPE'])
+RETURNTYPE --> ['void']
+deque(['$', 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000221B1B7CDC0>, <function createLeafType at 0x00000221B1B7C790>, 'void'])
+void --> void
+func printarray(arr: integer[], size: integer) -> void
+deque(['$', 'REPTPROG0', 'FUNCBODY'])
+FUNCBODY --> ['lcurbr', 'REPTFUNCBODY1', 'rcurbr']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'lcurbr'])
+lcurbr --> lcurbr
+func printarray(arr: integer[], size: integer) -> void
+{
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['VARDECL']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'VARDECL'])
+VARDECL --> ['let', 'id', <function createLeaf at 0x00000221B1B7C940>, 'colon', 'TYPE', <function createLeafType at 0x00000221B1B7C790>, 'REPTVARDECL4', <function createDimNode at 0x00000221B1B7CC10>, <function createVardeclNode at 0x00000221B1B7CCA0>, 'semi']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTVARDECL4', <function createLeafType at 0x00000221B1B7C790>, 'TYPE', 'colon', <function createLeaf at 0x00000221B1B7C940>, 'id', 'let'])
+let --> let
+func printarray(arr: integer[], size: integer) -> void
+{
+  let
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTVARDECL4', <function createLeafType at 0x00000221B1B7C790>, 'TYPE', 'colon', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTVARDECL4', <function createLeafType at 0x00000221B1B7C790>, 'TYPE', 'colon'])
+colon --> colon
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n:
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTVARDECL4', <function createLeafType at 0x00000221B1B7C790>, 'TYPE'])
+TYPE --> ['integer']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTVARDECL4', <function createLeafType at 0x00000221B1B7C790>, 'integer'])
+integer --> integer
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTVARDECL4'])
+REPTVARDECL4 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['VARDECL']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'VARDECL'])
+VARDECL --> ['let', 'id', <function createLeaf at 0x00000221B1B7C940>, 'colon', 'TYPE', <function createLeafType at 0x00000221B1B7C790>, 'REPTVARDECL4', <function createDimNode at 0x00000221B1B7CC10>, <function createVardeclNode at 0x00000221B1B7CCA0>, 'semi']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTVARDECL4', <function createLeafType at 0x00000221B1B7C790>, 'TYPE', 'colon', <function createLeaf at 0x00000221B1B7C940>, 'id', 'let'])
+let --> let
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTVARDECL4', <function createLeafType at 0x00000221B1B7C790>, 'TYPE', 'colon', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTVARDECL4', <function createLeafType at 0x00000221B1B7C790>, 'TYPE', 'colon'])
+colon --> colon
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i:
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTVARDECL4', <function createLeafType at 0x00000221B1B7C790>, 'TYPE'])
+TYPE --> ['integer']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTVARDECL4', <function createLeafType at 0x00000221B1B7C790>, 'integer'])
+integer --> integer
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'REPTVARDECL4'])
+REPTVARDECL4 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000221B1B7CCA0>, <function createDimNode at 0x00000221B1B7CC10>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['STATEMENT']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'STATEMENT'])
+STATEMENT --> ['STATESTART', 'semi']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATESTART'])
+STATESTART --> ['id', <function createLeaf at 0x00000221B1B7C940>, 'STATEVARORFUNC']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC'])
+STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR'])
+REPTSTATEVAR --> ['ASSIGNOP', <function createLeafEpsilon at 0x00000221B1B7D510>, 'EXPR', <function createExprNode at 0x00000221B1B7D5A0>, <function createAssignNode at 0x00000221B1B7D480>]
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'EXPR', <function createLeafEpsilon at 0x00000221B1B7D510>, 'ASSIGNOP'])
+ASSIGNOP --> ['equal']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'EXPR', <function createLeafEpsilon at 0x00000221B1B7D510>, 'equal'])
+equal --> equal
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n =
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x00000221B1B7C940>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['STATEMENT']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'STATEMENT'])
+STATEMENT --> ['STATESTART', 'semi']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATESTART'])
+STATESTART --> ['id', <function createLeaf at 0x00000221B1B7C940>, 'STATEVARORFUNC']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC'])
+STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR'])
+REPTSTATEVAR --> ['ASSIGNOP', <function createLeafEpsilon at 0x00000221B1B7D510>, 'EXPR', <function createExprNode at 0x00000221B1B7D5A0>, <function createAssignNode at 0x00000221B1B7D480>]
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'EXPR', <function createLeafEpsilon at 0x00000221B1B7D510>, 'ASSIGNOP'])
+ASSIGNOP --> ['equal']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'EXPR', <function createLeafEpsilon at 0x00000221B1B7D510>, 'equal'])
+equal --> equal
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i =
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['intlit', <function createLeaf at 0x00000221B1B7C940>]
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', <function createLeaf at 0x00000221B1B7C940>, 'intlit'])
+intlit --> intlit
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['STATEMENT']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'STATEMENT'])
+STATEMENT --> ['while', 'lpar', 'RELEXPR', <function createWhileNode at 0x00000221B1B7D000>, 'rpar', 'STATBLOCK', 'semi']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, 'RELEXPR', 'lpar', 'while'])
+while --> while
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, 'RELEXPR', 'lpar'])
+lpar --> lpar
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, 'RELEXPR'])
+RELEXPR --> ['ARITHEXPR', 'RELOP', 'ARITHEXPR', <function createConditionNode at 0x00000221B1B7D090>]
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x00000221B1B7C940>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'RELOP'])
+RELOP --> ['lt']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR', 'lt'])
+lt --> lt
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x00000221B1B7C940>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar', <function createWhileNode at 0x00000221B1B7D000>, <function createConditionNode at 0x00000221B1B7D090>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK', 'rpar'])
+rpar --> rpar
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n)
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'STATBLOCK'])
+STATBLOCK --> ['lcurbr', 'REPTSTATBLOCK1', 'rcurbr']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'lcurbr'])
+lcurbr --> lcurbr
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1'])
+REPTSTATBLOCK1 --> ['STATEMENT', 'REPTSTATBLOCK1']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'STATEMENT'])
+STATEMENT --> ['write', 'lpar', <function createLeafEpsilon at 0x00000221B1B7D510>, 'EXPR', <function createExprNode at 0x00000221B1B7D5A0>, <function createWriteNode at 0x00000221B1B7CE50>, 'rpar', 'semi']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'EXPR', <function createLeafEpsilon at 0x00000221B1B7D510>, 'lpar', 'write'])
+write --> write
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'EXPR', <function createLeafEpsilon at 0x00000221B1B7D510>, 'lpar'])
+lpar --> lpar
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x00000221B1B7C940>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['INDICE', 'REPTVARORFUNC0']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'INDICE'])
+INDICE --> ['lsqbr', 'ARITHEXPR', 'rsqbr']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'ARITHEXPR', 'lsqbr'])
+lsqbr --> lsqbr
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x00000221B1B7C940>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0', 'rsqbr'])
+rsqbr --> rsqbr
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i]
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x00000221B1B7CE50>, <function createExprNode at 0x00000221B1B7D5A0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar'])
+rpar --> rpar
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i])
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi'])
+semi --> semi
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i]);
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1'])
+REPTSTATBLOCK1 --> ['STATEMENT', 'REPTSTATBLOCK1']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'STATEMENT'])
+STATEMENT --> ['STATESTART', 'semi']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'STATESTART'])
+STATESTART --> ['id', <function createLeaf at 0x00000221B1B7C940>, 'STATEVARORFUNC']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'STATEVARORFUNC', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i]);
+      i
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'STATEVARORFUNC'])
+STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'REPTSTATEVAR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'REPTSTATEVAR'])
+REPTSTATEVAR --> ['ASSIGNOP', <function createLeafEpsilon at 0x00000221B1B7D510>, 'EXPR', <function createExprNode at 0x00000221B1B7D5A0>, <function createAssignNode at 0x00000221B1B7D480>]
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'EXPR', <function createLeafEpsilon at 0x00000221B1B7D510>, 'ASSIGNOP'])
+ASSIGNOP --> ['equal']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'EXPR', <function createLeafEpsilon at 0x00000221B1B7D510>, 'equal'])
+equal --> equal
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i]);
+      i =
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x00000221B1B7C940>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x00000221B1B7C940>, 'id'])
+id --> id
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i]);
+      i = i
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['ADDOP', 'TERM', <function createAddNode at 0x00000221B1B7D240>, 'RIGHTRECARITHEXPR']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x00000221B1B7D240>, 'TERM', 'ADDOP'])
+ADDOP --> ['plus']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x00000221B1B7D240>, 'TERM', 'plus'])
+plus --> plus
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i]);
+      i = i+
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x00000221B1B7D240>, 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x00000221B1B7D240>, 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['intlit', <function createLeaf at 0x00000221B1B7C940>]
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x00000221B1B7D240>, 'RIGHTRECTERM', <function createLeaf at 0x00000221B1B7C940>, 'intlit'])
+intlit --> intlit
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i]);
+      i = i+1
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x00000221B1B7D240>, 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x00000221B1B7D240>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x00000221B1B7D480>, <function createExprNode at 0x00000221B1B7D5A0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1', 'semi'])
+semi --> semi
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i]);
+      i = i+1;
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'REPTSTATBLOCK1'])
+REPTSTATBLOCK1 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi', 'rcurbr'])
+rcurbr --> rcurbr
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i]);
+      i = i+1;
+  }
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i]);
+      i = i+1;
+  };
+deque(['$', 'REPTPROG0', 'rcurbr', 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['epsilon']
+deque(['$', 'REPTPROG0', 'rcurbr', 'epsilon'])
+epsilon --> epsilon
+deque(['$', 'REPTPROG0', 'rcurbr'])
+rcurbr --> rcurbr
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i]);
+      i = i+1;
+  };
+}

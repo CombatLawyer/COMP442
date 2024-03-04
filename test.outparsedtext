@@ -1,0 +1,11 @@
+func printarray(arr: integer[], size: integer) -> void
+{
+  let n: integer;
+  let i: integer;
+  n = size;
+  i = 0;
+  while (i<n) {
+    write(arr[i]);
+      i = i+1;
+  };
+}
