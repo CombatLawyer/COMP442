@@ -1,0 +1,40 @@
+FuncDef
+| id
+| ParamList
+| | VarDecl
+| | | id
+| | | type
+| | | Dimlist
+| | VarDecl
+| | | id
+| | | type
+| | | Dimlist
+| type
+FuncBody
+| AssignVar
+| | id
+| | AddOp
+| | | intlit
+| | | id
+| WriteNode
+| | ExprNode
+| | | id
+| | | id
+| WhileNode
+| | ConditionNode
+| | | id
+| | | id
+| AssignVar
+| | id
+| | intlit
+| AssignVar
+| | id
+| | id
+| VarDecl
+| | id
+| | type
+| | Dimlist
+| VarDecl
+| | id
+| | type
+| | Dimlist

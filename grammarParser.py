@@ -6,111 +6,257 @@ from collections import deque
 # Initialize the stack used for sematinc actions
 semantic = deque()
 
-def createLeaf(string):
-    semantic.append(string)
+class Node():
+    def __init__(self, nodeType, children):
+        self.nodeType = nodeType
+        self.parent = None
+        self.children = children
+    
+    def getNodeType(self):
+        return self.nodeType
+    
+    def getChildren(self):
+        return self.children
+    
+    def setParent(self, parent):
+        self.parent = parent
 
-def createProgNode():
-    semantic.append("prog")
+class Leaf():
+    def __init__(self, nodeType):
+        self.nodeType = nodeType
+        self.parent = None
+        
+    def getNodeType(self):
+        return self.nodeType
+    
+    def setParent(self, parent):
+        self.parent = parent
+
+def createLeaf(string):
+    leaf = Leaf(string)
+    semantic.append(leaf)
     
 def createLeafDim():
-    semantic.append("dim")
+    leaf = Leaf("dim")
+    semantic.append(leaf)
     
 def createLeafType():
-    semantic.append("type")
+    leaf = Leaf("type")
+    semantic.append(leaf)
+    
+def createLeafVisibility():
+    leaf = Leaf("Visibility")
+    semantic.append(leaf)
+    
+def createLeafEpsilon():
+    leaf = Leaf("Epsilon")
+    semantic.append(leaf)
 
 def createDimNode():
     dimList = []
-    while semantic[-1] == "dim":
-        dimList.append("dim")
-        semantic.pop()
-    semantic.append("Dimlist")
+    while semantic[-1].getNodeType() == "dim":
+        leaf = semantic.pop()
+        dimList.append(leaf)
+    node = Node("Dimlist", dimList)
+    for dimLeaf in dimList:
+        dimLeaf.setParent(node)
+    semantic.append(node)
     
 def createVardeclNode():
     dimList = semantic.pop()
     type = semantic.pop()
     id = semantic.pop()
-    semantic.append("VarDecl")
+    node = Node("VarDecl", [id, type, dimList])
+    for child in [id, type, dimList]:
+        child.setParent(node)
+    semantic.append(node)
     
 def createParamListNode():
     paramList = []
-    while semantic[-1] == "VarDecl":
-        paramList.append("VarDecl")
-        semantic.pop()
-    semantic.append("ParamList")
+    while semantic[-1].getNodeType() == "VarDecl":
+        child = semantic.pop()
+        paramList.append(child)
+    node = Node("ParamList", paramList)
+    for paramChild in paramList:
+        paramChild.setParent(node)
+    semantic.append(node)
     
 def createFuncDefNode():
     type = semantic.pop() 
     paramList = semantic.pop()
     id = semantic.pop()
-    semantic.append("FuncDef")
+    node = Node("FuncDef", [id, paramList, type])
+    for child in [id, paramList, type]:
+        child.setParent(node)
+    semantic.append(node)
 
 def createWriteNode():
     writeContent = semantic.pop() 
-    semantic.append("WriteNode")
+    node = Node("WriteNode", writeContent)
+    writeContent.setParent(writeContent)
+    semantic.append(node)
     
 def createReadNode():
     readVariable = semantic.pop() 
-    semantic.append("ReadNode")
+    node = Node("ReadNode", readVariable)
+    readVariable.setParent(node)
+    semantic.append(node)
     
 def createReturnNode():
-    returnVariable = semantic.pop() 
-    semantic.append("ReturnNode")
+    returnVariable = semantic.pop()
+    node = Node("ReturnNode", returnVariable)
+    returnVariable.setParent(node)
+    semantic.append(node)
 
 def createWhileNode():
     whileCondition = semantic.pop()
-    semantic.append("WhileNode")
+    node = Node("WhileNode", whileCondition)
+    whileCondition.setParent(node)
+    semantic.append(node)
     
 def createConditionNode():
     rightValue = semantic.pop()
     leftValue = semantic.pop()
-    semantic.append("ConditionNode")
+    node = Node("ConditionNode", [rightValue, leftValue])
+    rightValue.setParent(node)
+    leftValue.setParent(node)
+    semantic.append(node)
     
 def createArrayDimNode():
     dim = semantic.pop()
-    semantic.append("Dimension")
+    node = Node("ArrayDim", dim)
+    dim.setParent(node)
+    semantic.append(node)
 
 def createFuncParamList():
     paramList = []
-    while semantic[-1] in ["intlit", "floatlit", "id"]:
-        paramList.append(semantic[-1])
-        semantic.pop()
-    semantic.append("ParamList")
+    while semantic[-1].getNodeType() in ["intlit", "floatlit", "id"]:
+        leaf = semantic.pop()
+        paramList.append(leaf)
+    node = Node("ParamList", paramList)
+    for child in paramList:
+        child.setParent(node)
+    semantic.append(node)
     
+def createFuncBodyNode():
+    funcStatements = []
+    while semantic[-1].getNodeType() != "Epsilon":
+        leaf = semantic.pop()
+        funcStatements.append(leaf)
+    node = Node("FuncBody", funcStatements)
+    for child in funcStatements:
+        child.setParent(node)
+    semantic.pop()
+    semantic.append(node)
+
+def createInheritsNode():
+    inherits = []
+    while semantic[-1].getNodeType() != "Epsilon":
+        leaf = semantic.pop()
+        inherits.append(leaf)
+    node = Node("InheritsNode", inherits)
+    for child in inherits:
+        child.setParent(node)
+    semantic.pop()
+    semantic.append(node)
+
+def createStructDefNode():
+    inherits = semantic.pop()
+    name = semantic.pop()
+    node = Node("StructDef", [name, inherits])
+    inherits.setParent(node)
+    name.setParent(node)
+    semantic.append(node)
+
+def createStructBodyNode():
+    structBody = []
+    while semantic[-1].getNodeType() != "Epsilon":
+        leaf = semantic.pop()
+        structBody.append(leaf)
+    node = Node("StructBodyNode", structBody)
+    for child in structBody:
+        child.setParent(node)
+    semantic.pop()
+    semantic.append(node)
+
+def createStructDeclNode():
+    declaration = semantic.pop()
+    visibility = semantic.pop()
+    node = Node("StructDeclNode", [visibility, declaration])
+    visibility.setParent(node)
+    declaration.setParent(node)
+    semantic.append(node)
+
+def createImplDefNode():
+    id = semantic.pop()
+    node = Node("ImplDef", id)
+    id.setParent(node)
+    semantic.append(node)
+
+def createImplBodyNode():
+    implBody = []
+    while semantic[-1].getNodeType() != "Epsilon":
+        leaf = semantic.pop()
+        implBody.append(leaf)
+    node = Node("StructBodyNode", implBody)
+    for child in implBody:
+        child.setParent(node)
+    semantic.pop()
+    semantic.append(node)
+
 def createAddNode():
     rightValue = semantic.pop()
     leftValue = semantic.pop()
-    semantic.append("AddOp")
+    node = Node("AddOp", [rightValue, leftValue])
+    rightValue.setParent(node)
+    leftValue.setParent(node)
+    semantic.append(node)
     
 def createMultNode():
     rightValue = semantic.pop()
     leftValue = semantic.pop()
-    semantic.append("MultOp")
+    node = Node("MultOp", [rightValue, leftValue])
+    rightValue.setParent(node)
+    leftValue.setParent(node)
+    semantic.append(node)
     
 def createAndNode():
     rightValue = semantic.pop()
     leftValue = semantic.pop()
-    semantic.append("AndOp")
+    node = Node("AndOp", [rightValue, leftValue])
+    rightValue.setParent(node)
+    leftValue.setParent(node)
+    semantic.append(node)
     
 def createOrNode():
     rightValue = semantic.pop()
     leftValue = semantic.pop()
-    semantic.append("OrOp")
+    node = Node("OrOp", [rightValue, leftValue])
+    rightValue.setParent(node)
+    leftValue.setParent(node)
+    semantic.append(node)
 
 def createAssignNode():
     expression = semantic.pop()
     variable = semantic.pop()
-    semantic.append("AssignVar")
-    
-def createLeafEpsilon():
-    semantic.append("Epsilon")
+    node = Node("AssignVar", [variable, expression])
+    variable.setParent(node)
+    expression.setParent(node)
+    semantic.append(node)
 
 def createExprNode():
     expression = []
-    while semantic[-1] != "Epsilon":
-        expression.append(semantic[-1])
-        semantic.pop()
+    while semantic[-1].getNodeType() != "Epsilon":
+        leaf = semantic.pop()
+        expression.append(leaf)
+    node = Node("ExprNode", expression)
+    for child in expression:
+        child.setParent(node)
     semantic.pop()
-    semantic.append("ExprNode")
+    semantic.append(node)
+    
+def createProgNode():
+    semantic.append("Prog")
 
 # This is the lookup table which dictates what to do upon seeing a certain symbol on the stack
 table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
@@ -124,12 +270,12 @@ table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
          "FACTOR": {"lpar": ["lpar", "ARITHEXPR", createArrayDimNode, "rpar"], "id":["id", createLeaf, "VARORFUNC", "REPTFACTOR2"], "minus": ["SIGN", "FACTOR", createAddNode], "plus": ["SIGN", "FACTOR", createAddNode], "not": ["not", "FACTOR"], "floatlit": ["floatlit", createLeaf], "intlit": ["intlit", createLeaf]},
          "FPARAMS": {"rpar": ["epsilon"], "id": ["id", createLeaf, "colon", "TYPE", createLeafType, "REPTFPARAMS3", createDimNode, createVardeclNode, "REPTFPARAMS4"]},
          "FPARAMSTAIL": {"comma": ["comma", "id", createLeaf, "colon", "TYPE", createLeafType, "REPTFPARAMSTAIL4", createDimNode]},
-         "FUNCBODY": {"lcurbr": ["lcurbr", "REPTFUNCBODY1", "rcurbr"]},
+         "FUNCBODY": {"lcurbr": ["lcurbr", createLeafEpsilon, "REPTFUNCBODY1", createFuncBodyNode, "rcurbr"]},
          "FUNCDECL": {"func": ["FUNCHEAD", "semi"]},
          "FUNCDEF": {"func": ["FUNCHEAD", "FUNCBODY"]},
          "FUNCHEAD": {"func": ["func", "id", createLeaf, "lpar", "FPARAMS", createParamListNode, "rpar", "arrow", "RETURNTYPE", createLeafType, createFuncDefNode]},
          "IDNEST": {"dot": ["dot", "id", createLeaf, "VARORFUNC"]},
-         "IMPLDEF": {"impl" : ["impl", "id", createLeaf, "lcurbr", "REPTIMPLDEF3", "rcurbr"]},
+         "IMPLDEF": {"impl" : ["impl", "id", createLeaf, createImplDefNode, "lcurbr", createLeafEpsilon, "REPTIMPLDEF3", createImplBodyNode, "rcurbr"]},
          "INDICE": {"lsqbr": ["lsqbr", "ARITHEXPR", "rsqbr"]},
          "MEMBERDECL": {"let": ["VARDECL"], "func": ["FUNCDECL"]},
          "MULTOP": {"and": ["and"], "div": ["div"], "mult": ["mult"]},
@@ -149,9 +295,9 @@ table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
          "REPTPROG0": {"struct": ["STRUCTORIMPLORFUNC", "REPTPROG0"], "impl": ["STRUCTORIMPLORFUNC", "REPTPROG0"], "func": ["STRUCTORIMPLORFUNC", "REPTPROG0"]},
          "REPTSTATBLOCK1": {"id": ["STATEMENT", "REPTSTATBLOCK1"], "rcurbr": ["epsilon"], "return": ["STATEMENT", "REPTSTATBLOCK1"], "write": ["STATEMENT", "REPTSTATBLOCK1"], "read": ["STATEMENT", "REPTSTATBLOCK1"], "while": ["STATEMENT", "REPTSTATBLOCK1"], "if": ["STATEMENT", "REPTSTATBLOCK1"]},
          "REPTSTATEFUNC": {"dot": ["dot", "STATESTART"], "semi": ["epsilon"]},
-         "REPTSTATEVAR": {"dot": ["dot", "STATESTART"], "equal":["ASSIGNOP", createLeafEpsilon, "EXPR", createExprNode, createAssignNode]},
+         "REPTSTATEVAR": {"dot": ["dot", "STATESTART"], "equal":["ASSIGNOP", "EXPR", createAssignNode]},
          "REPTSTATEVARORFUNC0": {"dot": ["epsilon"], "lsqbr": ["INDICE", "REPTSTATEVARORFUNC0"], "equal": ["epsilon"]},
-         "REPTSTRUCTDECL4": {"private": ["VISIBILITY", "MEMBERDECL", "REPTSTRUCTDECL4"], "public": ["VISIBILITY", "MEMBERDECL", "REPTSTRUCTDECL4"], "rcurbr": ["epsilon"]},
+         "REPTSTRUCTDECL4": {"private": ["VISIBILITY", createLeafVisibility, "MEMBERDECL", createStructDeclNode, "REPTSTRUCTDECL4"], "public": ["VISIBILITY", createLeafVisibility, "MEMBERDECL", createStructDeclNode, "REPTSTRUCTDECL4"], "rcurbr": ["epsilon"]},
          "REPTVARDECL4": {"semi": ["epsilon"], "lsqbr": ["ARRAYSIZE", "REPTVARDECL4"]},
          "REPTVARIABLE": {"rpar": ["epsilon"], "dot": ["VARIDNEST", "REPTVARIABLE"]},
          "REPTVARIABLE20": {"rpar": ["epsilon"], "dot": ["epsilon"], "lsqbr": ["INDICE", "REPTVARIABLE20"]},
@@ -166,7 +312,7 @@ table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
          "STATEMENT": {"id": ["STATESTART", "semi"], "return": ["return", "lpar", createLeafEpsilon, "EXPR", createExprNode, createReturnNode, "rpar", "semi"], "write": ["write", "lpar", createLeafEpsilon, "EXPR", createExprNode, createWriteNode, "rpar", "semi"], "read": ["read", "lpar", "VARIABLE", createReadNode, "rpar", "semi"], "while": ["while", "lpar", "RELEXPR", createWhileNode, "rpar", "STATBLOCK", "semi"], "if": ["if", "lpar", "RELEXPR", "rpar", "then", "STATBLOCK", "else", "STATBLOCK", "semi"]},
          "STATESTART": {"id": ["id", createLeaf, "STATEVARORFUNC"]},
          "STATEVARORFUNC": {"lpar": ["lpar", "APARAMS", createFuncParamList, "rpar", "REPTSTATEFUNC"], "dot": ["REPTSTATEVARORFUNC0", "REPTSTATEVAR"], "lsqbr": ["REPTSTATEVARORFUNC0", "REPTSTATEVAR"], "equal": ["REPTSTATEVARORFUNC0", "REPTSTATEVAR"]},
-         "STRUCTDECL": {"struct": ["struct", "id", createLeaf, "OPTSTRUCTDECL2", "lcurbr", "REPTSTRUCTDECL4", "rcurbr", "semi"]},
+         "STRUCTDECL": {"struct": ["struct", "id", createLeaf, createLeafEpsilon, "OPTSTRUCTDECL2", createInheritsNode, createStructDefNode, createLeafEpsilon, "lcurbr", "REPTSTRUCTDECL4", createStructBodyNode, "rcurbr", "semi"]},
          "STRUCTORIMPLORFUNC": {"struct": ["STRUCTDECL"], "impl": ["IMPLDEF"], "func": ["FUNCDEF"]},
          "TERM": {"lpar": ["FACTOR", "RIGHTRECTERM"], "id": ["FACTOR", "RIGHTRECTERM"], "minus": ["FACTOR", "RIGHTRECTERM"], "plus": ["FACTOR", "RIGHTRECTERM"], "not": ["FACTOR", "RIGHTRECTERM"], "floatlit": ["FACTOR", "RIGHTRECTERM"], "intlit": ["FACTOR", "RIGHTRECTERM"]},
          "TYPE": {"id": ["id"], "float": ["float"], "integer": ["integer"]},
@@ -593,7 +739,17 @@ def parseToken(passedLexicon, filename):
                 print(f"Syntax error at the end of the file. Expected \"{characters[stack[-1]]}\" before reaching the end of the file.", file=errorFile)
             stack.pop()
 
-    print(semantic)
+    astPath = f"{filename}.ast.outast"
+
+    if not os.path.exists(astPath):
+        astFile = open(astPath, "x")
+    else:
+        astFile = open(astPath, "w")
+    
+    for node in semantic:
+        printNode(node, 0, astFile)
+        
+    astFile.close()
     g.close()
             
 def skipErrors(lexeme):
@@ -646,3 +802,12 @@ def skipErrors(lexeme):
                 if len(lexicon) == 0:
                     return nextLexeme
             return nextLexeme
+        
+def printNode(node, spaces, file):
+    for i in range(spaces):
+        print("| ", end="", file=file)
+    print(node.getNodeType(), file=file)
+    if (isinstance(node, Node)) and (node.getChildren() != None):
+        children = node.getChildren() if isinstance(node.getChildren(), list) else [node.getChildren()]
+        for child in children:
+            printNode(child, spaces+1, file)
