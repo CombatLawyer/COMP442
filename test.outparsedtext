@@ -8,4 +8,8 @@ func printarray(arr: integer[], size: integer) -> void
     write(arr[i]);
       i = i+1;
   };
+  f1 = f1.build(2, 3.5);
+  f2 = f2.build(-2.0, 1.0, 0.0);
+  new_function.a.b = a;
+  read(arr[1][n])
 }

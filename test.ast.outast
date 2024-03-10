@@ -1,6 +1,17 @@
-FuncDef
-| id
-| ParamList
+ProgNode
+| FuncDef
+| | id
+| | ParamList
+| | | VarDecl
+| | | | id
+| | | | type
+| | | | Dimlist
+| | | VarDecl
+| | | | id
+| | | | type
+| | | | Dimlist
+| | type
+| FuncBody
 | | VarDecl
 | | | id
 | | | type
@@ -9,32 +20,65 @@ FuncDef
 | | | id
 | | | type
 | | | Dimlist
-| type
-FuncBody
-| AssignVar
-| | id
-| | AddOp
-| | | intlit
+| | AssignVar
 | | | id
-| WriteNode
-| | ExprNode
+| | | ExprNode
+| | | | id
+| | AssignVar
 | | | id
+| | | ExprNode
+| | | | intlit
+| | WhileNode
+| | | ConditionNode
+| | | | id
+| | | | id
+| | WhileBlockNode
+| | | WriteNode
+| | | | ExprNode
+| | | | | IndiceNode
+| | | | | | id
+| | | | | | id
+| | | AssignVar
+| | | | id
+| | | | ExprNode
+| | | | | AddOp
+| | | | | | intlit
+| | | | | | id
+| | AssignVar
 | | | id
-| WhileNode
-| | ConditionNode
+| | | ExprNode
+| | | | AttributeNode
+| | | | | id
+| | | | | id
+| | | | FuncParamList
+| | | | | ExprNode
+| | | | | | intlit
+| | | | | ExprNode
+| | | | | | floatlit
+| | AssignVar
 | | | id
-| | | id
-| AssignVar
-| | id
-| | intlit
-| AssignVar
-| | id
-| | id
-| VarDecl
-| | id
-| | type
-| | Dimlist
-| VarDecl
-| | id
-| | type
-| | Dimlist
+| | | ExprNode
+| | | | AttributeNode
+| | | | | id
+| | | | | id
+| | | | FuncParamList
+| | | | | ExprNode
+| | | | | | SignedNode
+| | | | | | | Sign
+| | | | | | | floatlit
+| | | | | ExprNode
+| | | | | | floatlit
+| | | | | ExprNode
+| | | | | | floatlit
+| | AssignVar
+| | | AttributeNode
+| | | | id
+| | | | id
+| | | | id
+| | | ExprNode
+| | | | id
+| | ReadNode
+| | | AttributeNode
+| | | | id
+| | | | intlit
+| | | | id

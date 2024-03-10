@@ -48,6 +48,10 @@ def createLeafVisibility():
     leaf = Leaf("Visibility")
     semantic.append(leaf)
     
+def createLeafSign():
+    leaf = Leaf("Sign")
+    semantic.append(leaf)
+    
 def createLeafEpsilon():
     leaf = Leaf("Epsilon")
     semantic.append(leaf)
@@ -108,21 +112,63 @@ def createReturnNode():
     returnVariable.setParent(node)
     semantic.append(node)
 
+def createConditionNode():
+    leftValue = semantic.pop()
+    rightValue = semantic.pop()
+    node = Node("ConditionNode", [rightValue, leftValue])
+    rightValue.setParent(node)
+    leftValue.setParent(node)
+    semantic.append(node)
+
 def createWhileNode():
     whileCondition = semantic.pop()
     node = Node("WhileNode", whileCondition)
     whileCondition.setParent(node)
     semantic.append(node)
-    
-def createConditionNode():
-    rightValue = semantic.pop()
-    leftValue = semantic.pop()
-    node = Node("ConditionNode", [rightValue, leftValue])
-    rightValue.setParent(node)
-    leftValue.setParent(node)
+
+def createWhileBlockNode():
+    whileStatements = []
+    while semantic[-1].getNodeType() != "Epsilon":
+        leaf = semantic.pop()
+        whileStatements.append(leaf)
+    whileStatements.reverse()
+    node = Node("WhileBlockNode", whileStatements)
+    for child in whileStatements:
+        child.setParent(node)
+    semantic.pop()
     semantic.append(node)
     
-def createArrayDimNode():
+def createIfNode():
+    whileCondition = semantic.pop()
+    node = Node("IfNode", whileCondition)
+    whileCondition.setParent(node)
+    semantic.append(node)
+    
+def createThenNode():
+    thenStatements = []
+    while semantic[-1].getNodeType() != "Epsilon":
+        leaf = semantic.pop()
+        thenStatements.append(leaf)
+    thenStatements.reverse()
+    node = Node("ThenNode", thenStatements)
+    for child in thenStatements:
+        child.setParent(node)
+    semantic.pop()
+    semantic.append(node)
+    
+def createElseNode():
+    elseStatements = []
+    while semantic[-1].getNodeType() != "Epsilon":
+        leaf = semantic.pop()
+        elseStatements.append(leaf)
+    elseStatements.reverse()
+    node = Node("ElseNode", elseStatements)
+    for child in elseStatements:
+        child.setParent(node)
+    semantic.pop()
+    semantic.append(node)
+    
+def createFuncArgNode():
     dim = semantic.pop()
     node = Node("ArrayDim", dim)
     dim.setParent(node)
@@ -130,10 +176,12 @@ def createArrayDimNode():
 
 def createFuncParamList():
     paramList = []
-    while semantic[-1].getNodeType() in ["intlit", "floatlit", "id"]:
+    while semantic[-1].getNodeType() != "Epsilon":
         leaf = semantic.pop()
         paramList.append(leaf)
-    node = Node("ParamList", paramList)
+    semantic.pop()
+    paramList.reverse()
+    node = Node("FuncParamList", paramList)
     for child in paramList:
         child.setParent(node)
     semantic.append(node)
@@ -144,6 +192,7 @@ def createFuncBodyNode():
         leaf = semantic.pop()
         funcStatements.append(leaf)
     node = Node("FuncBody", funcStatements)
+    funcStatements.reverse()
     for child in funcStatements:
         child.setParent(node)
     semantic.pop()
@@ -174,6 +223,7 @@ def createStructBodyNode():
         leaf = semantic.pop()
         structBody.append(leaf)
     node = Node("StructBodyNode", structBody)
+    structBody.reverse()
     for child in structBody:
         child.setParent(node)
     semantic.pop()
@@ -198,11 +248,42 @@ def createImplBodyNode():
     while semantic[-1].getNodeType() != "Epsilon":
         leaf = semantic.pop()
         implBody.append(leaf)
-    node = Node("StructBodyNode", implBody)
+    implBody.reverse()
+    node = Node("ImplBodyNode", implBody)
     for child in implBody:
         child.setParent(node)
     semantic.pop()
     semantic.append(node)
+
+def createSignedNode():
+    signed = []
+    while semantic[-1].getNodeType() != "Sign":
+        leaf = semantic.pop()
+        signed.append(leaf)
+    leaf = semantic.pop()
+    signed.append(leaf)
+    signed.reverse()
+    node = Node("SignedNode", signed)
+    for child in signed:
+        child.setParent(node)
+    semantic.append(node)
+    
+def createIndiceNode():
+    if semantic[-2].getNodeType() in ["id", "intlit"]:
+        indice = semantic.pop()
+        array = semantic.pop()
+        node = Node("IndiceNode", [array, indice])
+        indice.setParent(node)
+        array.setParent(node)
+        semantic.append(node)
+    elif semantic[-2].getNodeType() == "IndiceNode":
+        indice = semantic.pop()
+        array = semantic.pop()
+        node = Node("AttributeNode", array.getChildren() + [indice])
+        indice.setParent(node)
+        for child in array.getChildren():
+            child.setParent(node)
+        semantic.append(node)
 
 def createAddNode():
     rightValue = semantic.pop()
@@ -249,34 +330,61 @@ def createExprNode():
     while semantic[-1].getNodeType() != "Epsilon":
         leaf = semantic.pop()
         expression.append(leaf)
+    expression.reverse()
     node = Node("ExprNode", expression)
     for child in expression:
         child.setParent(node)
     semantic.pop()
     semantic.append(node)
+
+def createAttributeNode():
+    if semantic[-2].getNodeType() == "id":
+        attribute = semantic.pop()
+        parentId = semantic.pop()
+        node = Node("AttributeNode", [parentId, attribute])
+        attribute.setParent(node)
+        parentId.setParent(node)
+        semantic.append(node)
+    elif semantic[-2].getNodeType() == "AttributeNode":
+        attribute = semantic.pop()
+        parentId = semantic.pop()
+        node = Node("AttributeNode", parentId.getChildren() + [attribute])
+        attribute.setParent(node)
+        for child in parentId.getChildren():
+            child.setParent(node)
+        semantic.append(node)
     
 def createProgNode():
-    semantic.append("Prog")
+    progBlocks = []
+    while semantic[-1].getNodeType() != "Epsilon":
+        leaf = semantic.pop()
+        progBlocks.append(leaf)
+    progBlocks.reverse()
+    node = Node("ProgNode", progBlocks)
+    for child in progBlocks:
+        child.setParent(node)
+    semantic.pop()
+    semantic.append(node)
 
 # This is the lookup table which dictates what to do upon seeing a certain symbol on the stack
 table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
-         "APARAMS": {"rpar":["epsilon"], "lpar":["EXPR", "REPTAPARAMS1"], "id":["EXPR", "REPTAPARAMS1"], "minus":["EXPR", "REPTAPARAMS1"], "plus":["EXPR", "REPTAPARAMS1"], "not":["EXPR", "REPTAPARAMS1"], "floatlit":["EXPR", "REPTAPARAMS1"], "intlit":["EXPR", "REPTAPARAMS1"]},
-         "APARAMSTAIL": {"comma":["comma", "EXPR"]},
+         "APARAMS": {"rpar":["epsilon"], "lpar":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"], "id":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"], "minus":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"], "plus":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"], "not":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"], "floatlit":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"], "intlit":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"]},
+         "APARAMSTAIL": {"comma":["comma", createLeafEpsilon, "EXPR", createExprNode,]},
          "ARITHEXPR": {"lpar": ["TERM", "RIGHTRECARITHEXPR"], "id":["TERM", "RIGHTRECARITHEXPR"], "minus":["TERM", "RIGHTRECARITHEXPR"], "plus":["TERM", "RIGHTRECARITHEXPR"], "not":["TERM", "RIGHTRECARITHEXPR"], "floatlit":["TERM", "RIGHTRECARITHEXPR"], "intlit":["TERM", "RIGHTRECARITHEXPR"]},
          "ARRAYSIZE": {"lsqbr": ["lsqbr", "ENDBR"]},
          "ASSIGNOP": {"equal": ["equal"]},
          "ENDBR": {"rsqbr": ["rsqbr"], "intlit": ["intlit", createLeafDim, "rsqbr"]},
          "EXPR": {"lpar": ["ARITHEXPR", "RELEXPREND"], "id": ["ARITHEXPR", "RELEXPREND"], "minus": ["ARITHEXPR", "RELEXPREND"], "plus": ["ARITHEXPR", "RELEXPREND"], "not": ["ARITHEXPR", "RELEXPREND"], "floatlit": ["ARITHEXPR", "RELEXPREND"], "intlit": ["ARITHEXPR", "RELEXPREND"]},
-         "FACTOR": {"lpar": ["lpar", "ARITHEXPR", createArrayDimNode, "rpar"], "id":["id", createLeaf, "VARORFUNC", "REPTFACTOR2"], "minus": ["SIGN", "FACTOR", createAddNode], "plus": ["SIGN", "FACTOR", createAddNode], "not": ["not", "FACTOR"], "floatlit": ["floatlit", createLeaf], "intlit": ["intlit", createLeaf]},
+         "FACTOR": {"lpar": ["lpar", "ARITHEXPR", createFuncArgNode, "rpar"], "id":["id", createLeaf, "VARORFUNC", "REPTFACTOR2"], "minus": ["SIGN", createLeafSign, "FACTOR", createSignedNode], "plus": ["SIGN", createLeafSign, "FACTOR", createSignedNode], "not": ["not", "FACTOR"], "floatlit": ["floatlit", createLeaf], "intlit": ["intlit", createLeaf]},
          "FPARAMS": {"rpar": ["epsilon"], "id": ["id", createLeaf, "colon", "TYPE", createLeafType, "REPTFPARAMS3", createDimNode, createVardeclNode, "REPTFPARAMS4"]},
          "FPARAMSTAIL": {"comma": ["comma", "id", createLeaf, "colon", "TYPE", createLeafType, "REPTFPARAMSTAIL4", createDimNode]},
          "FUNCBODY": {"lcurbr": ["lcurbr", createLeafEpsilon, "REPTFUNCBODY1", createFuncBodyNode, "rcurbr"]},
          "FUNCDECL": {"func": ["FUNCHEAD", "semi"]},
          "FUNCDEF": {"func": ["FUNCHEAD", "FUNCBODY"]},
          "FUNCHEAD": {"func": ["func", "id", createLeaf, "lpar", "FPARAMS", createParamListNode, "rpar", "arrow", "RETURNTYPE", createLeafType, createFuncDefNode]},
-         "IDNEST": {"dot": ["dot", "id", createLeaf, "VARORFUNC"]},
+         "IDNEST": {"dot": ["dot", "id", createLeaf, createAttributeNode, "VARORFUNC"]},
          "IMPLDEF": {"impl" : ["impl", "id", createLeaf, createImplDefNode, "lcurbr", createLeafEpsilon, "REPTIMPLDEF3", createImplBodyNode, "rcurbr"]},
-         "INDICE": {"lsqbr": ["lsqbr", "ARITHEXPR", "rsqbr"]},
+         "INDICE": {"lsqbr": ["lsqbr", "ARITHEXPR", createIndiceNode, "rsqbr"]},
          "MEMBERDECL": {"let": ["VARDECL"], "func": ["FUNCDECL"]},
          "MULTOP": {"and": ["and"], "div": ["div"], "mult": ["mult"]},
          "OPTSTRUCTDECL2": {"lcurbr": ["epsilon"], "inherits": ["inherits", "id", createLeaf, "REPTOPTSTRUCTDECL22"]},
@@ -295,7 +403,7 @@ table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
          "REPTPROG0": {"struct": ["STRUCTORIMPLORFUNC", "REPTPROG0"], "impl": ["STRUCTORIMPLORFUNC", "REPTPROG0"], "func": ["STRUCTORIMPLORFUNC", "REPTPROG0"]},
          "REPTSTATBLOCK1": {"id": ["STATEMENT", "REPTSTATBLOCK1"], "rcurbr": ["epsilon"], "return": ["STATEMENT", "REPTSTATBLOCK1"], "write": ["STATEMENT", "REPTSTATBLOCK1"], "read": ["STATEMENT", "REPTSTATBLOCK1"], "while": ["STATEMENT", "REPTSTATBLOCK1"], "if": ["STATEMENT", "REPTSTATBLOCK1"]},
          "REPTSTATEFUNC": {"dot": ["dot", "STATESTART"], "semi": ["epsilon"]},
-         "REPTSTATEVAR": {"dot": ["dot", "STATESTART"], "equal":["ASSIGNOP", "EXPR", createAssignNode]},
+         "REPTSTATEVAR": {"dot": ["dot", "STATESTART"], "equal":["ASSIGNOP", createLeafEpsilon, "EXPR", createExprNode, createAssignNode]},
          "REPTSTATEVARORFUNC0": {"dot": ["epsilon"], "lsqbr": ["INDICE", "REPTSTATEVARORFUNC0"], "equal": ["epsilon"]},
          "REPTSTRUCTDECL4": {"private": ["VISIBILITY", createLeafVisibility, "MEMBERDECL", createStructDeclNode, "REPTSTRUCTDECL4"], "public": ["VISIBILITY", createLeafVisibility, "MEMBERDECL", createStructDeclNode, "REPTSTRUCTDECL4"], "rcurbr": ["epsilon"]},
          "REPTVARDECL4": {"semi": ["epsilon"], "lsqbr": ["ARRAYSIZE", "REPTVARDECL4"]},
@@ -307,11 +415,11 @@ table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
          "RIGHTRECARITHEXPR": {"rpar": ["epsilon"], "semi": ["epsilon"], "minus": ["ADDOP", "TERM", createAddNode, "RIGHTRECARITHEXPR"], "plus": ["ADDOP", "TERM", createAddNode, "RIGHTRECARITHEXPR"], "comma": ["epsilon"], "geq": ["epsilon"], "leq": ["epsilon"], "gt": ["epsilon"], "lt": ["epsilon"], "neq": ["epsilon"], "eq": ["epsilon"], "rsqbr": ["epsilon"], "or": ["ADDOP", "TERM", createOrNode, "RIGHTRECARITHEXPR"]},
          "RIGHTRECTERM": {"rpar": ["epsilon"], "semi": ["epsilon"], "minus": ["epsilon"], "plus": ["epsilon"], "comma": ["epsilon"], "geq": ["epsilon"], "leq": ["epsilon"], "gt": ["epsilon"], "lt": ["epsilon"], "neq": ["epsilon"], "eq": ["epsilon"], "and": ["MULTOP", "FACTOR", createAndNode, "RIGHTRECTERM"], "div": ["MULTOP", "FACTOR", createMultNode, "RIGHTRECTERM"], "mult": ["MULTOP", "FACTOR", createMultNode, "RIGHTRECTERM"], "rsqbr": ["epsilon"], "or": ["epsilon"]},
          "SIGN": {"minus": ["minus"], "plus": ["plus"]},
-         "START": {"struct": ["PROG"], "impl": ["PROG"], "func": ["PROG"]},
+         "START": {"struct": [createLeafEpsilon, "PROG", createProgNode], "impl": [createLeafEpsilon, "PROG", createProgNode], "func": [createLeafEpsilon, "PROG", createProgNode]},
          "STATBLOCK": {"id": ["STATEMENT"], "semi": ["epsilon"], "lcurbr": ["lcurbr", "REPTSTATBLOCK1", "rcurbr"], "return": ["STATEMENT"], "write": ["STATEMENT"], "read": ["STATEMENT"], "while": ["STATEMENT"], "else": ["epsilon"], "if": ["STATEMENT"]},
-         "STATEMENT": {"id": ["STATESTART", "semi"], "return": ["return", "lpar", createLeafEpsilon, "EXPR", createExprNode, createReturnNode, "rpar", "semi"], "write": ["write", "lpar", createLeafEpsilon, "EXPR", createExprNode, createWriteNode, "rpar", "semi"], "read": ["read", "lpar", "VARIABLE", createReadNode, "rpar", "semi"], "while": ["while", "lpar", "RELEXPR", createWhileNode, "rpar", "STATBLOCK", "semi"], "if": ["if", "lpar", "RELEXPR", "rpar", "then", "STATBLOCK", "else", "STATBLOCK", "semi"]},
-         "STATESTART": {"id": ["id", createLeaf, "STATEVARORFUNC"]},
-         "STATEVARORFUNC": {"lpar": ["lpar", "APARAMS", createFuncParamList, "rpar", "REPTSTATEFUNC"], "dot": ["REPTSTATEVARORFUNC0", "REPTSTATEVAR"], "lsqbr": ["REPTSTATEVARORFUNC0", "REPTSTATEVAR"], "equal": ["REPTSTATEVARORFUNC0", "REPTSTATEVAR"]},
+         "STATEMENT": {"id": ["STATESTART", "semi"], "return": ["return", "lpar", createLeafEpsilon, "EXPR", createExprNode, createReturnNode, "rpar", "semi"], "write": ["write", "lpar", createLeafEpsilon, "EXPR", createExprNode, createWriteNode, "rpar", "semi"], "read": ["read", "lpar", "VARIABLE", createReadNode, "rpar", "semi"], "while": ["while", "lpar", "RELEXPR", createWhileNode, "rpar", createLeafEpsilon, "STATBLOCK", createWhileBlockNode, "semi"], "if": ["if", "lpar", "RELEXPR", createIfNode, "rpar", "then", createLeafEpsilon, "STATBLOCK", createThenNode, "else", createLeafEpsilon, "STATBLOCK", createElseNode, "semi"]},
+         "STATESTART": {"id": ["id", createLeaf, createAttributeNode, "STATEVARORFUNC"]},
+         "STATEVARORFUNC": {"lpar": ["lpar", createLeafEpsilon, "APARAMS", createFuncParamList, "rpar", "REPTSTATEFUNC"], "dot": ["REPTSTATEVARORFUNC0", "REPTSTATEVAR"], "lsqbr": ["REPTSTATEVARORFUNC0", "REPTSTATEVAR"], "equal": ["REPTSTATEVARORFUNC0", "REPTSTATEVAR"]},
          "STRUCTDECL": {"struct": ["struct", "id", createLeaf, createLeafEpsilon, "OPTSTRUCTDECL2", createInheritsNode, createStructDefNode, createLeafEpsilon, "lcurbr", "REPTSTRUCTDECL4", createStructBodyNode, "rcurbr", "semi"]},
          "STRUCTORIMPLORFUNC": {"struct": ["STRUCTDECL"], "impl": ["IMPLDEF"], "func": ["FUNCDEF"]},
          "TERM": {"lpar": ["FACTOR", "RIGHTRECTERM"], "id": ["FACTOR", "RIGHTRECTERM"], "minus": ["FACTOR", "RIGHTRECTERM"], "plus": ["FACTOR", "RIGHTRECTERM"], "not": ["FACTOR", "RIGHTRECTERM"], "floatlit": ["FACTOR", "RIGHTRECTERM"], "intlit": ["FACTOR", "RIGHTRECTERM"]},
@@ -319,10 +427,10 @@ table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
          "VARDECL": {"let": ["let", "id", createLeaf, "colon", "TYPE", createLeafType, "REPTVARDECL4", createDimNode, createVardeclNode, "semi"]},
          "VARDECLORSTAT": {"id": ["STATEMENT"], "let":["VARDECL"], "return": ["STATEMENT"], "write": ["STATEMENT"], "read": ["STATEMENT"], "while": ["STATEMENT"], "if": ["STATEMENT"]},
          "VARIABLE": {"id": ["id", createLeaf, "VARIABLE2"]},
-         "VARIABLE2": {"rpar": ["REPTVARIABLE20", "REPTVARIABLE"], "lpar": ["lpar", "APARAMS", createFuncParamList, "rpar", "VARIDNEST"], "dot": ["REPTVARIABLE20", "REPTVARIABLE"], "lsqbr": ["REPTVARIABLE20", "REPTVARIABLE"]},
-         "VARIDNEST": {"dot": ["dot", "id", createLeaf, "VARIDNEST2"]},
-         "VARIDNEST2": {"rpar": ["REPTVARIDNEST20"], "lpar": ["lpar", "APARAMS", createFuncParamList, "rpar", "VARIDNEST"], "dot": ["REPTVARIABLE20", "REPTVARIABLE"], "lsqbr": ["REPTVARIDNEST20"]},
-         "VARORFUNC": {"rpar": ["REPTVARORFUNC0"], "lpar": ["lpar", "APARAMS", createFuncParamList, "rpar"], "dot": ["REPTVARORFUNC0"], "semi": ["REPTVARORFUNC0"], "minus": ["REPTVARORFUNC0"], "plus": ["REPTVARORFUNC0"], "comma": ["REPTVARORFUNC0"], "geq": ["REPTVARORFUNC0"], "leq": ["REPTVARORFUNC0"], "gt": ["REPTVARORFUNC0"], "lt": ["REPTVARORFUNC0"], "neq": ["REPTVARORFUNC0"], "eq": ["REPTVARORFUNC0"], "and": ["REPTVARORFUNC0"], "div": ["REPTVARORFUNC0"], "mult": ["REPTVARORFUNC0"], "rsqbr": ["REPTVARORFUNC0"], "lsqbr": ["REPTVARORFUNC0"], "or": ["REPTVARORFUNC0"]},
+         "VARIABLE2": {"rpar": ["REPTVARIABLE20", "REPTVARIABLE"], "lpar": ["lpar", createLeafEpsilon, "APARAMS", createFuncParamList, "rpar", "VARIDNEST"], "dot": ["REPTVARIABLE20", "REPTVARIABLE"], "lsqbr": ["REPTVARIABLE20", "REPTVARIABLE"]},
+         "VARIDNEST": {"dot": ["dot", "id", createLeaf, createAttributeNode, "VARIDNEST2"]},
+         "VARIDNEST2": {"rpar": ["REPTVARIDNEST20"], "lpar": ["lpar", createLeafEpsilon, "APARAMS", createFuncParamList, "rpar", "VARIDNEST"], "dot": ["REPTVARIABLE20", "REPTVARIABLE"], "lsqbr": ["REPTVARIDNEST20"]},
+         "VARORFUNC": {"rpar": ["REPTVARORFUNC0"], "lpar": ["lpar", createLeafEpsilon, "APARAMS", createFuncParamList, "rpar"], "dot": ["REPTVARORFUNC0"], "semi": ["REPTVARORFUNC0"], "minus": ["REPTVARORFUNC0"], "plus": ["REPTVARORFUNC0"], "comma": ["REPTVARORFUNC0"], "geq": ["REPTVARORFUNC0"], "leq": ["REPTVARORFUNC0"], "gt": ["REPTVARORFUNC0"], "lt": ["REPTVARORFUNC0"], "neq": ["REPTVARORFUNC0"], "eq": ["REPTVARORFUNC0"], "and": ["REPTVARORFUNC0"], "div": ["REPTVARORFUNC0"], "mult": ["REPTVARORFUNC0"], "rsqbr": ["REPTVARORFUNC0"], "lsqbr": ["REPTVARORFUNC0"], "or": ["REPTVARORFUNC0"]},
          "VISIBILITY": {"private": ["private"], "public": ["public"]}}
 
 # First sets used to recover from errors
@@ -728,6 +836,10 @@ def parseToken(passedLexicon, filename):
         else:
             break
 
+    if callable(stack[-1]):
+        stack[-1]()
+        stack.pop()
+    
     # If the stack only has the $ which was placed on it initially, then the file is sucessfully parsed
     if stack[-1] == "$":
         print("Compiled successfully")

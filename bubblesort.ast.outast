@@ -1,0 +1,225 @@
+ProgNode
+| FuncDef
+| | id
+| | ParamList
+| | | VarDecl
+| | | | id
+| | | | type
+| | | | Dimlist
+| | | VarDecl
+| | | | id
+| | | | type
+| | | | Dimlist
+| | type
+| FuncBody
+| | VarDecl
+| | | id
+| | | type
+| | | Dimlist
+| | VarDecl
+| | | id
+| | | type
+| | | Dimlist
+| | VarDecl
+| | | id
+| | | type
+| | | Dimlist
+| | VarDecl
+| | | id
+| | | type
+| | | Dimlist
+| | AssignVar
+| | | id
+| | | ExprNode
+| | | | id
+| | AssignVar
+| | | id
+| | | ExprNode
+| | | | intlit
+| | AssignVar
+| | | id
+| | | ExprNode
+| | | | intlit
+| | AssignVar
+| | | id
+| | | ExprNode
+| | | | intlit
+| | WhileNode
+| | | ConditionNode
+| | | | id
+| | | | AddOp
+| | | | | intlit
+| | | | | id
+| | WhileBlockNode
+| | | WhileNode
+| | | | ConditionNode
+| | | | | id
+| | | | | AddOp
+| | | | | | intlit
+| | | | | | AddOp
+| | | | | | | id
+| | | | | | | id
+| | | WhileBlockNode
+| | | | IfNode
+| | | | | ConditionNode
+| | | | | | IndiceNode
+| | | | | | | id
+| | | | | | | id
+| | | | | | IndiceNode
+| | | | | | | id
+| | | | | | | AddOp
+| | | | | | | | intlit
+| | | | | | | | id
+| | | | ThenNode
+| | | | | AssignVar
+| | | | | | id
+| | | | | | ExprNode
+| | | | | | | IndiceNode
+| | | | | | | | id
+| | | | | | | | id
+| | | | | AssignVar
+| | | | | | IndiceNode
+| | | | | | | id
+| | | | | | | id
+| | | | | | ExprNode
+| | | | | | | IndiceNode
+| | | | | | | | id
+| | | | | | | | AddOp
+| | | | | | | | | intlit
+| | | | | | | | | id
+| | | | | AssignVar
+| | | | | | IndiceNode
+| | | | | | | id
+| | | | | | | AddOp
+| | | | | | | | intlit
+| | | | | | | | id
+| | | | | | ExprNode
+| | | | | | | id
+| | | | ElseNode
+| | | | AssignVar
+| | | | | id
+| | | | | ExprNode
+| | | | | | AddOp
+| | | | | | | intlit
+| | | | | | | id
+| | | AssignVar
+| | | | id
+| | | | ExprNode
+| | | | | AddOp
+| | | | | | intlit
+| | | | | | id
+| FuncDef
+| | id
+| | ParamList
+| | | VarDecl
+| | | | id
+| | | | type
+| | | | Dimlist
+| | | VarDecl
+| | | | id
+| | | | type
+| | | | Dimlist
+| | type
+| FuncBody
+| | VarDecl
+| | | id
+| | | type
+| | | Dimlist
+| | VarDecl
+| | | id
+| | | type
+| | | Dimlist
+| | AssignVar
+| | | id
+| | | ExprNode
+| | | | id
+| | AssignVar
+| | | id
+| | | ExprNode
+| | | | intlit
+| | WhileNode
+| | | ConditionNode
+| | | | id
+| | | | id
+| | WhileBlockNode
+| | | WriteNode
+| | | | ExprNode
+| | | | | IndiceNode
+| | | | | | id
+| | | | | | id
+| | | AssignVar
+| | | | id
+| | | | ExprNode
+| | | | | AddOp
+| | | | | | intlit
+| | | | | | id
+| FuncDef
+| | id
+| | ParamList
+| | type
+| FuncBody
+| | VarDecl
+| | | id
+| | | type
+| | | Dimlist
+| | | | dim
+| | AssignVar
+| | | IndiceNode
+| | | | id
+| | | | intlit
+| | | ExprNode
+| | | | intlit
+| | AssignVar
+| | | IndiceNode
+| | | | id
+| | | | intlit
+| | | ExprNode
+| | | | intlit
+| | AssignVar
+| | | IndiceNode
+| | | | id
+| | | | intlit
+| | | ExprNode
+| | | | intlit
+| | AssignVar
+| | | IndiceNode
+| | | | id
+| | | | intlit
+| | | ExprNode
+| | | | intlit
+| | AssignVar
+| | | IndiceNode
+| | | | id
+| | | | intlit
+| | | ExprNode
+| | | | intlit
+| | AssignVar
+| | | IndiceNode
+| | | | id
+| | | | intlit
+| | | ExprNode
+| | | | intlit
+| | AssignVar
+| | | IndiceNode
+| | | | id
+| | | | intlit
+| | | ExprNode
+| | | | intlit
+| | id
+| | FuncParamList
+| | | ExprNode
+| | | | id
+| | | ExprNode
+| | | | intlit
+| | id
+| | FuncParamList
+| | | ExprNode
+| | | | id
+| | | ExprNode
+| | | | intlit
+| | id
+| | FuncParamList
+| | | ExprNode
+| | | | id
+| | | ExprNode
+| | | | intlit
