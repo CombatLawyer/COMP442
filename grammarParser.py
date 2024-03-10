@@ -1,4 +1,4 @@
-# COMP 442 compiler design assignment 2 grammar parser
+# COMP 442 compiler design assignment 2 grammar parser + assignment 3 attribute grammar
 
 import os
 from collections import deque
@@ -6,6 +6,9 @@ from collections import deque
 # Initialize the stack used for sematinc actions
 semantic = deque()
 
+"""
+Class used as nodes for AST building, has a nodeType (the type of node), a parent and children.
+"""
 class Node():
     def __init__(self, nodeType, children):
         self.nodeType = nodeType
@@ -21,6 +24,9 @@ class Node():
     def setParent(self, parent):
         self.parent = parent
 
+"""
+Class used as leaves for AST building, has a nodeType and parent but no children.
+"""
 class Leaf():
     def __init__(self, nodeType):
         self.nodeType = nodeType
@@ -32,30 +38,51 @@ class Leaf():
     def setParent(self, parent):
         self.parent = parent
 
+"""
+Creates a leaf of the specified type (used to make intlits, floatlits and ids)
+"""
 def createLeaf(string):
     leaf = Leaf(string)
     semantic.append(leaf)
-    
+
+"""
+Creates a dim leaf, used to specify a dimension for variables
+"""    
 def createLeafDim():
     leaf = Leaf("dim")
     semantic.append(leaf)
-    
+
+"""
+Creates a type leaf, used when specifying return types
+"""     
 def createLeafType():
     leaf = Leaf("type")
     semantic.append(leaf)
-    
+
+"""
+Creates a visibility leaf, used to specify the visibility of a function or variable
+"""     
 def createLeafVisibility():
     leaf = Leaf("Visibility")
     semantic.append(leaf)
-    
+
+"""
+Creates a sign leaf, used to specify that whatever after is signed
+"""     
 def createLeafSign():
     leaf = Leaf("Sign")
     semantic.append(leaf)
-    
+
+"""
+Creates an epsilon node, used in cases where the node will take a variable length of children
+"""     
 def createLeafEpsilon():
     leaf = Leaf("Epsilon")
     semantic.append(leaf)
 
+"""
+Create a dimlist node which looks speicfically to group the dim leaves in a variable declaration
+"""
 def createDimNode():
     dimList = []
     while semantic[-1].getNodeType() == "dim":
@@ -65,7 +92,10 @@ def createDimNode():
     for dimLeaf in dimList:
         dimLeaf.setParent(node)
     semantic.append(node)
-    
+
+"""
+Variable declaration node, will take in an id (the name of the variable), a type and a dimlist 
+"""     
 def createVardeclNode():
     dimList = semantic.pop()
     type = semantic.pop()
@@ -74,7 +104,10 @@ def createVardeclNode():
     for child in [id, type, dimList]:
         child.setParent(node)
     semantic.append(node)
-    
+
+"""
+Parameter list node will look to group variable declarations in the parameter list of a function/struct/impl definition
+"""     
 def createParamListNode():
     paramList = []
     while semantic[-1].getNodeType() == "VarDecl":
@@ -84,7 +117,10 @@ def createParamListNode():
     for paramChild in paramList:
         paramChild.setParent(node)
     semantic.append(node)
-    
+
+"""
+Function definition node will look to take in an id (the name of the function), the list of parameters it defines, and the return type
+"""     
 def createFuncDefNode():
     type = semantic.pop() 
     paramList = semantic.pop()
@@ -94,24 +130,36 @@ def createFuncDefNode():
         child.setParent(node)
     semantic.append(node)
 
+"""
+Function creates a write node which specifies that the object on the top of the stack is to be used in the system write function
+""" 
 def createWriteNode():
     writeContent = semantic.pop() 
     node = Node("WriteNode", writeContent)
     writeContent.setParent(writeContent)
     semantic.append(node)
-    
+
+"""
+Function creates a read node which specifies that the object on the top of the stack is to be used in the system read function
+"""     
 def createReadNode():
     readVariable = semantic.pop() 
     node = Node("ReadNode", readVariable)
     readVariable.setParent(node)
     semantic.append(node)
-    
+
+"""
+Function creates a return node which specifies that the object on the top of the stack is to be used by returning at the end of a function
+"""     
 def createReturnNode():
     returnVariable = semantic.pop()
     node = Node("ReturnNode", returnVariable)
     returnVariable.setParent(node)
     semantic.append(node)
 
+"""
+Function creates a conditional node which groups a conditional right and left half
+""" 
 def createConditionNode():
     leftValue = semantic.pop()
     rightValue = semantic.pop()
@@ -120,14 +168,22 @@ def createConditionNode():
     leftValue.setParent(node)
     semantic.append(node)
 
+"""
+Function creates a while node which takes in the condition node and specifies it as the while condition
+""" 
 def createWhileNode():
     whileCondition = semantic.pop()
     node = Node("WhileNode", whileCondition)
     whileCondition.setParent(node)
     semantic.append(node)
 
+"""
+While block encompasses the statements in the while block using the epsilon placed beforehand
+"""
 def createWhileBlockNode():
     whileStatements = []
+    
+    # Search for the epsilon placed at the start of the block
     while semantic[-1].getNodeType() != "Epsilon":
         leaf = semantic.pop()
         whileStatements.append(leaf)
@@ -135,17 +191,27 @@ def createWhileBlockNode():
     node = Node("WhileBlockNode", whileStatements)
     for child in whileStatements:
         child.setParent(node)
+    
+    # Ensure that the epsilon is popped off the stack
     semantic.pop()
     semantic.append(node)
-    
+
+"""
+If node is the same as the while but specifies the condition for an if instead
+"""    
 def createIfNode():
     whileCondition = semantic.pop()
     node = Node("IfNode", whileCondition)
     whileCondition.setParent(node)
     semantic.append(node)
-    
+
+"""
+Then block will encompass the statements inside the then block
+"""    
 def createThenNode():
     thenStatements = []
+    
+    # Search for the epsilon placed at the start of the block
     while semantic[-1].getNodeType() != "Epsilon":
         leaf = semantic.pop()
         thenStatements.append(leaf)
@@ -153,11 +219,18 @@ def createThenNode():
     node = Node("ThenNode", thenStatements)
     for child in thenStatements:
         child.setParent(node)
+        
+    # Ensure that the epsilon is popped off the stack
     semantic.pop()
     semantic.append(node)
-    
+
+"""
+Does the same thing as the then node but is used for the else block
+"""    
 def createElseNode():
     elseStatements = []
+    
+    # Search for the epsilon placed at the start of the block
     while semantic[-1].getNodeType() != "Epsilon":
         leaf = semantic.pop()
         elseStatements.append(leaf)
@@ -165,29 +238,56 @@ def createElseNode():
     node = Node("ElseNode", elseStatements)
     for child in elseStatements:
         child.setParent(node)
+        
+    # Ensure that the epsilon is popped off the stack
+    semantic.pop()
+    semantic.append(node)
+
+"""
+This is never used, supposed to capture what is in between parenthesis when a factor production uses it
+"""    
+def createFuncArgNode():
+    args = []
+    
+    # Search for the epsilon placed at the start of the block
+    while semantic[-1].getNodeType() != "Epsilon":
+        leaf = semantic.pop()
+        args.append(leaf)
+    args.reverse()
+    node = Node("FuncArgs", args)
+    for child in args:
+        child.setParent(node)
+        
+    # Ensure that the epsilon is popped off the stack
     semantic.pop()
     semantic.append(node)
     
-def createFuncArgNode():
-    dim = semantic.pop()
-    node = Node("ArrayDim", dim)
-    dim.setParent(node)
-    semantic.append(node)
-
+"""
+Creates a list for the parameters in a function call using the epsilon placed beforehand
+"""
 def createFuncParamList():
     paramList = []
+    
+    # Search for the epsilon placed at the start of the block
     while semantic[-1].getNodeType() != "Epsilon":
         leaf = semantic.pop()
         paramList.append(leaf)
+        
+    # Ensure that the epsilon is popped off the stack
     semantic.pop()
     paramList.reverse()
     node = Node("FuncParamList", paramList)
     for child in paramList:
         child.setParent(node)
     semantic.append(node)
-    
+
+"""
+Function body encompasses the nodes which are present in the body of the function
+"""    
 def createFuncBodyNode():
     funcStatements = []
+    
+    # Search for the epsilon placed at the start of the block
     while semantic[-1].getNodeType() != "Epsilon":
         leaf = semantic.pop()
         funcStatements.append(leaf)
@@ -195,20 +295,32 @@ def createFuncBodyNode():
     funcStatements.reverse()
     for child in funcStatements:
         child.setParent(node)
+        
+    # Ensure that the epsilon is popped off the stack
     semantic.pop()
     semantic.append(node)
 
+"""
+Generates an inherits node which gathers all the ids which the struct inherits from
+"""
 def createInheritsNode():
     inherits = []
+    
+    # Search for the epsilon placed at the start of the block
     while semantic[-1].getNodeType() != "Epsilon":
         leaf = semantic.pop()
         inherits.append(leaf)
     node = Node("InheritsNode", inherits)
     for child in inherits:
         child.setParent(node)
+        
+    # Ensure that the epsilon is popped off the stack
     semantic.pop()
     semantic.append(node)
 
+"""
+Struct definition takes in the id which gives the name of the struct and the inherits node
+"""
 def createStructDefNode():
     inherits = semantic.pop()
     name = semantic.pop()
@@ -217,8 +329,13 @@ def createStructDefNode():
     name.setParent(node)
     semantic.append(node)
 
+"""
+Struct body includes all the statments in the body of the struct
+"""
 def createStructBodyNode():
     structBody = []
+    
+    # Search for the epsilon placed at the start of the block
     while semantic[-1].getNodeType() != "Epsilon":
         leaf = semantic.pop()
         structBody.append(leaf)
@@ -226,9 +343,14 @@ def createStructBodyNode():
     structBody.reverse()
     for child in structBody:
         child.setParent(node)
+        
+    # Ensure that the epsilon is popped off the stack
     semantic.pop()
     semantic.append(node)
 
+"""
+Struct decl node are variable declarations but with the visibility added
+"""
 def createStructDeclNode():
     declaration = semantic.pop()
     visibility = semantic.pop()
@@ -237,14 +359,22 @@ def createStructDeclNode():
     declaration.setParent(node)
     semantic.append(node)
 
+"""
+Impl definitions involve just the id that the impl is given
+"""
 def createImplDefNode():
     id = semantic.pop()
     node = Node("ImplDef", id)
     id.setParent(node)
     semantic.append(node)
 
+"""
+Impl bodies invlove the nodes in the body of the impl
+"""
 def createImplBodyNode():
     implBody = []
+    
+    # Search for the epsilon placed at the start of the block
     while semantic[-1].getNodeType() != "Epsilon":
         leaf = semantic.pop()
         implBody.append(leaf)
@@ -252,14 +382,23 @@ def createImplBodyNode():
     node = Node("ImplBodyNode", implBody)
     for child in implBody:
         child.setParent(node)
+        
+    # Ensure that the epsilon is popped off the stack
     semantic.pop()
     semantic.append(node)
 
+"""
+Signed nodes take in whatever is after the sign leaf and indicates that this is all signed by the sign at the front.
+"""
 def createSignedNode():
     signed = []
+    
+    # Look for the sign leaf
     while semantic[-1].getNodeType() != "Sign":
         leaf = semantic.pop()
         signed.append(leaf)
+    
+    # Ensure that the sign leaf is also included in the sign node
     leaf = semantic.pop()
     signed.append(leaf)
     signed.reverse()
@@ -268,8 +407,12 @@ def createSignedNode():
         child.setParent(node)
     semantic.append(node)
     
+"""
+Indice nodes will check the stack and check if id is prsent under the top of the stack (this indicates that this current id or intlit 
+is an indice of that id). If another indice node is found there, then ther indice node is remade with the new indice added.
+"""    
 def createIndiceNode():
-    if semantic[-2].getNodeType() in ["id", "intlit"]:
+    if semantic[-2].getNodeType() in ["id"]:
         indice = semantic.pop()
         array = semantic.pop()
         node = Node("IndiceNode", [array, indice])
@@ -285,6 +428,9 @@ def createIndiceNode():
             child.setParent(node)
         semantic.append(node)
 
+"""
+The add node takes in two values (right and left) and indicates that an add operation will combine them (add or subtract)
+"""
 def createAddNode():
     rightValue = semantic.pop()
     leftValue = semantic.pop()
@@ -292,7 +438,10 @@ def createAddNode():
     rightValue.setParent(node)
     leftValue.setParent(node)
     semantic.append(node)
-    
+
+"""
+The mult node takes in two values (right and left) and indicates that an add operation will combine them (multiply or divide)
+"""    
 def createMultNode():
     rightValue = semantic.pop()
     leftValue = semantic.pop()
@@ -300,7 +449,10 @@ def createMultNode():
     rightValue.setParent(node)
     leftValue.setParent(node)
     semantic.append(node)
-    
+
+"""
+The and node takes in two values (right and left) and indicates that an and operation will evaluate them together
+"""    
 def createAndNode():
     rightValue = semantic.pop()
     leftValue = semantic.pop()
@@ -308,7 +460,10 @@ def createAndNode():
     rightValue.setParent(node)
     leftValue.setParent(node)
     semantic.append(node)
-    
+
+"""
+The or node takes in two values (right and left) and indicates that an or operation will evaluate them together
+"""     
 def createOrNode():
     rightValue = semantic.pop()
     leftValue = semantic.pop()
@@ -317,6 +472,9 @@ def createOrNode():
     leftValue.setParent(node)
     semantic.append(node)
 
+"""
+The assign node will pair the assignment of a variable with the expression on top of the stack to pass its value
+""" 
 def createAssignNode():
     expression = semantic.pop()
     variable = semantic.pop()
@@ -325,6 +483,9 @@ def createAssignNode():
     expression.setParent(node)
     semantic.append(node)
 
+"""
+Creates an expr subtree by using the epsilon delimited before the expr production, guaranteed to encompass the whole subtree
+""" 
 def createExprNode():
     expression = []
     while semantic[-1].getNodeType() != "Epsilon":
@@ -337,6 +498,11 @@ def createExprNode():
     semantic.pop()
     semantic.append(node)
 
+"""
+The attribute node checks first if an id or an attribute is under the top most entry of the stack (guaranteed to be id on the top), if not it does nothing.
+Otherwise if its an id it will group the id and the the id it is associated with. If its an attribute node it will grow the node by making a new one and adding
+the new attribute.
+""" 
 def createAttributeNode():
     if semantic[-2].getNodeType() == "id":
         attribute = semantic.pop()
@@ -345,15 +511,21 @@ def createAttributeNode():
         attribute.setParent(node)
         parentId.setParent(node)
         semantic.append(node)
+        
     elif semantic[-2].getNodeType() == "AttributeNode":
         attribute = semantic.pop()
         parentId = semantic.pop()
+        
+        # Grow the node by making a new node with the same children + the new attribute
         node = Node("AttributeNode", parentId.getChildren() + [attribute])
         attribute.setParent(node)
         for child in parentId.getChildren():
             child.setParent(node)
         semantic.append(node)
-    
+
+"""
+Create a prog node (the root node) using the epsilon placed at the start it will encompass all the nodes left on the stack
+"""     
 def createProgNode():
     progBlocks = []
     while semantic[-1].getNodeType() != "Epsilon":
@@ -375,7 +547,7 @@ table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
          "ASSIGNOP": {"equal": ["equal"]},
          "ENDBR": {"rsqbr": ["rsqbr"], "intlit": ["intlit", createLeafDim, "rsqbr"]},
          "EXPR": {"lpar": ["ARITHEXPR", "RELEXPREND"], "id": ["ARITHEXPR", "RELEXPREND"], "minus": ["ARITHEXPR", "RELEXPREND"], "plus": ["ARITHEXPR", "RELEXPREND"], "not": ["ARITHEXPR", "RELEXPREND"], "floatlit": ["ARITHEXPR", "RELEXPREND"], "intlit": ["ARITHEXPR", "RELEXPREND"]},
-         "FACTOR": {"lpar": ["lpar", "ARITHEXPR", createFuncArgNode, "rpar"], "id":["id", createLeaf, "VARORFUNC", "REPTFACTOR2"], "minus": ["SIGN", createLeafSign, "FACTOR", createSignedNode], "plus": ["SIGN", createLeafSign, "FACTOR", createSignedNode], "not": ["not", "FACTOR"], "floatlit": ["floatlit", createLeaf], "intlit": ["intlit", createLeaf]},
+         "FACTOR": {"lpar": ["lpar", createLeafEpsilon, "ARITHEXPR", createFuncArgNode, "rpar"], "id":["id", createLeaf, "VARORFUNC", "REPTFACTOR2"], "minus": ["SIGN", createLeafSign, "FACTOR", createSignedNode], "plus": ["SIGN", createLeafSign, "FACTOR", createSignedNode], "not": ["not", "FACTOR"], "floatlit": ["floatlit", createLeaf], "intlit": ["intlit", createLeaf]},
          "FPARAMS": {"rpar": ["epsilon"], "id": ["id", createLeaf, "colon", "TYPE", createLeafType, "REPTFPARAMS3", createDimNode, createVardeclNode, "REPTFPARAMS4"]},
          "FPARAMSTAIL": {"comma": ["comma", "id", createLeaf, "colon", "TYPE", createLeafType, "REPTFPARAMSTAIL4", createDimNode]},
          "FUNCBODY": {"lcurbr": ["lcurbr", createLeafEpsilon, "REPTFUNCBODY1", createFuncBodyNode, "rcurbr"]},
@@ -785,6 +957,7 @@ def parseToken(passedLexicon, filename):
                     stack.pop()
                 continue
             
+            # If the top of the stack is a callable function either create the leaf of the specific lexeme or run the function
             if callable(stack[-1]):
                 if stack[-1] == createLeaf:
                     createLeaf(previousLexeme[1])
@@ -836,6 +1009,7 @@ def parseToken(passedLexicon, filename):
         else:
             break
 
+    # This should always be the prog node that needs to finish before emptying the stack
     if callable(stack[-1]):
         stack[-1]()
         stack.pop()
@@ -851,6 +1025,7 @@ def parseToken(passedLexicon, filename):
                 print(f"Syntax error at the end of the file. Expected \"{characters[stack[-1]]}\" before reaching the end of the file.", file=errorFile)
             stack.pop()
 
+    # Open the AST file to write to or create it if necessary
     astPath = f"{filename}.ast.outast"
 
     if not os.path.exists(astPath):
@@ -858,6 +1033,7 @@ def parseToken(passedLexicon, filename):
     else:
         astFile = open(astPath, "w")
     
+    # Print the AST to the file
     for node in semantic:
         printNode(node, 0, astFile)
         
@@ -914,7 +1090,13 @@ def skipErrors(lexeme):
                 if len(lexicon) == 0:
                     return nextLexeme
             return nextLexeme
-        
+
+"""
+Function that prints the AST to the file specified. It traverses the tree in a pre-order fashion recursively.
+node: The root node of the tree
+spaces: The number of spaces to additionally print for the offset, this should only ever be invoked originally with 0, the recursion will increment it
+file: File to write to 
+"""        
 def printNode(node, spaces, file):
     for i in range(spaces):
         print("| ", end="", file=file)
