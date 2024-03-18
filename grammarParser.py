@@ -10,9 +10,10 @@ semantic = deque()
 Class used as nodes for AST building, has a nodeType (the type of node), a parent and children.
 """
 class Node():
-    def __init__(self, nodeType, children):
+    def __init__(self, nodeType, children, value=None):
         self.nodeType = nodeType
         self.parent = None
+        self.value = value
         self.children = children
     
     def getNodeType(self):
@@ -21,6 +22,9 @@ class Node():
     def getChildren(self):
         return self.children
     
+    def getValue(self):
+        return self.value
+    
     def setParent(self, parent):
         self.parent = parent
 
@@ -28,21 +32,89 @@ class Node():
 Class used as leaves for AST building, has a nodeType and parent but no children.
 """
 class Leaf():
-    def __init__(self, nodeType):
+    def __init__(self, nodeType, value=None):
         self.nodeType = nodeType
+        self.value = value
         self.parent = None
         
     def getNodeType(self):
         return self.nodeType
     
+    def getValue(self):
+        return self.value
+    
     def setParent(self, parent):
         self.parent = parent
+
+class Table():
+    def __init__(self, id):
+        self.name = id
+        self.inherits = []
+        self.data = []
+        self.function = []
+        self.classes = []
+        
+    def getTableName(self):
+        return self.name
+    
+    def getInherits(self):
+        return self.inherits
+    
+    def getData(self):
+        return self.data
+    
+    def getFunction(self):
+        return self.function
+    
+    def getClasses(self):
+        return self.classes
+    
+    def addInherits(self, id):
+        self.inherits.append(id)
+        
+    def addData(self, id, type, visibility):
+        self.data.append((id, type, visibility))
+        
+    def addFunction(self, function):
+        self.function.append(function)
+    
+    def addClasses(self, table):
+        self.classes.append(table)
+
+class Function():
+    def __init__(self, id, returnType, visibility):
+        self.name = id
+        self.returnType = returnType
+        self.visibility = visibility
+        self.param = []
+        self.local = []
+        
+    def getFuncName(self):
+        return self.name
+    
+    def getReturnType(self):
+        return self.returnType
+    
+    def getParam(self):
+        return self.param
+    
+    def getVisibility(self):
+        return self.visibility
+    
+    def getLocal(self):
+        return self.local
+        
+    def addParam(self, id, type):
+        self.param.append((id, type))
+    
+    def addLocal(self, id, type):
+        self.local.append((id, type))
 
 """
 Creates a leaf of the specified type (used to make intlits, floatlits and ids)
 """
-def createLeaf(string):
-    leaf = Leaf(string)
+def createLeaf(string, value):
+    leaf = Leaf(string, value)
     semantic.append(leaf)
 
 """
@@ -55,15 +127,15 @@ def createLeafDim():
 """
 Creates a type leaf, used when specifying return types
 """     
-def createLeafType():
-    leaf = Leaf("type")
+def createLeafType(value):
+    leaf = Leaf("type", value)
     semantic.append(leaf)
 
 """
 Creates a visibility leaf, used to specify the visibility of a function or variable
 """     
-def createLeafVisibility():
-    leaf = Leaf("Visibility")
+def createLeafVisibility(value):
+    leaf = Leaf("Visibility", value)
     semantic.append(leaf)
 
 """
@@ -960,7 +1032,9 @@ def parseToken(passedLexicon, filename):
             # If the top of the stack is a callable function either create the leaf of the specific lexeme or run the function
             if callable(stack[-1]):
                 if stack[-1] == createLeaf:
-                    createLeaf(previousLexeme[1])
+                    createLeaf(previousLexeme[1], previousLexeme[0])
+                elif stack[-1] in [createLeafVisibility, createLeafType]:
+                    stack[-1](previousLexeme[0])
                 else:
                     stack[-1]()
                 stack.pop()
@@ -1037,7 +1111,19 @@ def parseToken(passedLexicon, filename):
     for node in semantic:
         printNode(node, 0, astFile)
         
+    # Open the symbol table file to write to or create it if necessary
+    symbolTable = f"{filename}.outsymboltables"
+
+    if not os.path.exists(symbolTable):
+        symbolTable = open(symbolTable, "x")
+    else:
+        symbolTable = open(symbolTable, "w")    
+    
+    for node in semantic:
+        checkClasses(node, symbolTable)
+        
     astFile.close()
+    symbolTable.close()
     g.close()
             
 def skipErrors(lexeme):
@@ -1105,3 +1191,145 @@ def printNode(node, spaces, file):
         children = node.getChildren() if isinstance(node.getChildren(), list) else [node.getChildren()]
         for child in children:
             printNode(child, spaces+1, file)
+            
+def checkClasses(root, file):
+    tree = deque()
+    tree.append(root)
+    globalTable = Table("global")
+    context = {}
+    while tree:
+        if isinstance(tree[-1], Node):
+            if (tree[-1].getNodeType() == "StructDef"):
+                children = tree[-1].getChildren()
+                className = children[0].getValue()
+                classTable = Table(className)
+                globalTable.addClasses(classTable)
+                if children[1].getChildren() == None:
+                    classTable.addInherits("none")
+                else:
+                    for grandchild in children[1].getChildren():
+                        classTable.addInherits(grandchild.getValue())
+                tree.pop()
+                for decl in tree[-1].getChildren():
+                    visibility = decl.getChildren()[0].getValue()
+                    name = decl.getChildren()[1].getChildren()[0].getValue()
+                    returnType = decl.getChildren()[1].getChildren()[2].getValue()
+                    if decl.getChildren()[1].getNodeType() == "FuncDef":
+                        functionTable = Function(name, returnType, visibility)
+                        context[className + "." +name + "." + returnType] = functionTable
+                        classTable.addFunction(functionTable)
+                        for var in decl.getChildren()[1].getChildren()[1].getChildren():
+                            varName = var.getChildren()[0].getValue()
+                            varType = var.getChildren()[1].getValue()
+                            functionTable.addParam(varName, varType)
+                    else:
+                        type = decl.getChildren()[1].getChildren()[1].getValue()
+                        classTable.addData(name, type, visibility)
+                tree.pop()
+                continue
+            
+            elif (tree[-1].getNodeType() == "ImplDef"):
+                implName = tree[-1].getChildren().getValue()
+                tree.pop()
+                implStack = deque()
+                implStack.extend(tree[-1].getChildren()[::-1])
+                while implStack:
+                    if (implStack[-1].getNodeType() == "FuncDef"):
+                        implFuncName = implStack[-1].getChildren()[0].getValue()
+                        implReturnType = implStack[-1].getChildren()[2].getValue()
+                        for var in implStack[-1].getChildren()[1].getChildren():
+                            varName = var.getChildren()[0].getValue()
+                            varType = var.getChildren()[1].getValue()
+                            if implName + "." + implFuncName + "." + implReturnType in context:
+                                func = context[implName + "." + implFuncName + "." + implReturnType]
+                                if (varName, varType) in func.getParam():
+                                    # print("exists")
+                                    # Filler code to show that I can tell if variables exist
+                                    a = "a"
+                        implStack.pop()
+                        for nodes in implStack[-1].getChildren():
+                            if nodes.getNodeType() == "VarDecl":
+                                functionVarName = nodes.getChildren()[0].getValue()
+                                functionVarType = nodes.getChildren()[1].getValue()
+                                func.addLocal(functionVarName, functionVarType)
+                        implStack.pop()
+                    else:
+                        implStack.pop()
+                tree.pop()
+                continue
+            
+            elif (tree[-1].getNodeType() == "FuncDef"):
+                funcName = tree[-1].getChildren()[0].getValue()
+                funcParamList = tree[-1].getChildren()[1]
+                funcReturnType = tree[-1].getChildren()[2].getValue()
+                globalFunc = Function(funcName, funcReturnType, "global")
+                globalTable.addFunction(globalFunc)
+                tree.pop()
+                for nodes in tree[-1].getChildren():
+                    if nodes.getNodeType() == "VarDecl":
+                        functionVarName = nodes.getChildren()[0].getValue()
+                        functionVarType = nodes.getChildren()[1].getValue()
+                        globalFunc.addLocal(functionVarName, functionVarType)
+                tree.pop()
+                continue
+                    
+            if tree[-1].getChildren() != None:
+                children = tree[-1].getChildren() if isinstance(tree[-1].getChildren(), list) else [tree[-1].getChildren()]
+                tree.pop()
+                tree.extend(children[::-1])
+        else:
+            tree.pop()
+    
+    depth = 0        
+    printTableHeader(globalTable.getTableName(), depth, file)
+    for classes in globalTable.getClasses():
+        depth = 0 
+        printTableContents(["class", classes.getTableName()], depth, file)
+        depth = 1
+        printTableHeader(classes.getTableName(), depth, file)
+        inherits = ", ".join(classes.getInherits()) if classes.getInherits() != [] else "none"
+        printTableContents(["inherit", inherits], depth, file)
+        for data in classes.getData():
+            printTableContents(["data", data[0], data[1], data[2]], depth, file)
+        for func in classes.getFunction():
+            functionArgs = ", ".join([x[1] for x in func.getParam()])
+            functionSig = f"({functionArgs}): {func.getReturnType()}"
+            printTableContents(["function", func.getFuncName(), functionSig, func.getVisibility()], depth, file)
+            depth = 2
+            printTableHeader(f"{classes.getTableName()}::{func.getFuncName()}", depth, file)
+            for param in func.getParam()[::-1]:
+                printTableContents(["param", param[0], param[1]], depth, file)
+            for local in func.getLocal():
+                printTableContents(["local", local[0], local[1]], depth, file)
+            printTableClose(depth, file)
+        depth = 1
+        printTableClose(depth, file)
+    for globalFunction in globalTable.getFunction():
+        depth = 0
+        printTableContents(["function", globalFunction.getFuncName()], depth, file)
+        depth = 1
+        printTableHeader(f"::{globalFunction.getFuncName()}", depth, file)
+        for local in globalFunction.getLocal():
+            printTableContents(["local", local[0], local[1]], depth, file)
+        printTableClose(depth, file)
+    depth = 0
+    printTableClose(depth, file)
+    
+            
+def printTableHeader(tableName, depth, file):
+    print("|    " * depth + "="*(84-depth*8) + "  |" * depth, file=file)
+    print("|    " * depth + "| table: " + tableName.ljust(74-depth*8) + "|" + "  |" * depth, file=file)
+    print("|    " * depth + "="*(84-depth*8) + "  |" * depth, file=file)
+    
+def printTableContents(content, depth, file):
+    if len(content) == 2:
+        print("|    " * depth + "| " + content[0].ljust(10) + "| " + content[1].ljust(69 - depth*8) + "|" + "  |" * depth, file=file)
+        
+    elif len(content) == 3:  
+        print("|    " * depth + "| " + content[0].ljust(10) + "| " + content[1].ljust(12) + "| " + content[2].ljust(55 - depth*8) + "|" + "  |" * depth, file=file)
+        
+    elif len(content) == 4:
+        print("|    " * depth + "| " + content[0].ljust(10) + "| " + content[1].ljust(12) + "| " + content[2].ljust(43 - depth*8) + "| " + content[3].ljust(10) + "|" +  "  |" * depth, file=file)
+
+def printTableClose(depth, file):
+    print("|    " * depth + "="*(84-depth*8) + "  |" * depth, file=file)
