@@ -10,6 +10,7 @@ ProgNode
 | | | | id
 | | | | type
 | | | | Dimlist
+| | | | | dim
 | | type
 | FuncBody
 | | VarDecl
@@ -119,6 +120,7 @@ ProgNode
 | | | | id
 | | | | type
 | | | | Dimlist
+| | | | | dim
 | | type
 | FuncBody
 | | VarDecl

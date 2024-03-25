@@ -1,0 +1,25 @@
+Semantic Error: undefined member declaration in polynomial.evaluate2 found on line 4.
+Semantic Error: multiple declared class polynomial found on line 6.
+Semantic Error: multiple declared data member b in linear found on line 13.
+Semantic Warning: overridden parent polynomial function evaluate in linear found on line 16.
+Semantic Warning: overridden parent polynomial function evaluate in quadratic found on line 25.
+Semantic Error: circular class dependency (inheritence cycle) e -> c -> d found on line 36.
+Semantic Error: type error in return statement for evaluate found on line 45.
+Seamntic Error: type error in expression found on line 79.
+Semantic Error: type error in assignment statement found on line 81.
+Semantic Error: type error in return statement for build found on line 82.
+Semantic Error: undeclared member function quadratic.build2 found on line 84.
+Semantic Error: multiple declared free function f i(integer i) found on line 95.
+Semantic Warning: overloaded free function f found on line 96.
+Semantic Error: cannot create variable of undeclared class a found on line 104.
+Semantic Error: multiple declared identifier counter in main found on line 109.
+Semantic Error: function build was given an invalid type of argument found on line 112.
+Semantic Error: undeclared member b found on line 114.
+Semantic Error: undeclared function f found on line 115.
+Semantic Error: undefined free function undefined found on line 116.
+Semantic Error: undeclared variable a in local scope found on line 117.
+Semantic Error: function f was given invalid number of arguments found on line 118.
+Semantic Error: function f was given an invalid type of argument found on line 119.
+Semantic Error: use of array i with wrong number of dimensions found on line 120.
+Semantic Error: cannot use non-integer array index for i found on line 121.
+Semantic Error: cannot use "." operator on counter with non-class type integer found on line 123.

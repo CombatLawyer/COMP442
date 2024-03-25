@@ -1,6 +1,10 @@
 
 struct polynomial {
     public func evaluate(x: float) -> float;
+    public func evaluate2(x: float) -> float;
+};
+struct polynomial {
+    public func evaluate(x: float) -> float;
         public func evaluate(x: integer) -> integer;
 };
 struct linear inherits polynomial {
@@ -12,7 +16,7 @@ struct linear inherits polynomial {
     public func evaluate(x: float) -> float;
 };
 
-struct quadratic inherits linear {
+struct quadratic inherits polynomial {
     private let a: float;
     private let b: float;
     private let c: float;
@@ -46,7 +50,6 @@ impl linear {
   func build(a: float, b: float) -> linear
   {
     let new_function: linear;
-    let a: float;
     new_function.a = a;
     new_function.b = b;
     return (new_function);

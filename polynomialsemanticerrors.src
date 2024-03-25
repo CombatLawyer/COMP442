@@ -1,4 +1,8 @@
 // ====== Class declarations ====== //
+struct POLYNOMIAL {
+	public func evaluate(x: float) -> float;
+	public func evaluate2(x: float) -> float;                     // 6.2
+};
 struct POLYNOMIAL {                                                   // 8.1
 	public func evaluate(x: float) -> float;                        
         public func evaluate(x: integer) -> integer;                  // 9.2
@@ -12,7 +16,7 @@ struct LINEAR inherits POLYNOMIAL {
 	public func evaluate(x: float) -> float;                      // 9.3
 };
 
-struct QUADRATIC inherits LINEAR {
+struct QUADRATIC inherits POLYNOMIAL {
 	private let a: float;                                         // 8.5
 	private let b: float;                                         // 8.5
 	private let c: float;
@@ -46,7 +50,6 @@ impl LINEAR {
   func build(A: float, B: float) -> LINEAR 
   {
     let new_function: LINEAR;
-    let a: float;                                                      // 8.6
     new_function.a = A;
     new_function.b = B;
     return (new_function);

@@ -26,6 +26,30 @@ ProgNode
 | StructDef
 | | id
 | | InheritsNode
+| StructBodyNode
+| | StructDeclNode
+| | | Visibility
+| | | FuncDef
+| | | | id
+| | | | ParamList
+| | | | | VarDecl
+| | | | | | id
+| | | | | | type
+| | | | | | Dimlist
+| | | | type
+| | StructDeclNode
+| | | Visibility
+| | | FuncDef
+| | | | id
+| | | | ParamList
+| | | | | VarDecl
+| | | | | | id
+| | | | | | type
+| | | | | | Dimlist
+| | | | type
+| StructDef
+| | id
+| | InheritsNode
 | | | id
 | StructBodyNode
 | | StructDeclNode
@@ -185,10 +209,6 @@ ProgNode
 | | | | | Dimlist
 | | | type
 | | FuncBody
-| | | VarDecl
-| | | | id
-| | | | type
-| | | | Dimlist
 | | | VarDecl
 | | | | id
 | | | | type

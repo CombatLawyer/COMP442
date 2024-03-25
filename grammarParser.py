@@ -2,6 +2,7 @@
 
 import os
 from collections import deque
+import networkx as nx
 
 # Initialize the stack used for sematinc actions
 semantic = deque()
@@ -32,16 +33,20 @@ class Node():
 Class used as leaves for AST building, has a nodeType and parent but no children.
 """
 class Leaf():
-    def __init__(self, nodeType, value=None):
+    def __init__(self, nodeType, line, value=None):
         self.nodeType = nodeType
         self.value = value
         self.parent = None
+        self.line = line
         
     def getNodeType(self):
         return self.nodeType
     
     def getValue(self):
         return self.value
+    
+    def getLine(self):
+        return self.line
     
     def setParent(self, parent):
         self.parent = parent
@@ -113,43 +118,49 @@ class Function():
 """
 Creates a leaf of the specified type (used to make intlits, floatlits and ids)
 """
-def createLeaf(string, value):
-    leaf = Leaf(string, value)
+def createLeaf(string, line, value):
+    leaf = Leaf(string, line, value)
     semantic.append(leaf)
 
 """
 Creates a dim leaf, used to specify a dimension for variables
 """    
-def createLeafDim():
-    leaf = Leaf("dim")
+def createLeafDim(line, notused):
+    if semantic[-1].getNodeType() == "Epsilon":
+        leaf = Leaf("dim", line, "[]")
+    else:
+        value = semantic[-1].getValue()
+        semantic.pop()
+        leaf = Leaf("dim", line, f"[{value}]")
+    semantic.pop()
     semantic.append(leaf)
 
 """
 Creates a type leaf, used when specifying return types
 """     
-def createLeafType(value):
-    leaf = Leaf("type", value)
+def createLeafType(line, value):
+    leaf = Leaf("type", line, value)
     semantic.append(leaf)
 
 """
 Creates a visibility leaf, used to specify the visibility of a function or variable
 """     
-def createLeafVisibility(value):
-    leaf = Leaf("Visibility", value)
+def createLeafVisibility(line, value):
+    leaf = Leaf("Visibility", line, value)
     semantic.append(leaf)
 
 """
 Creates a sign leaf, used to specify that whatever after is signed
 """     
-def createLeafSign():
-    leaf = Leaf("Sign")
+def createLeafSign(line, notused):
+    leaf = Leaf("Sign", line)
     semantic.append(leaf)
 
 """
 Creates an epsilon node, used in cases where the node will take a variable length of children
 """     
 def createLeafEpsilon():
-    leaf = Leaf("Epsilon")
+    leaf = Leaf("Epsilon", 0)
     semantic.append(leaf)
 
 """
@@ -615,9 +626,9 @@ table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
          "APARAMS": {"rpar":["epsilon"], "lpar":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"], "id":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"], "minus":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"], "plus":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"], "not":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"], "floatlit":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"], "intlit":[createLeafEpsilon, "EXPR", createExprNode, "REPTAPARAMS1"]},
          "APARAMSTAIL": {"comma":["comma", createLeafEpsilon, "EXPR", createExprNode,]},
          "ARITHEXPR": {"lpar": ["TERM", "RIGHTRECARITHEXPR"], "id":["TERM", "RIGHTRECARITHEXPR"], "minus":["TERM", "RIGHTRECARITHEXPR"], "plus":["TERM", "RIGHTRECARITHEXPR"], "not":["TERM", "RIGHTRECARITHEXPR"], "floatlit":["TERM", "RIGHTRECARITHEXPR"], "intlit":["TERM", "RIGHTRECARITHEXPR"]},
-         "ARRAYSIZE": {"lsqbr": ["lsqbr", "ENDBR"]},
+         "ARRAYSIZE": {"lsqbr": ["lsqbr", createLeafEpsilon, "ENDBR"]},
          "ASSIGNOP": {"equal": ["equal"]},
-         "ENDBR": {"rsqbr": ["rsqbr"], "intlit": ["intlit", createLeafDim, "rsqbr"]},
+         "ENDBR": {"rsqbr": [createLeafDim, "rsqbr"], "intlit": ["intlit", createLeaf, createLeafDim, "rsqbr"]},
          "EXPR": {"lpar": ["ARITHEXPR", "RELEXPREND"], "id": ["ARITHEXPR", "RELEXPREND"], "minus": ["ARITHEXPR", "RELEXPREND"], "plus": ["ARITHEXPR", "RELEXPREND"], "not": ["ARITHEXPR", "RELEXPREND"], "floatlit": ["ARITHEXPR", "RELEXPREND"], "intlit": ["ARITHEXPR", "RELEXPREND"]},
          "FACTOR": {"lpar": ["lpar", createLeafEpsilon, "ARITHEXPR", createFuncArgNode, "rpar"], "id":["id", createLeaf, "VARORFUNC", "REPTFACTOR2"], "minus": ["SIGN", createLeafSign, "FACTOR", createSignedNode], "plus": ["SIGN", createLeafSign, "FACTOR", createSignedNode], "not": ["not", "FACTOR"], "floatlit": ["floatlit", createLeaf], "intlit": ["intlit", createLeaf]},
          "FPARAMS": {"rpar": ["epsilon"], "id": ["id", createLeaf, "colon", "TYPE", createLeafType, "REPTFPARAMS3", createDimNode, createVardeclNode, "REPTFPARAMS4"]},
@@ -1032,9 +1043,9 @@ def parseToken(passedLexicon, filename):
             # If the top of the stack is a callable function either create the leaf of the specific lexeme or run the function
             if callable(stack[-1]):
                 if stack[-1] == createLeaf:
-                    createLeaf(previousLexeme[1], previousLexeme[0])
-                elif stack[-1] in [createLeafVisibility, createLeafType]:
-                    stack[-1](previousLexeme[0])
+                    createLeaf(previousLexeme[1], previousLexeme[2], previousLexeme[0])
+                elif stack[-1] in [createLeafVisibility, createLeafType, createLeafDim, createLeafSign]:
+                    stack[-1](previousLexeme[2], previousLexeme[0])
                 else:
                     stack[-1]()
                 stack.pop()
@@ -1115,15 +1126,25 @@ def parseToken(passedLexicon, filename):
     symbolTable = f"{filename}.outsymboltables"
 
     if not os.path.exists(symbolTable):
-        symbolTable = open(symbolTable, "x")
+        symbolTableFile = open(symbolTable, "x")
     else:
-        symbolTable = open(symbolTable, "w")    
+        symbolTableFile = open(symbolTable, "w")
+        
+    # Open the semantic error file to write to or create it if necessary
+    semanticErrors = f"{filename}.outsemanticerrors"
+
+    if not os.path.exists(semanticErrors):
+        semanticErrorsFile = open(semanticErrors, "x")
+    else:
+        semanticErrorsFile = open(semanticErrors, "w")  
     
+    # Generate symbol table and check semantic rules
     for node in semantic:
-        checkClasses(node, symbolTable)
+        checkClasses(node, symbolTableFile, semanticErrorsFile)
         
     astFile.close()
-    symbolTable.close()
+    symbolTableFile.close()
+    semanticErrorsFile.close()
     g.close()
             
 def skipErrors(lexeme):
@@ -1191,17 +1212,88 @@ def printNode(node, spaces, file):
         children = node.getChildren() if isinstance(node.getChildren(), list) else [node.getChildren()]
         for child in children:
             printNode(child, spaces+1, file)
-            
-def checkClasses(root, file):
+
+"""
+Function that will generate a symbol table and check semantic rules over the AST tree.
+root = root node of the AST tree
+file = file to print symbol table to
+warning = file to print errors and warning to
+"""            
+def checkClasses(root, file, warning):
+    
+    # Going through the AST
     tree = deque()
     tree.append(root)
+    
+    # This is the object that will contain the global table and hence will contain the entire symbol table
     globalTable = Table("global")
+    
+    # Used for class inheritence
+    inheritence = nx.DiGraph()
+    
+    # Used to make sure multiple cycles are not reprinted every time
+    identifiedCylcles = []
+    
+    # Used to make sure all struct defined functions are defined by impl blocks
     context = {}
+    
+    # Used to keep track of functions defined by each class
+    definedClasses = {}
+    
+    # Used to keep track of functions in the global section
+    globalDefinedFunctions = {}
+    
+    # Used to keep track of the context in the global section
+    freeContext = []
+    
+    # Used to keep track of errors/warnings to be printed at the end of this method
+    semanticErrors = []
+    
+    # While the AST still contains nodes to process
     while tree:
+        
+        # Sanity check, but the tree should always contain a node at the top and not a free leaf
         if isinstance(tree[-1], Node):
+            
+            # Struct node processing, first the definition
             if (tree[-1].getNodeType() == "StructDef"):
+                
+                # Get information from the node
                 children = tree[-1].getChildren()
                 className = children[0].getValue()
+                inheritsClasses = children[1].getChildren()
+                inheritsLine = children[0].getLine()
+                
+                # Check the inherits for the struct
+                if inheritsClasses != None:
+                    
+                    # If there is an inheriting class add it to the directed graph to keep track of parents
+                    for inheriting in inheritsClasses:
+                        inheritingName = inheriting.getValue()
+                        inheritence.add_edge(inheritingName, className)
+                    
+                    # If a cycle has been discovered before, ensure that it is not reported twice
+                    cyclesDiscovered = [x for x in sorted(nx.simple_cycles(inheritence)) if x not in [identifiedCylcles]]
+                    
+                    # Report if a new cycle is discovered and add it to the identified cycles list
+                    if cyclesDiscovered != []:
+                        for cycle in cyclesDiscovered:
+                            identifiedCylcles.append(cycle)
+                            stringCycle = " -> ".join(cycle)
+                            semanticErrors.append((f"Semantic Error: circular class dependency (inheritence cycle) {stringCycle}", inheritsLine))
+                
+                # If the class name is defined already, skip processing the block and report the error
+                if className in definedClasses:
+                    semanticErrors.append((f"Semantic Error: multiple declared class {className}", children[0].getLine()))
+                    tree.pop()
+                    tree.pop()
+                    continue
+                
+                # Initialize the entry in the definedClasses dictionary
+                else:
+                    definedClasses[className] = {}
+                    
+                # Create a table object for this class and begin adding details to it
                 classTable = Table(className)
                 globalTable.addClasses(classTable)
                 if children[1].getChildren() == None:
@@ -1209,93 +1301,653 @@ def checkClasses(root, file):
                 else:
                     for grandchild in children[1].getChildren():
                         classTable.addInherits(grandchild.getValue())
+                
+                # This concludes the struct def block process, move on to processing a struct body which needs to follow
                 tree.pop()
+                
+                # Contains the locally defined variables
+                localContext = []
+                
+                # For each statement in the struct body block
                 for decl in tree[-1].getChildren():
+                    
+                    # Retieve information from the nodes, this is either a func definition or a var declaration
                     visibility = decl.getChildren()[0].getValue()
                     name = decl.getChildren()[1].getChildren()[0].getValue()
+                    line = decl.getChildren()[1].getChildren()[0].getLine()
                     returnType = decl.getChildren()[1].getChildren()[2].getValue()
+                    
+                    # If its a func definition create the function object and 
                     if decl.getChildren()[1].getNodeType() == "FuncDef":
                         functionTable = Function(name, returnType, visibility)
-                        context[className + "." +name + "." + returnType] = functionTable
+                        
+                        # If for some reason you have the exact same function defined in the same context (not coded due to time constraints)
+                        if className + "." + name + "." + returnType in context:
+                            continue
+                        
+                        # Add to local context as a defined function
+                        else:
+                            context[className + "." +name + "." + returnType] = (functionTable, line)
+                            
+                        # Add the function to the global table
                         classTable.addFunction(functionTable)
+                        
+                        # Process the variables in the function parameters
                         for var in decl.getChildren()[1].getChildren()[1].getChildren():
                             varName = var.getChildren()[0].getValue()
                             varType = var.getChildren()[1].getValue()
+                            
+                            # This gets the dimensions if one of the paramaters is an array
+                            for dim in var.getChildren()[2].getChildren():
+                                varType += dim.getValue()
+                                
+                            # Add param to the function object
                             functionTable.addParam(varName, varType)
+                        
+                        # If the function with the same name is present
+                        if name in definedClasses[className]:
+                            semanticErrors.append((f"Semantic Warning: overloaded member function {name}", line))
+                            oldPair = definedClasses[className][name]
+                            definedClasses[className][name] = [oldPair, (functionTable.getParam(), returnType)]
+                        
+                        # Else just add the function to the defined class dictionary under the current class
+                        else:
+                            definedClasses[className][name] = (functionTable.getParam(), returnType)
+                        
+                        # Look in parent classes by looking at other nodes in the graph, cut out the current class if its in the graph    
+                        otherNodes = list(inheritence)
+                        if className in otherNodes:
+                            otherNodes.remove(className)
+                        
+                        # Check in the parent nodes (if it has a path to the current node its a parent) if a function is present
+                        for graphNode in otherNodes:
+                            if nx.has_path(inheritence, graphNode, className):
+                                if graphNode in definedClasses:
+                                    if name in definedClasses[graphNode]:
+                                        
+                                        # Ensure that the function has the correct number of params and the same types of parameters
+                                        if definedClasses[graphNode][name][1] == returnType and len(definedClasses[graphNode][name][0]) == len(functionTable.getParam()):
+                                            for i in range(len(definedClasses[graphNode][name][0])):
+                                                if definedClasses[graphNode][name][0][i][1] != functionTable.getParam()[i][1]:
+                                                    break
+                                            semanticErrors.append((f"Semantic Warning: overridden parent {graphNode} function {name} in {className}", line))
+                    
+                    # This indicates its a variable declaration
                     else:
+                        
+                        # if the parameter is already declared in the local context
+                        if name in localContext:
+                            semanticErrors.append((f"Semantic Error: multiple declared data member {name} in {className}", line))
+                            continue
+                        else:
+                            localContext.append(name)
+                            
                         type = decl.getChildren()[1].getChildren()[1].getValue()
+                        
+                        # Check in parent classes if a variable with the same name exists
+                        otherNodes = list(inheritence)
+                        
+                        # Remove current node from the node list
+                        if className in otherNodes:
+                            otherNodes.remove(className)
+                        
+                        # If the class is a parent and has a variable with the same definition
+                        for graphNode in otherNodes:
+                            if nx.has_path(inheritence, graphNode, className):
+                                if graphNode in definedClasses:
+                                    if name in definedClasses[graphNode]:
+                                        semanticErrors.append((f"Semantic Warning: shadowed inherited data member {name}", line))
+                        
+                        # Add to the class definition dictionary and add as data to the table
+                        definedClasses[className][name] = (type)
                         classTable.addData(name, type, visibility)
+                
+                # Process next block
                 tree.pop()
                 continue
             
+            # Impl node processing, first the definition
             elif (tree[-1].getNodeType() == "ImplDef"):
+                
+                # The only thing in the impl definition is the name
                 implName = tree[-1].getChildren().getValue()
+                
+                # Begin processing the impl block
                 tree.pop()
+                
+                # Stack will contain the contents of the impl block
                 implStack = deque()
                 implStack.extend(tree[-1].getChildren()[::-1])
+                
+                # While there are nodes to process
                 while implStack:
+                    
+                    # If the node is a function def
                     if (implStack[-1].getNodeType() == "FuncDef"):
+                        
+                        # Retrieve function information
                         implFuncName = implStack[-1].getChildren()[0].getValue()
+                        implLine = implStack[-1].getChildren()[0].getLine()
                         implReturnType = implStack[-1].getChildren()[2].getValue()
+                        
+                        # Make sure that this function was defined already by a struct using the context and reteive the function object
+                        if implName + "." + implFuncName + "." + implReturnType in context:
+                            func = context.pop(implName + "." + implFuncName + "." + implReturnType)[0]
+                            functionVariables = func.getParam()[:]
+                        else:
+                            semanticErrors.append((f"Semantic Error: undeclared member function {implName}.{implFuncName}", implLine))
+                            implStack.pop()
+                            implStack.pop()
+                            continue
+                        
+                        # Process function parameters and ensure all the parameters are accounted for
                         for var in implStack[-1].getChildren()[1].getChildren():
                             varName = var.getChildren()[0].getValue()
                             varType = var.getChildren()[1].getValue()
-                            if implName + "." + implFuncName + "." + implReturnType in context:
-                                func = context[implName + "." + implFuncName + "." + implReturnType]
-                                if (varName, varType) in func.getParam():
-                                    # print("exists")
-                                    # Filler code to show that I can tell if variables exist
-                                    a = "a"
+                            if (varName, varType) in functionVariables:
+                                functionVariables.remove((varName, varType))
+                        
+                        # Pop off the function definition and begin processing function body
                         implStack.pop()
+                        
+                        # Keep track of local variables defined in the block
+                        implVariables = {}
                         for nodes in implStack[-1].getChildren():
+                            
+                            # Variable declaration node
                             if nodes.getNodeType() == "VarDecl":
+                                
+                                # Get information of the nodes
                                 functionVarName = nodes.getChildren()[0].getValue()
                                 functionVarType = nodes.getChildren()[1].getValue()
+                                
+                                # Ensures that dimensions will be properly copied
+                                for dim in nodes.getChildren()[2].getChildren():
+                                    functionVarType += dim.getValue()
+                                
+                                # Add local variable to function table
                                 func.addLocal(functionVarName, functionVarType)
+                                
+                                # Check if this variable was defined already in the class
+                                if functionVarName in definedClasses[implName]:
+                                    semanticErrors.append((f"Semantic Warning: local variable {functionVarName} in a member function {implFuncName} shadows a data member of its own class", nodes.getChildren()[0].getLine()))
+                                implVariables[functionVarName] = functionVarType
+                            
+                            # Assign variable node
+                            if (nodes.getNodeType() == "AssignVar"):
+                                nodeType = nodes.getChildren()[0].getNodeType()
+                                
+                                # Check the right side if its just a variable or something larger
+                                if nodeType == "id":
+                                    variable = nodes.getChildren()[0].getValue()
+                                    nodeLine = nodes.getChildren()[0].getLine()
+                                    if variable in implVariables:
+                                        
+                                        # This is missing the portion of the code that deals with single variable assignment due to time constraints
+                                        assignement = nodes.getChildren()[1].getChildren()
+                                    else:
+                                        print("semantic error")
+                                
+                                # If its an attribute or indice we get the name of the variable and then the dimensions
+                                elif nodeType in ["AttributeNode", "IndiceNode"]:
+                                    variable = nodes.getChildren()[0].getChildren()[0].getValue()
+                                    variableType = implVariables[variable]
+                                    nodeLine = nodes.getChildren()[0].getChildren()[0].getLine()
+                                    attribute = nodes.getChildren()[0].getChildren()[1].getValue()
+                                    endType = definedClasses[variableType][attribute]
+                                    assignement = nodes.getChildren()[1].getChildren()
+                                    
+                                    # If the expr node contains only a float or int
+                                    if assignement[0].getNodeType() in ["intlit", "floatlit"]:
+                                        
+                                        # If the types dont match up
+                                        if assignement[0].getNodeType()[:-3] != endType:
+                                            semanticErrors.append((f"Semantic Error: type error in assignment statement", nodeLine))
+                                            continue
+                                        
+                                    # This is missing the portion of the code that deals with ids due time constraints
+                                    elif assignement[0].getNodeType() == "id":
+                                        assignedVariable = assignement[0].getValue()
+                                    
+                                    # This makes it into a larger expresion node, so we decompose until we get leaves and evaluate there
+                                    else:
+                                        intermediateTypes = []
+                                        
+                                        # Set up a queue and put in the node
+                                        operationQueue = deque()
+                                        operationQueue.append(assignement)
+                                        
+                                        # While the queue still has objects
+                                        while operationQueue:
+                                            currentTop = operationQueue.popleft()
+                                            
+                                            # If the current node is a list of children
+                                            if isinstance(currentTop, list):
+                                                if isinstance(currentTop[0], Node):
+                                                    if currentTop[0].getChildren() != None:
+                                                        operationQueue.extend(currentTop[0].getChildren())
+                                            # If the node has a single child
+                                            elif isinstance(currentTop, Node):
+                                                if currentTop.getChildren() != None:
+                                                    operationQueue.extend(currentTop.getChildren())
+                                            # If there are leaves on top just append
+                                            else:
+                                                intermediateTypes.append(currentTop)
+                                        
+                                        # Evaluate the types we collected from the leaves
+                                        for intVarType in intermediateTypes:
+                                            
+                                            # If the value was a variable, retieve the type from the local context
+                                            if intVarType.getValue() in implVariables:
+                                                intVarType = implVariables[intVarType]
+                                            
+                                            # If it was a float or int 
+                                            elif intVarType.getNodeType() in ["intlit", "floatlit"]:
+                                                intVarType = intVarType.getNodeType()[:-3]
+                                                if intVarType == "int":
+                                                    intVarType = "integer"
+                                            
+                                            # If not found in the local context look to the class context
+                                            else:
+                                                functionParams = definedClasses[implName][implFuncName][0]
+                                                for funcparam in functionParams:
+                                                    if intVarType.getValue() == funcparam[0]:
+                                                        intVarType = funcparam[1]
+                                                if not isinstance(intVarType, str):
+                                                    print("Error")
+                                                    break
+                                            
+                                            # If a type doesnt match up there is a type error
+                                            if intVarType != endType:
+                                                semanticErrors.append((f"Seamntic Error: type error in expression", nodeLine))
+                                                break
+                            
+                            # Return node processing                             
+                            if nodes.getNodeType() == "ReturnNode":
+                                
+                                # Get node info
+                                returnObject = nodes.getChildren().getChildren()[0].getValue()
+                                returnObjectType = nodes.getChildren().getChildren()[0].getNodeType()[:-3]
+                                returnLine = nodes.getChildren().getChildren()[0].getLine()
+                                
+                                # If the return type is not just a float or int
+                                if returnObjectType not in ['int', 'float']:
+                                    
+                                    # Look for the variable in the local context
+                                    if returnObject not in implVariables:
+                                        semanticErrors.append((f"Semantic Error: retuning undefined variable {returnObject}", returnLine))
+                                        break
+                                    
+                                    # If the variable is the wrong type
+                                    elif implVariables[returnObject] != implReturnType:
+                                        semanticErrors.append((f"Semantic Error: type error in return statement for {implFuncName}", returnLine))
+                                        break
+                                else:
+                                    if returnObjectType == "int":
+                                        returnObjectType = "integer"
+                                        
+                                    # if the float or int is the wrong thing to return
+                                    if returnObjectType != implReturnType:
+                                        semanticErrors.append((f"Semantic Error: type error in return statement for {implFuncName}", returnLine))
+                                        break
+                        
+                        # Continue processing the stack
                         implStack.pop()
+                    
+                    # Pop if theres a func body on the top of the stack
                     else:
                         implStack.pop()
+                
+                # Process next block
                 tree.pop()
                 continue
             
+            # Function block processing, global functions end up here + main
             elif (tree[-1].getNodeType() == "FuncDef"):
+                
+                # Define the local context
+                localContext = {}
+                
+                # Retreive function information and add to table
                 funcName = tree[-1].getChildren()[0].getValue()
-                funcParamList = tree[-1].getChildren()[1]
+                funcLine = tree[-1].getChildren()[0].getLine()
                 funcReturnType = tree[-1].getChildren()[2].getValue()
                 globalFunc = Function(funcName, funcReturnType, "global")
-                globalTable.addFunction(globalFunc)
-                tree.pop()
-                for nodes in tree[-1].getChildren():
+                funcParamList = tree[-1].getChildren()[1]
+                stringParam = ""
+                
+                # Retrieve function parameters
+                for var in funcParamList.getChildren()[::-1]:
+                    functionVarName = var.getChildren()[0].getValue()
+                    functionVarType = var.getChildren()[1].getValue()
+                    for dim in var.getChildren()[2].getChildren():
+                        functionVarType += dim.getValue()
+                    stringParam += f"{functionVarType} {functionVarName}, "
+                    
+                    # Add to the symbol table and local context
+                    globalFunc.addParam(functionVarName, functionVarType)
+                    localContext[functionVarName] = functionVarType
+                
+                # If the function is defined in the free context already
+                if f"{funcName}.{functionVarName}.{stringParam}" in freeContext:
+                    semanticErrors.append((f"Semantic Error: multiple declared free function {funcName} {functionVarName}({stringParam[:-2]})", funcLine))
+                    tree.pop()
+                    continue
+                else: 
+                    freeContext.append(f"{funcName}.{functionVarName}.{stringParam}")
+                    
+                    # If the function is defined already
+                    if funcName in globalDefinedFunctions:
+                        semanticErrors.append((f"Semantic Warning: overloaded free function {funcName}", funcLine))
+                        oldPair = globalDefinedFunctions[funcName]
+                        globalDefinedFunctions[funcName] = [oldPair, (globalFunc.getParam(), funcReturnType)]
+                    else:
+                        globalDefinedFunctions[funcName] = (globalFunc.getParam(), funcReturnType)
+                    globalTable.addFunction(globalFunc)
+                    
+                    # Now process the function body
+                    tree.pop()
+                calls = iter(tree[-1].getChildren())
+                for nodes in calls:
+                    
+                    # Variable declaration processing
                     if nodes.getNodeType() == "VarDecl":
-                        functionVarName = nodes.getChildren()[0].getValue()
-                        functionVarType = nodes.getChildren()[1].getValue()
-                        globalFunc.addLocal(functionVarName, functionVarType)
+                        
+                        # Get variables from the nodes
+                        varName = nodes.getChildren()[0].getValue()
+                        varLine = nodes.getChildren()[0].getLine()
+                        varType = nodes.getChildren()[1].getValue()
+                        
+                        # If the type cannot be found in defined classes and is not just an int/float then its undefined
+                        if varType not in definedClasses and varType not in ["integer", 'float']:
+                            semanticErrors.append((f"Semantic Error: cannot create variable of undeclared class {varType}", varLine))
+                            continue
+                        
+                        # Gets dimensions for the parameter
+                        for dim in nodes.getChildren()[2].getChildren():
+                            varType += dim.getValue()
+                        
+                        # If its already defined in the context
+                        if varName in localContext:
+                            semanticErrors.append((f"Semantic Error: multiple declared identifier {varName} in {funcName}", varLine))
+                            continue
+                        else:
+                            localContext[varName] = varType
+                        
+                        # Add to table
+                        globalFunc.addLocal(varName, varType)
+                    
+                    # Assignment node processing
+                    if (nodes.getNodeType() == "AssignVar"):
+                        nodeType = nodes.getChildren()[0].getNodeType()
+                        
+                        # Determine whats on the RHS and then get the correct data
+                        if nodeType == "id":
+                            variable = nodes.getChildren()[0].getValue()
+                            nodeLine = nodes.getChildren()[0].getLine()
+                        elif nodeType in ["AttributeNode", "IndiceNode"]:
+                            variable = nodes.getChildren()[0].getChildren()[0].getValue()
+                            nodeLine = nodes.getChildren()[0].getChildren()[0].getLine()
+                        
+                        # See if the variable exists in the local context
+                        if variable in localContext:
+                            endType = localContext[variable]
+                        else:
+                            print("semantic error")
+                        
+                        # Process the LHS
+                        if nodeType == "id":
+                            exprNode = nodes.getChildren()[1].getChildren()
+                            
+                            # Determine what is on the LHS
+                            if isinstance(exprNode, list):
+                                
+                                # If its an attribute node
+                                if exprNode[0].getNodeType() == "AttributeNode":
+                                    objectName = exprNode[0].getChildren()[0].getValue()
+                                    objectType = localContext[objectName]
+                                    objectLine = exprNode[0].getChildren()[0].getLine()
+                                    attributeName = exprNode[0].getChildren()[1].getValue()
+                                    
+                                    # If the attribute for the class is defined in the context
+                                    if attributeName in definedClasses[objectType]:
+                                        expectedNumArgs = len(definedClasses[objectType][attributeName][0])
+                                        
+                                        # Too many or too little arguments
+                                        if len(exprNode[1].getChildren()) != expectedNumArgs:
+                                            semanticErrors.append((f"Semantic Error: function {attributeName} was given invalid number of arguments", objectLine))
+                                            continue
+                                        index = 0
+                                        
+                                        # Comapre the parameter types one at a time, only return the error on the last 
+                                        for node in exprNode[1].getChildren():
+                                            if node.getChildren()[0].getValue() != None:
+                                                type = node.getChildren()[0].getNodeType()[:-3]
+                                                if type != definedClasses[objectType][attributeName][0][index][1]:
+                                                    semanticErrors.append((f"Semantic Error: function {attributeName} was given an invalid type of argument", objectLine))
+                                                    break
+                                                index += 1
+                                            else:
+                                                if node.getChildren()[0].getNodeType() == "SignedNode":
+                                                    type = node.getChildren()[0].getChildren()[1].getNodeType()[:-3]
+                                                if type != definedClasses[objectType][attributeName][0][index][1]:
+                                                    semanticErrors.append((f"Semantic Error: function {attributeName} was given an invalid type of argument", objectLine))
+                                                    break
+                                                index += 1
+                                    else:
+                                        
+                                        # If its a function param list that means the function was not recognized
+                                        if exprNode[1].getNodeType() == "FuncParamList":
+                                            semanticErrors.append((f"Semantic Error: undeclared function {attributeName}", objectLine))
+                                            continue
+                                        
+                                        # Otherwise its an undeclared member
+                                        else:
+                                            semanticErrors.append((f"Semantic Error: undeclared member {attributeName}", objectLine))
+                                            continue
+                                
+                                # If its just an id check if the id is defined in this context
+                                elif exprNode[0].getNodeType() == "id":
+                                    variableName = exprNode[0].getValue()
+                                    if variableName not in localContext:
+                                        semanticErrors.append((f"Semantic Error: undeclared variable {variableName} in local scope", exprNode[0].getLine()))
+                        
+                        # Attribute node processing
+                        elif nodeType == "AttributeNode":
+                            
+                            # This means its not an index
+                            if "[" not in endType:
+                                
+                                # If its not on an object of a defined class then its not using the dot operator correctly
+                                if endType not in definedClasses.keys():
+                                    semanticErrors.append((f"Semantic Error: cannot use \".\" operator on {variable} with non-class type {endType}", nodeLine))
+                                    continue
+
+                                attNode = nodes.getChildren()[0].getChildren()
+                                objectName = attNode[0].getValue()
+                                objectType = localContext[objectName]
+                                objectLine = attNode[0].getLine()
+                                attributeName = attNode[1].getValue()
+                                
+                                # If the object is not defined in the current context
+                                if attributeName not in definedClasses[objectType]:                  
+                                    semanticErrors.append((f"Semantic Error: undeclared member {attributeName}", objectLine))
+                                    continue
+                            else:
+                                
+                                # Doing indexing now
+                                for indice in nodes.getChildren()[0].getChildren()[1:]:
+                                    if indice in localContext:
+                                        
+                                        # If it was an id, the id cannot belong to something that isnt an integer
+                                        if localContext[indice] != "integer":
+                                            semanticErrors.append((f"Semantic Error: cannot use non-integer array index for {variable}", nodeLine))
+                                            continue
+                                    
+                                    # Otherwise if its a number it number be an intlit
+                                    elif indice.getNodeType() != "intlit":
+                                        semanticErrors.append((f"Semantic Error: cannot use non-integer array index for {variable}", nodeLine))
+                                        continue
+                                
+                                # If the number of children doesnt equal the number of dimension on the variable
+                                if len(nodes.getChildren()[0].getChildren()[1:]) != endType.count("["):
+                                    semanticErrors.append((f"Semantic Error: use of array {variable} with wrong number of dimensions", nodeLine))
+                        
+                        # Indice node processing
+                        elif nodeType == "IndiceNode":
+                            
+                            # Doing indexing now
+                            for indice in nodes.getChildren()[0].getChildren()[1:]:
+                                if indice in localContext:
+                                    
+                                    # If it was an id, the id cannot belong to something that isnt an integer
+                                    if localContext[indice] != "integer":
+                                        semanticErrors.append((f"Semantic Error: cannot use non-integer array index for {variable}", nodeLine))
+                                        continue
+                                
+                                # Otherwise if its a number it number be an intlit
+                                elif indice.getNodeType() != "intlit":
+                                    semanticErrors.append((f"Semantic Error: cannot use non-integer array index for {variable}", nodeLine))
+                                    continue
+                            
+                            # If the number of children doesnt equal the number of dimension on the variable
+                            if len(nodes.getChildren()[0].getChildren()[1:]) != endType.count("["):
+                                semanticErrors.append((f"Semantic Error: use of array {variable} with wrong number of dimensions", nodeLine))
+                                continue
+                    
+                    # If a free id is called its likely a function call
+                    if nodes.getNodeType() == "id":
+                        functionCall = nodes.getValue()
+                        
+                        # The function paramlist is in the next node so we need to call iter
+                        functionVars = next(calls)
+                        functionLine = nodes.getLine()
+                        if functionCall in globalDefinedFunctions:
+                            
+                            # Checking if there are multiple defined functions for a given name
+                            if not isinstance(globalDefinedFunctions[functionCall], list):
+                                expectedNumArgs = len(globalDefinedFunctions[functionCall][0])
+                                
+                                # If the number of arguments is different than the expected number
+                                if len(functionVars.getChildren()) != expectedNumArgs:
+                                    semanticErrors.append((f"Semantic Error: function {functionCall} was given invalid number of arguments", functionLine))
+                                    continue
+                                index = 0
+                                
+                                # Individually check each variable that the types match up
+                                for node in functionVars.getChildren():
+                                    
+                                    # If its a leaf
+                                    if node.getChildren()[0].getValue() != None:
+                                        type = node.getChildren()[0].getNodeType()[:-3]
+                                        
+                                        # If the types don't match up
+                                        if type != globalDefinedFunctions[functionCall][0][index][1]:
+                                            semanticErrors.append((f"Semantic Error: function {functionCall} was given an invalid type of argument", functionLine))
+                                            break
+                                        index += 1
+                                    else:
+                                        
+                                        # Unpack the value from the signed node
+                                        if node.getChildren()[0].getNodeType() == "SignedNode":
+                                            type = node.getChildren()[0].getChildren()[1].getNodeType()[:-3]
+                                        
+                                        # If the types dont match up
+                                        if type != globalDefinedFunctions[functionCall][0][index][1]:
+                                            semanticErrors.append((f"Semantic Error: function {functionCall} was given an invalid type of argument", functionLine))
+                                            break
+                                        index += 1
+                            else:
+                                
+                                # This is because of function overloading leads to having a list of possible options, check each pair
+                                for pair in globalDefinedFunctions[functionCall]:
+                                    
+                                    # If the number of arguments is off immediately look to the next one
+                                    expectedNumArgs = len(pair[0][0])
+                                    if len(functionVars.getChildren()) != expectedNumArgs:
+                                        
+                                        # This only returns if its the last possible options for functions
+                                        if pair == globalDefinedFunctions[functionCall][-1]:
+                                            semanticErrors.append((f"Semantic Error: function {functionCall} was given invalid number of arguments", functionLine))
+                                        continue
+                                    index = 0
+                                    
+                                    # Check variable by variable that the types are the same
+                                    for node in functionVars.getChildren():
+                                        
+                                        # If its a leaf
+                                        if node.getChildren()[0].getValue() != None:
+                                            type = node.getChildren()[0].getNodeType()[:-3]
+                                            if type != pair[0][index][1]:
+                                                
+                                                # This only returns if its the last possible options for functions
+                                                if pair == globalDefinedFunctions[functionCall][-1]:
+                                                    semanticErrors.append((f"Semantic Error: function {functionCall} was given an invalid type of argument", functionLine))
+                                                break
+                                            index += 1
+                                        else:
+                                            
+                                            # Unpack the value from the signed node
+                                            if node.getChildren()[0].getNodeType() == "SignedNode":
+                                                type = node.getChildren()[0].getChildren()[1].getNodeType()[:-3]
+                                            if type != pair[0][index][1]:
+                                                
+                                                # This only returns if its the last possible options for functions
+                                                if pair == globalDefinedFunctions[functionCall][-1]:
+                                                    semanticErrors.append((f"Semantic Error: function {functionCall} was given an invalid type of argument", functionLine))
+                                                break
+                                            index += 1
+                        
+                        # If the function isn't defined
+                        else:
+                            semanticErrors.append((f"Semantic Error: undefined free function {functionCall}", functionLine))                       
                 tree.pop()
                 continue
-                    
+            
+            # This will decompose nodes, normally only the prog node will be processed here 
             if tree[-1].getChildren() != None:
                 children = tree[-1].getChildren() if isinstance(tree[-1].getChildren(), list) else [tree[-1].getChildren()]
                 tree.pop()
                 tree.extend(children[::-1])
         else:
             tree.pop()
+ 
+    for func in context:
+        values = func.split(".")
+        semanticErrors.append((f"Semantic Error: undefined member declaration in {values[0]}.{values[1]}", context[func][1]))
+
+    # This is the printing of the symbol table to the output file 
+    depth = 0
     
-    depth = 0        
+    # Begin by printing the global table         
     printTableHeader(globalTable.getTableName(), depth, file)
+    
+    # Print the classes defined first
     for classes in globalTable.getClasses():
         depth = 0 
+        
+        # First print the class name and what classes it inherits
         printTableContents(["class", classes.getTableName()], depth, file)
         depth = 1
         printTableHeader(classes.getTableName(), depth, file)
         inherits = ", ".join(classes.getInherits()) if classes.getInherits() != [] else "none"
         printTableContents(["inherit", inherits], depth, file)
+        
+        # Print defined variables
         for data in classes.getData():
             printTableContents(["data", data[0], data[1], data[2]], depth, file)
+            
+        # Print the class functions
         for func in classes.getFunction():
+            depth = 1
+            
+            # Concat to make the function arguments and then the function signiture
             functionArgs = ", ".join([x[1] for x in func.getParam()])
             functionSig = f"({functionArgs}): {func.getReturnType()}"
             printTableContents(["function", func.getFuncName(), functionSig, func.getVisibility()], depth, file)
             depth = 2
+            
+            # Print table for the function params and then local variables
             printTableHeader(f"{classes.getTableName()}::{func.getFuncName()}", depth, file)
             for param in func.getParam()[::-1]:
                 printTableContents(["param", param[0], param[1]], depth, file)
@@ -1304,23 +1956,52 @@ def checkClasses(root, file):
             printTableClose(depth, file)
         depth = 1
         printTableClose(depth, file)
+
+    # Now print the functions defined in global
     for globalFunction in globalTable.getFunction():
         depth = 0
-        printTableContents(["function", globalFunction.getFuncName()], depth, file)
+        
+        # Concat to make the function arguments and then the function signiture
+        functionArgs = ", ".join([x[1] for x in globalFunction.getParam()])
+        functionSig = f"({functionArgs}): {globalFunction.getReturnType()}"
+        printTableContents(["function", globalFunction.getFuncName(), functionSig], depth, file)
         depth = 1
+        
+        # Print table for the function and then local variables
         printTableHeader(f"::{globalFunction.getFuncName()}", depth, file)
         for local in globalFunction.getLocal():
             printTableContents(["local", local[0], local[1]], depth, file)
         printTableClose(depth, file)
+    
+    # Print the end of the table
     depth = 0
     printTableClose(depth, file)
+
+    # Print semantic errors to the file
+    semanticErrors.sort(key=lambda x: x[1])
+    for error in semanticErrors:
+        if error[1] == 0:
+            print(error[0], file=warning)
+        else:
+            print(error[0] + f" found on line {error[1]}.", file=warning)
     
-            
+"""
+Function that prints the header of a table in the symbol table file
+tableName = name to give the table
+depth = offset to add to give the correct depth of the table when nested
+file = symbol table file to print to
+"""            
 def printTableHeader(tableName, depth, file):
     print("|    " * depth + "="*(84-depth*8) + "  |" * depth, file=file)
     print("|    " * depth + "| table: " + tableName.ljust(74-depth*8) + "|" + "  |" * depth, file=file)
     print("|    " * depth + "="*(84-depth*8) + "  |" * depth, file=file)
-    
+
+"""
+Function that prints the content of a table in the symbol table file, depending on the number of items given in content, the line layout changes
+content = content to print to the table
+depth = offset to add to give the correct depth of the table when nested
+file = symbol table file to print to
+"""       
 def printTableContents(content, depth, file):
     if len(content) == 2:
         print("|    " * depth + "| " + content[0].ljust(10) + "| " + content[1].ljust(69 - depth*8) + "|" + "  |" * depth, file=file)
@@ -1331,5 +2012,10 @@ def printTableContents(content, depth, file):
     elif len(content) == 4:
         print("|    " * depth + "| " + content[0].ljust(10) + "| " + content[1].ljust(12) + "| " + content[2].ljust(43 - depth*8) + "| " + content[3].ljust(10) + "|" +  "  |" * depth, file=file)
 
+"""
+Function that prints the bottom of a table in the symbol table file
+depth = offset to add to give the correct depth of the table when nested
+file = symbol table file to print to
+"""   
 def printTableClose(depth, file):
     print("|    " * depth + "="*(84-depth*8) + "  |" * depth, file=file)
