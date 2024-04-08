@@ -22,4 +22,5 @@ Semantic Error: function f was given invalid number of arguments found on line 1
 Semantic Error: function f was given an invalid type of argument found on line 119.
 Semantic Error: use of array i with wrong number of dimensions found on line 120.
 Semantic Error: cannot use non-integer array index for i found on line 121.
+Semantic Error: function f3 was given an invalid type of argument found on line 122.
 Semantic Error: cannot use "." operator on counter with non-class type integer found on line 123.

@@ -3,6 +3,7 @@
 import os
 from collections import deque
 import networkx as nx
+import moonCodeGenerator
 
 # Initialize the stack used for sematinc actions
 semantic = deque()
@@ -1117,7 +1118,7 @@ def parseToken(passedLexicon, filename):
         astFile = open(astPath, "x")
     else:
         astFile = open(astPath, "w")
-    
+        
     # Print the AST to the file
     for node in semantic:
         printNode(node, 0, astFile)
@@ -1129,6 +1130,22 @@ def parseToken(passedLexicon, filename):
         symbolTableFile = open(symbolTable, "x")
     else:
         symbolTableFile = open(symbolTable, "w")
+    
+    for node in semantic:
+        globalSymbolTable = generateSymbolTable(node)
+    printSymbolTable(globalSymbolTable, symbolTableFile)
+        
+    # Open the generated code file to write to or create it if necessary
+    generatedCode = f"{filename}.m"
+
+    if not os.path.exists(generatedCode):
+        generatedCodeFile = open(generatedCode, "x")
+    else:
+        generatedCodeFile = open(generatedCode, "w") 
+        
+    print("\t\t entry".ljust(23) + "% Start here", file=generatedCodeFile)
+        
+    moonCodeGenerator.allocateMemory(globalSymbolTable, generatedCodeFile)
         
     # Open the semantic error file to write to or create it if necessary
     semanticErrors = f"{filename}.outsemanticerrors"
@@ -1136,11 +1153,11 @@ def parseToken(passedLexicon, filename):
     if not os.path.exists(semanticErrors):
         semanticErrorsFile = open(semanticErrors, "x")
     else:
-        semanticErrorsFile = open(semanticErrors, "w")  
+        semanticErrorsFile = open(semanticErrors, "w")
     
     # Generate symbol table and check semantic rules
     for node in semantic:
-        checkClasses(node, symbolTableFile, semanticErrorsFile)
+        checkClasses(node, semanticErrorsFile, generatedCodeFile)
         
     astFile.close()
     symbolTableFile.close()
@@ -1213,13 +1230,200 @@ def printNode(node, spaces, file):
         for child in children:
             printNode(child, spaces+1, file)
 
+def generateSymbolTable(root):
+    tree = deque()
+    tree.append(root)
+    globalTable = Table("global")
+    context = {}
+    while tree:
+        if isinstance(tree[-1], Node):
+            if (tree[-1].getNodeType() == "StructDef"):
+                children = tree[-1].getChildren()
+                className = children[0].getValue()
+                classTable = Table(className)
+                globalTable.addClasses(classTable)
+                if children[1].getChildren() == None:
+                    classTable.addInherits("none")
+                else:
+                    for grandchild in children[1].getChildren():
+                        classTable.addInherits(grandchild.getValue())
+                tree.pop()
+                for decl in tree[-1].getChildren():
+                    visibility = decl.getChildren()[0].getValue()
+                    name = decl.getChildren()[1].getChildren()[0].getValue()
+                    returnType = decl.getChildren()[1].getChildren()[2].getValue()
+                    if decl.getChildren()[1].getNodeType() == "FuncDef":
+                        functionTable = Function(name, returnType, visibility)
+                        context[className + "." +name + "." + returnType] = functionTable
+                        classTable.addFunction(functionTable)
+                        for var in decl.getChildren()[1].getChildren()[1].getChildren():
+                            varName = var.getChildren()[0].getValue()
+                            varType = var.getChildren()[1].getValue()
+                            functionTable.addParam(varName, varType)
+                    else:
+                        type = decl.getChildren()[1].getChildren()[1].getValue()
+                        classTable.addData(name, type, visibility)
+                tree.pop()
+                continue
+
+            elif (tree[-1].getNodeType() == "ImplDef"):
+                implName = tree[-1].getChildren().getValue()
+                tree.pop()
+                implStack = deque()
+                implStack.extend(tree[-1].getChildren()[::-1])
+                while implStack:
+                    if (implStack[-1].getNodeType() == "FuncDef"):
+                        implFuncName = implStack[-1].getChildren()[0].getValue()
+                        implReturnType = implStack[-1].getChildren()[2].getValue()
+                        for var in implStack[-1].getChildren()[1].getChildren():
+                            varName = var.getChildren()[0].getValue()
+                            varType = var.getChildren()[1].getValue()
+                            if implName + "." + implFuncName + "." + implReturnType in context:
+                                func = context[implName + "." + implFuncName + "." + implReturnType]
+                                if (varName, varType) in func.getParam():
+                                    # print("exists")
+                                    # Filler code to show that I can tell if variables exist
+                                    a = "a"
+                        implStack.pop()
+                        for nodes in implStack[-1].getChildren():
+                            if nodes.getNodeType() == "VarDecl":
+                                functionVarName = nodes.getChildren()[0].getValue()
+                                functionVarType = nodes.getChildren()[1].getValue()
+                                func.addLocal(functionVarName, functionVarType)
+                        implStack.pop()
+                    else:
+                        implStack.pop()
+                tree.pop()
+                continue
+
+            elif (tree[-1].getNodeType() == "FuncDef"):
+                funcName = tree[-1].getChildren()[0].getValue()
+                funcParamList = tree[-1].getChildren()[1]
+                funcReturnType = tree[-1].getChildren()[2].getValue()
+                globalFunc = Function(funcName, funcReturnType, "global")
+                globalTable.addFunction(globalFunc)
+                tree.pop()
+                for nodes in tree[-1].getChildren():
+                    if nodes.getNodeType() == "VarDecl":
+                        functionVarName = nodes.getChildren()[0].getValue()
+                        functionVarType = nodes.getChildren()[1].getValue()
+                        globalFunc.addLocal(functionVarName, functionVarType)
+                tree.pop()
+                continue
+
+            if tree[-1].getChildren() != None:
+                children = tree[-1].getChildren() if isinstance(tree[-1].getChildren(), list) else [tree[-1].getChildren()]
+                tree.pop()
+                tree.extend(children[::-1])
+        else:
+            tree.pop()
+    
+    return globalTable
+            
+def printSymbolTable(globalTable, file):
+        # This is the printing of the symbol table to the output file 
+    depth = 0
+    
+    # Begin by printing the global table         
+    printTableHeader(globalTable.getTableName(), depth, file)
+    
+    # Print the classes defined first
+    for classes in globalTable.getClasses():
+        depth = 0 
+        
+        # First print the class name and what classes it inherits
+        printTableContents(["class", classes.getTableName()], depth, file)
+        depth = 1
+        printTableHeader(classes.getTableName(), depth, file)
+        inherits = ", ".join(classes.getInherits()) if classes.getInherits() != [] else "none"
+        printTableContents(["inherit", inherits], depth, file)
+        
+        # Print defined variables
+        for data in classes.getData():
+            printTableContents(["data", data[0], data[1], data[2]], depth, file)
+            
+        # Print the class functions
+        for func in classes.getFunction():
+            depth = 1
+            
+            # Concat to make the function arguments and then the function signiture
+            functionArgs = ", ".join([x[1] for x in func.getParam()])
+            functionSig = f"({functionArgs}): {func.getReturnType()}"
+            printTableContents(["function", func.getFuncName(), functionSig, func.getVisibility()], depth, file)
+            depth = 2
+            
+            # Print table for the function params and then local variables
+            printTableHeader(f"{classes.getTableName()}::{func.getFuncName()}", depth, file)
+            for param in func.getParam()[::-1]:
+                printTableContents(["param", param[0], param[1]], depth, file)
+            for local in func.getLocal():
+                printTableContents(["local", local[0], local[1]], depth, file)
+            printTableClose(depth, file)
+        depth = 1
+        printTableClose(depth, file)
+
+    # Now print the functions defined in global
+    for globalFunction in globalTable.getFunction():
+        depth = 0
+        
+        # Concat to make the function arguments and then the function signiture
+        functionArgs = ", ".join([x[1] for x in globalFunction.getParam()])
+        functionSig = f"({functionArgs}): {globalFunction.getReturnType()}"
+        printTableContents(["function", globalFunction.getFuncName(), functionSig], depth, file)
+        depth = 1
+        
+        # Print table for the function and then local variables
+        printTableHeader(f"::{globalFunction.getFuncName()}", depth, file)
+        for local in globalFunction.getLocal():
+            printTableContents(["local", local[0], local[1]], depth, file)
+        printTableClose(depth, file)
+    
+    # Print the end of the table
+    depth = 0
+    printTableClose(depth, file)
+
+"""
+Function that prints the header of a table in the symbol table file
+tableName = name to give the table
+depth = offset to add to give the correct depth of the table when nested
+file = symbol table file to print to
+"""            
+def printTableHeader(tableName, depth, file):
+    print("|    " * depth + "="*(84-depth*8) + "  |" * depth, file=file)
+    print("|    " * depth + "| table: " + tableName.ljust(74-depth*8) + "|" + "  |" * depth, file=file)
+    print("|    " * depth + "="*(84-depth*8) + "  |" * depth, file=file)
+
+"""
+Function that prints the content of a table in the symbol table file, depending on the number of items given in content, the line layout changes
+content = content to print to the table
+depth = offset to add to give the correct depth of the table when nested
+file = symbol table file to print to
+"""       
+def printTableContents(content, depth, file):
+    if len(content) == 2:
+        print("|    " * depth + "| " + content[0].ljust(10) + "| " + content[1].ljust(69 - depth*8) + "|" + "  |" * depth, file=file)
+        
+    elif len(content) == 3:  
+        print("|    " * depth + "| " + content[0].ljust(10) + "| " + content[1].ljust(12) + "| " + content[2].ljust(55 - depth*8) + "|" + "  |" * depth, file=file)
+        
+    elif len(content) == 4:
+        print("|    " * depth + "| " + content[0].ljust(10) + "| " + content[1].ljust(12) + "| " + content[2].ljust(43 - depth*8) + "| " + content[3].ljust(10) + "|" +  "  |" * depth, file=file)
+
+"""
+Function that prints the bottom of a table in the symbol table file
+depth = offset to add to give the correct depth of the table when nested
+file = symbol table file to print to
+"""   
+def printTableClose(depth, file):
+    print("|    " * depth + "="*(84-depth*8) + "  |" * depth, file=file)
+
 """
 Function that will generate a symbol table and check semantic rules over the AST tree.
 root = root node of the AST tree
 file = file to print symbol table to
 warning = file to print errors and warning to
 """            
-def checkClasses(root, file, warning):
+def checkClasses(root, warning, codeOutput):
     
     # Going through the AST
     tree = deque()
@@ -1614,6 +1818,7 @@ def checkClasses(root, file, warning):
                 funcReturnType = tree[-1].getChildren()[2].getValue()
                 globalFunc = Function(funcName, funcReturnType, "global")
                 funcParamList = tree[-1].getChildren()[1]
+                functionVarName = ""
                 stringParam = ""
                 
                 # Retrieve function parameters
@@ -1916,67 +2121,6 @@ def checkClasses(root, file, warning):
         values = func.split(".")
         semanticErrors.append((f"Semantic Error: undefined member declaration in {values[0]}.{values[1]}", context[func][1]))
 
-    # This is the printing of the symbol table to the output file 
-    depth = 0
-    
-    # Begin by printing the global table         
-    printTableHeader(globalTable.getTableName(), depth, file)
-    
-    # Print the classes defined first
-    for classes in globalTable.getClasses():
-        depth = 0 
-        
-        # First print the class name and what classes it inherits
-        printTableContents(["class", classes.getTableName()], depth, file)
-        depth = 1
-        printTableHeader(classes.getTableName(), depth, file)
-        inherits = ", ".join(classes.getInherits()) if classes.getInherits() != [] else "none"
-        printTableContents(["inherit", inherits], depth, file)
-        
-        # Print defined variables
-        for data in classes.getData():
-            printTableContents(["data", data[0], data[1], data[2]], depth, file)
-            
-        # Print the class functions
-        for func in classes.getFunction():
-            depth = 1
-            
-            # Concat to make the function arguments and then the function signiture
-            functionArgs = ", ".join([x[1] for x in func.getParam()])
-            functionSig = f"({functionArgs}): {func.getReturnType()}"
-            printTableContents(["function", func.getFuncName(), functionSig, func.getVisibility()], depth, file)
-            depth = 2
-            
-            # Print table for the function params and then local variables
-            printTableHeader(f"{classes.getTableName()}::{func.getFuncName()}", depth, file)
-            for param in func.getParam()[::-1]:
-                printTableContents(["param", param[0], param[1]], depth, file)
-            for local in func.getLocal():
-                printTableContents(["local", local[0], local[1]], depth, file)
-            printTableClose(depth, file)
-        depth = 1
-        printTableClose(depth, file)
-
-    # Now print the functions defined in global
-    for globalFunction in globalTable.getFunction():
-        depth = 0
-        
-        # Concat to make the function arguments and then the function signiture
-        functionArgs = ", ".join([x[1] for x in globalFunction.getParam()])
-        functionSig = f"({functionArgs}): {globalFunction.getReturnType()}"
-        printTableContents(["function", globalFunction.getFuncName(), functionSig], depth, file)
-        depth = 1
-        
-        # Print table for the function and then local variables
-        printTableHeader(f"::{globalFunction.getFuncName()}", depth, file)
-        for local in globalFunction.getLocal():
-            printTableContents(["local", local[0], local[1]], depth, file)
-        printTableClose(depth, file)
-    
-    # Print the end of the table
-    depth = 0
-    printTableClose(depth, file)
-
     # Print semantic errors to the file
     semanticErrors.sort(key=lambda x: x[1])
     for error in semanticErrors:
@@ -1985,37 +2129,3 @@ def checkClasses(root, file, warning):
         else:
             print(error[0] + f" found on line {error[1]}.", file=warning)
     
-"""
-Function that prints the header of a table in the symbol table file
-tableName = name to give the table
-depth = offset to add to give the correct depth of the table when nested
-file = symbol table file to print to
-"""            
-def printTableHeader(tableName, depth, file):
-    print("|    " * depth + "="*(84-depth*8) + "  |" * depth, file=file)
-    print("|    " * depth + "| table: " + tableName.ljust(74-depth*8) + "|" + "  |" * depth, file=file)
-    print("|    " * depth + "="*(84-depth*8) + "  |" * depth, file=file)
-
-"""
-Function that prints the content of a table in the symbol table file, depending on the number of items given in content, the line layout changes
-content = content to print to the table
-depth = offset to add to give the correct depth of the table when nested
-file = symbol table file to print to
-"""       
-def printTableContents(content, depth, file):
-    if len(content) == 2:
-        print("|    " * depth + "| " + content[0].ljust(10) + "| " + content[1].ljust(69 - depth*8) + "|" + "  |" * depth, file=file)
-        
-    elif len(content) == 3:  
-        print("|    " * depth + "| " + content[0].ljust(10) + "| " + content[1].ljust(12) + "| " + content[2].ljust(55 - depth*8) + "|" + "  |" * depth, file=file)
-        
-    elif len(content) == 4:
-        print("|    " * depth + "| " + content[0].ljust(10) + "| " + content[1].ljust(12) + "| " + content[2].ljust(43 - depth*8) + "| " + content[3].ljust(10) + "|" +  "  |" * depth, file=file)
-
-"""
-Function that prints the bottom of a table in the symbol table file
-depth = offset to add to give the correct depth of the table when nested
-file = symbol table file to print to
-"""   
-def printTableClose(depth, file):
-    print("|    " * depth + "="*(84-depth*8) + "  |" * depth, file=file)

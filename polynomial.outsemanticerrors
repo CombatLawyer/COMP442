@@ -1,4 +1,0 @@
-Semantic Warning: overridden parent polynomial function evaluate in linear found on line 10.
-Semantic Warning: overridden parent polynomial function evaluate in quadratic found on line 18.
-Semantic Error: type error in return statement for evaluate found on line 25.
-Semantic Error: function build was given an invalid type of argument found on line 72.
