@@ -3,4 +3,5 @@ func main() -> void
 {
   let a: integer;  
   let b: integer;
+  a = 8;
 }

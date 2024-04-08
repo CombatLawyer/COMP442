@@ -1135,17 +1135,9 @@ def parseToken(passedLexicon, filename):
         globalSymbolTable = generateSymbolTable(node)
     printSymbolTable(globalSymbolTable, symbolTableFile)
         
-    # Open the generated code file to write to or create it if necessary
-    generatedCode = f"{filename}.m"
-
-    if not os.path.exists(generatedCode):
-        generatedCodeFile = open(generatedCode, "x")
-    else:
-        generatedCodeFile = open(generatedCode, "w") 
+    moonCodeGenerator.beginProgram(f"{filename}.m")
         
-    print("\t\t entry".ljust(23) + "% Start here", file=generatedCodeFile)
-        
-    moonCodeGenerator.allocateMemory(globalSymbolTable, generatedCodeFile)
+    moonCodeGenerator.allocateMemory(globalSymbolTable)
         
     # Open the semantic error file to write to or create it if necessary
     semanticErrors = f"{filename}.outsemanticerrors"
@@ -1157,7 +1149,7 @@ def parseToken(passedLexicon, filename):
     
     # Generate symbol table and check semantic rules
     for node in semantic:
-        checkClasses(node, semanticErrorsFile, generatedCodeFile)
+        checkClasses(node, semanticErrorsFile)
         
     astFile.close()
     symbolTableFile.close()
@@ -1423,7 +1415,7 @@ root = root node of the AST tree
 file = file to print symbol table to
 warning = file to print errors and warning to
 """            
-def checkClasses(root, warning, codeOutput):
+def checkClasses(root, warning):
     
     # Going through the AST
     tree = deque()
@@ -1940,7 +1932,7 @@ def checkClasses(root, warning, codeOutput):
                                                     break
                                                 index += 1
                                     else:
-                                        
+                                     
                                         # If its a function param list that means the function was not recognized
                                         if exprNode[1].getNodeType() == "FuncParamList":
                                             semanticErrors.append((f"Semantic Error: undeclared function {attributeName}", objectLine))
@@ -1956,6 +1948,11 @@ def checkClasses(root, warning, codeOutput):
                                     variableName = exprNode[0].getValue()
                                     if variableName not in localContext:
                                         semanticErrors.append((f"Semantic Error: undeclared variable {variableName} in local scope", exprNode[0].getLine()))
+                                
+                                # If its just a literal in the exprNode        
+                                elif len(exprNode) == 1:
+                                    value = exprNode[0].getValue()
+                                    moonCodeGenerator.setVariable(variable, value, 0)
                         
                         # Attribute node processing
                         elif nodeType == "AttributeNode":

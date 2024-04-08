@@ -12,3 +12,7 @@ ProgNode
 | | | id
 | | | type
 | | | Dimlist
+| | AssignVar
+| | | id
+| | | ExprNode
+| | | | intlit
