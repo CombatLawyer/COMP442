@@ -1,0 +1,82 @@
+
+struct polynomial {
+    public func evaluate(x: float) -> float;
+};
+
+struct linear inherits polynomial {
+    private let a: float;
+    private let b: float;
+    public  func build(a: float, b: float) -> linear;
+    public  func evaluate(x: float) -> float;
+};
+
+struct quadratic inherits polynomial {
+    private let a: float;
+    private let b: float;
+    private let c: float;
+    public  func build(a: float, b: float, c: float) -> quadratic;
+    public  func evaluate(x: float) -> float;
+};
+
+
+impl polynomial {
+  func evaluate(x: float) -> float
+  {
+    return (0);
+  }
+}
+
+impl quadratic {
+  func evaluate(x: float) -> float
+  {
+    let result: float;
+
+    result = a;
+    result = result * x + b;
+    result = result * x + c;
+    return (result);
+  }
+  func build(a: float, b: float, c: float) -> quadratic
+  {
+    let new_function: quadratic ;
+    new_function.a = a;
+    new_function.b = b;
+    new_function.c = c;
+    return (new_function);
+  }
+}
+
+impl linear {
+  func build(a: float, b: float) -> linear
+  {
+    let new_function: linear;
+    new_function.a = a;
+    new_function.b = b;
+    return (new_function);
+  }
+  func evaluate(x: float) -> float
+  {
+    let result: float;
+    result = 0.0;
+    result = a * x + b;
+    return (result);
+  }
+}
+
+
+func main() -> void
+{
+  let f1: linear;
+  let f2: quadratic;
+  let counter: integer;
+  f1 = f1.build(2, 3.5);
+  f2 = f2.build(-2.0, 1.0, 0.0);
+  counter = 1;
+
+  while(counter <= 10)
+  {
+    write(counter);
+    write(f1.evaluate(counter));
+    write(f2.evaluate(counter));
+  };
+}

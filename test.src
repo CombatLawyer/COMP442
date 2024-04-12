@@ -1,7 +1,41 @@
+/*// ====== Class declarations ====== //
+struct myClass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func evaluate(x: integer) -> integer;
+};
+
+impl myClass {
+  func evaluate(n: integer) -> integer
+  {
+    let result: int;
+    result = n;
+    write(result);
+    return (result);
+  }
+}
+
+func f(i: integer) -> void
+{
+  write(i);
+}*/
+
 // ====== main ====== //
 func main() -> void
 {
-  let a: integer;  
+  let a: integer;
   let b: integer;
-  a = 8;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  };
+  f = 13.8;
+  write(f);
 }

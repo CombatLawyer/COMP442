@@ -1,0 +1,90 @@
+ProgNode
+| StructDef
+| | id
+| | InheritsNode
+| StructBodyNode
+| | StructDeclNode
+| | | Visibility
+| | | VarDecl
+| | | | id
+| | | | type
+| | | | Dimlist
+| | StructDeclNode
+| | | Visibility
+| | | VarDecl
+| | | | id
+| | | | type
+| | | | Dimlist
+| | StructDeclNode
+| | | Visibility
+| | | VarDecl
+| | | | id
+| | | | type
+| | | | Dimlist
+| | | | | dim
+| | StructDeclNode
+| | | Visibility
+| | | FuncDef
+| | | | id
+| | | | ParamList
+| | | | | VarDecl
+| | | | | | id
+| | | | | | type
+| | | | | | Dimlist
+| | | | | VarDecl
+| | | | | | id
+| | | | | | type
+| | | | | | Dimlist
+| | | | type
+| ImplDef
+| | id
+| ImplBodyNode
+| | FuncDef
+| | | id
+| | | ParamList
+| | | | VarDecl
+| | | | | id
+| | | | | type
+| | | | | Dimlist
+| | | | VarDecl
+| | | | | id
+| | | | | type
+| | | | | Dimlist
+| | | type
+| | FuncBody
+| | | VarDecl
+| | | | id
+| | | | type
+| | | | Dimlist
+| | | AssignVar
+| | | | AttributeNode
+| | | | | id
+| | | | | id
+| | | | ExprNode
+| | | | | id
+| | | AssignVar
+| | | | AttributeNode
+| | | | | id
+| | | | | id
+| | | | ExprNode
+| | | | | id
+| | | ReturnNode
+| | | | ExprNode
+| | | | | id
+| FuncDef
+| | id
+| | ParamList
+| | type
+| FuncBody
+| | VarDecl
+| | | id
+| | | type
+| | | Dimlist
+| | AssignVar
+| | | IndiceNode
+| | | | AttributeNode
+| | | | | id
+| | | | | id
+| | | | intlit
+| | | ExprNode
+| | | | floatlit

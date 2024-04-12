@@ -12,7 +12,43 @@ ProgNode
 | | | id
 | | | type
 | | | Dimlist
+| | VarDecl
+| | | id
+| | | type
+| | | Dimlist
+| | | | dim
+| | VarDecl
+| | | id
+| | | type
+| | | Dimlist
 | | AssignVar
 | | | id
 | | | ExprNode
 | | | | intlit
+| | AssignVar
+| | | id
+| | | ExprNode
+| | | | intlit
+| | WhileNode
+| | | ConditionNode
+| | | | id
+| | | | Operator
+| | | | id
+| | WhileBlockNode
+| | | WriteNode
+| | | | ExprNode
+| | | | | id
+| | | AssignVar
+| | | | id
+| | | | ExprNode
+| | | | | AddOp
+| | | | | | intlit
+| | | | | | MathOperator
+| | | | | | id
+| | AssignVar
+| | | id
+| | | ExprNode
+| | | | floatlit
+| | WriteNode
+| | | ExprNode
+| | | | id

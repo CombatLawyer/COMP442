@@ -1,0 +1,1877 @@
+deque(['$', 'START'])
+START --> [<function createLeafEpsilon at 0x00000256C0420040>, 'PROG', <function createProgNode at 0x00000256C0421240>]
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'PROG'])
+PROG --> ['REPTPROG0']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0'])
+REPTPROG0 --> ['STRUCTORIMPLORFUNC', 'REPTPROG0']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'STRUCTORIMPLORFUNC'])
+STRUCTORIMPLORFUNC --> ['STRUCTDECL']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'STRUCTDECL'])
+STRUCTDECL --> ['struct', 'id', <function createLeaf at 0x00000256BF3F0700>, <function createLeafEpsilon at 0x00000256C0420040>, 'OPTSTRUCTDECL2', <function createInheritsNode at 0x00000256C04209D0>, <function createStructDefNode at 0x00000256C0420A60>, <function createLeafEpsilon at 0x00000256C0420040>, 'lcurbr', 'REPTSTRUCTDECL4', <function createStructBodyNode at 0x00000256C0420AF0>, 'rcurbr', 'semi']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', 'lcurbr', <function createLeafEpsilon at 0x00000256C0420040>, <function createStructDefNode at 0x00000256C0420A60>, <function createInheritsNode at 0x00000256C04209D0>, 'OPTSTRUCTDECL2', <function createLeafEpsilon at 0x00000256C0420040>, <function createLeaf at 0x00000256BF3F0700>, 'id', 'struct'])
+struct --> struct
+
+struct
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', 'lcurbr', <function createLeafEpsilon at 0x00000256C0420040>, <function createStructDefNode at 0x00000256C0420A60>, <function createInheritsNode at 0x00000256C04209D0>, 'OPTSTRUCTDECL2', <function createLeafEpsilon at 0x00000256C0420040>, <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', 'lcurbr', <function createLeafEpsilon at 0x00000256C0420040>, <function createStructDefNode at 0x00000256C0420A60>, <function createInheritsNode at 0x00000256C04209D0>, 'OPTSTRUCTDECL2'])
+OPTSTRUCTDECL2 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', 'lcurbr', <function createLeafEpsilon at 0x00000256C0420040>, <function createStructDefNode at 0x00000256C0420A60>, <function createInheritsNode at 0x00000256C04209D0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', 'lcurbr'])
+lcurbr --> lcurbr
+
+struct myclass {
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4'])
+REPTSTRUCTDECL4 --> ['VISIBILITY', <function createLeafVisibility at 0x00000256C0403E20>, 'MEMBERDECL', <function createStructDeclNode at 0x00000256C0420B80>, 'REPTSTRUCTDECL4']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'MEMBERDECL', <function createLeafVisibility at 0x00000256C0403E20>, 'VISIBILITY'])
+VISIBILITY --> ['private']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'MEMBERDECL', <function createLeafVisibility at 0x00000256C0403E20>, 'private'])
+private --> private
+
+struct myclass {
+  private
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'MEMBERDECL'])
+MEMBERDECL --> ['VARDECL']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'VARDECL'])
+VARDECL --> ['let', 'id', <function createLeaf at 0x00000256BF3F0700>, 'colon', 'TYPE', <function createLeafType at 0x00000256C0403D90>, 'REPTVARDECL4', <function createDimNode at 0x00000256C04200D0>, <function createVardeclNode at 0x00000256C0420160>, 'semi']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id', 'let'])
+let --> let
+
+struct myclass {
+  private let
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon'])
+colon --> colon
+
+struct myclass {
+  private let x:
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE'])
+TYPE --> ['integer']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'integer'])
+integer --> integer
+
+struct myclass {
+  private let x: integer
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4'])
+REPTVARDECL4 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi'])
+semi --> semi
+
+struct myclass {
+  private let x: integer;
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4'])
+REPTSTRUCTDECL4 --> ['VISIBILITY', <function createLeafVisibility at 0x00000256C0403E20>, 'MEMBERDECL', <function createStructDeclNode at 0x00000256C0420B80>, 'REPTSTRUCTDECL4']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'MEMBERDECL', <function createLeafVisibility at 0x00000256C0403E20>, 'VISIBILITY'])
+VISIBILITY --> ['private']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'MEMBERDECL', <function createLeafVisibility at 0x00000256C0403E20>, 'private'])
+private --> private
+
+struct myclass {
+  private let x: integer;
+  private
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'MEMBERDECL'])
+MEMBERDECL --> ['VARDECL']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'VARDECL'])
+VARDECL --> ['let', 'id', <function createLeaf at 0x00000256BF3F0700>, 'colon', 'TYPE', <function createLeafType at 0x00000256C0403D90>, 'REPTVARDECL4', <function createDimNode at 0x00000256C04200D0>, <function createVardeclNode at 0x00000256C0420160>, 'semi']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id', 'let'])
+let --> let
+
+struct myclass {
+  private let x: integer;
+  private let
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon'])
+colon --> colon
+
+struct myclass {
+  private let x: integer;
+  private let y:
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE'])
+TYPE --> ['integer']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'integer'])
+integer --> integer
+
+struct myclass {
+  private let x: integer;
+  private let y: integer
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4'])
+REPTVARDECL4 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi'])
+semi --> semi
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4'])
+REPTSTRUCTDECL4 --> ['VISIBILITY', <function createLeafVisibility at 0x00000256C0403E20>, 'MEMBERDECL', <function createStructDeclNode at 0x00000256C0420B80>, 'REPTSTRUCTDECL4']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'MEMBERDECL', <function createLeafVisibility at 0x00000256C0403E20>, 'VISIBILITY'])
+VISIBILITY --> ['private']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'MEMBERDECL', <function createLeafVisibility at 0x00000256C0403E20>, 'private'])
+private --> private
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'MEMBERDECL'])
+MEMBERDECL --> ['VARDECL']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'VARDECL'])
+VARDECL --> ['let', 'id', <function createLeaf at 0x00000256BF3F0700>, 'colon', 'TYPE', <function createLeafType at 0x00000256C0403D90>, 'REPTVARDECL4', <function createDimNode at 0x00000256C04200D0>, <function createVardeclNode at 0x00000256C0420160>, 'semi']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id', 'let'])
+let --> let
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon'])
+colon --> colon
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z:
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE'])
+TYPE --> ['float']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'float'])
+float --> float
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4'])
+REPTVARDECL4 --> ['ARRAYSIZE', 'REPTVARDECL4']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', 'ARRAYSIZE'])
+ARRAYSIZE --> ['lsqbr', <function createLeafEpsilon at 0x00000256C0420040>, 'ENDBR']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', 'ENDBR', <function createLeafEpsilon at 0x00000256C0420040>, 'lsqbr'])
+lsqbr --> lsqbr
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', 'ENDBR'])
+ENDBR --> ['intlit', <function createLeaf at 0x00000256BF3F0700>, <function createLeafDim at 0x00000256C0403D00>, 'rsqbr']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', 'rsqbr', <function createLeafDim at 0x00000256C0403D00>, <function createLeaf at 0x00000256BF3F0700>, 'intlit'])
+intlit --> intlit
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', 'rsqbr'])
+rsqbr --> rsqbr
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3]
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4'])
+REPTVARDECL4 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi'])
+semi --> semi
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4'])
+REPTSTRUCTDECL4 --> ['VISIBILITY', <function createLeafVisibility at 0x00000256C0403E20>, 'MEMBERDECL', <function createStructDeclNode at 0x00000256C0420B80>, 'REPTSTRUCTDECL4']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'MEMBERDECL', <function createLeafVisibility at 0x00000256C0403E20>, 'VISIBILITY'])
+VISIBILITY --> ['public']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'MEMBERDECL', <function createLeafVisibility at 0x00000256C0403E20>, 'public'])
+public --> public
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'MEMBERDECL'])
+MEMBERDECL --> ['FUNCDECL']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'FUNCDECL'])
+FUNCDECL --> ['FUNCHEAD', 'semi']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', 'FUNCHEAD'])
+FUNCHEAD --> ['func', 'id', <function createLeaf at 0x00000256BF3F0700>, 'lpar', 'FPARAMS', <function createParamListNode at 0x00000256C04201F0>, 'rpar', 'arrow', 'RETURNTYPE', <function createLeafType at 0x00000256C0403D90>, <function createFuncDefNode at 0x00000256C0420280>]
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'FPARAMS', 'lpar', <function createLeaf at 0x00000256BF3F0700>, 'id', 'func'])
+func --> func
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'FPARAMS', 'lpar', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'FPARAMS', 'lpar'])
+lpar --> lpar
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'FPARAMS'])
+FPARAMS --> ['id', <function createLeaf at 0x00000256BF3F0700>, 'colon', 'TYPE', <function createLeafType at 0x00000256C0403D90>, 'REPTFPARAMS3', <function createDimNode at 0x00000256C04200D0>, <function createVardeclNode at 0x00000256C0420160>, 'REPTFPARAMS4']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMS3', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMS3', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon'])
+colon --> colon
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x:
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMS3', <function createLeafType at 0x00000256C0403D90>, 'TYPE'])
+TYPE --> ['integer']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMS3', <function createLeafType at 0x00000256C0403D90>, 'integer'])
+integer --> integer
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMS3'])
+REPTFPARAMS3 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4'])
+REPTFPARAMS4 --> ['FPARAMSTAIL', <function createVardeclNode at 0x00000256C0420160>, 'REPTFPARAMS4']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, 'FPARAMSTAIL'])
+FPARAMSTAIL --> ['comma', 'id', <function createLeaf at 0x00000256BF3F0700>, 'colon', 'TYPE', <function createLeafType at 0x00000256C0403D90>, 'REPTFPARAMSTAIL4', <function createDimNode at 0x00000256C04200D0>]
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id', 'comma'])
+comma --> comma
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer,
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon'])
+colon --> colon
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE'])
+TYPE --> ['integer']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000256C0403D90>, 'integer'])
+integer --> integer
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMSTAIL4'])
+REPTFPARAMSTAIL4 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4'])
+REPTFPARAMS4 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar'])
+rpar --> rpar
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer)
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow'])
+arrow --> arrow
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) ->
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE'])
+RETURNTYPE --> ['TYPE']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'TYPE'])
+TYPE --> ['id']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4', <function createStructDeclNode at 0x00000256C0420B80>, 'semi'])
+semi --> semi
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'REPTSTRUCTDECL4'])
+REPTSTRUCTDECL4 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr', <function createStructBodyNode at 0x00000256C0420AF0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi', 'rcurbr'])
+rcurbr --> rcurbr
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+}
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'semi'])
+semi --> semi
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0'])
+REPTPROG0 --> ['STRUCTORIMPLORFUNC', 'REPTPROG0']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'STRUCTORIMPLORFUNC'])
+STRUCTORIMPLORFUNC --> ['IMPLDEF']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'IMPLDEF'])
+IMPLDEF --> ['impl', 'id', <function createLeaf at 0x00000256BF3F0700>, <function createImplDefNode at 0x00000256C0420C10>, 'lcurbr', <function createLeafEpsilon at 0x00000256C0420040>, 'REPTIMPLDEF3', <function createImplBodyNode at 0x00000256C0420CA0>, 'rcurbr']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', <function createLeafEpsilon at 0x00000256C0420040>, 'lcurbr', <function createImplDefNode at 0x00000256C0420C10>, <function createLeaf at 0x00000256BF3F0700>, 'id', 'impl'])
+impl --> impl
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', <function createLeafEpsilon at 0x00000256C0420040>, 'lcurbr', <function createImplDefNode at 0x00000256C0420C10>, <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', <function createLeafEpsilon at 0x00000256C0420040>, 'lcurbr'])
+lcurbr --> lcurbr
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3'])
+REPTIMPLDEF3 --> ['FUNCDEF', 'REPTIMPLDEF3']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCDEF'])
+FUNCDEF --> ['FUNCHEAD', 'FUNCBODY']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', 'FUNCHEAD'])
+FUNCHEAD --> ['func', 'id', <function createLeaf at 0x00000256BF3F0700>, 'lpar', 'FPARAMS', <function createParamListNode at 0x00000256C04201F0>, 'rpar', 'arrow', 'RETURNTYPE', <function createLeafType at 0x00000256C0403D90>, <function createFuncDefNode at 0x00000256C0420280>]
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'FPARAMS', 'lpar', <function createLeaf at 0x00000256BF3F0700>, 'id', 'func'])
+func --> func
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'FPARAMS', 'lpar', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'FPARAMS', 'lpar'])
+lpar --> lpar
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'FPARAMS'])
+FPARAMS --> ['id', <function createLeaf at 0x00000256BF3F0700>, 'colon', 'TYPE', <function createLeafType at 0x00000256C0403D90>, 'REPTFPARAMS3', <function createDimNode at 0x00000256C04200D0>, <function createVardeclNode at 0x00000256C0420160>, 'REPTFPARAMS4']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMS3', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMS3', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon'])
+colon --> colon
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x:
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMS3', <function createLeafType at 0x00000256C0403D90>, 'TYPE'])
+TYPE --> ['integer']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMS3', <function createLeafType at 0x00000256C0403D90>, 'integer'])
+integer --> integer
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMS3'])
+REPTFPARAMS3 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4'])
+REPTFPARAMS4 --> ['FPARAMSTAIL', <function createVardeclNode at 0x00000256C0420160>, 'REPTFPARAMS4']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, 'FPARAMSTAIL'])
+FPARAMSTAIL --> ['comma', 'id', <function createLeaf at 0x00000256BF3F0700>, 'colon', 'TYPE', <function createLeafType at 0x00000256C0403D90>, 'REPTFPARAMSTAIL4', <function createDimNode at 0x00000256C04200D0>]
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id', 'comma'])
+comma --> comma
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer,
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon'])
+colon --> colon
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE'])
+TYPE --> ['integer']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMSTAIL4', <function createLeafType at 0x00000256C0403D90>, 'integer'])
+integer --> integer
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTFPARAMSTAIL4'])
+REPTFPARAMSTAIL4 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'REPTFPARAMS4'])
+REPTFPARAMS4 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar'])
+rpar --> rpar
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer)
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow'])
+arrow --> arrow
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) ->
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE'])
+RETURNTYPE --> ['TYPE']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'TYPE'])
+TYPE --> ['id']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'FUNCBODY'])
+FUNCBODY --> ['lcurbr', <function createLeafEpsilon at 0x00000256C0420040>, 'REPTFUNCBODY1', <function createFuncBodyNode at 0x00000256C0420940>, 'rcurbr']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', <function createLeafEpsilon at 0x00000256C0420040>, 'lcurbr'])
+lcurbr --> lcurbr
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['VARDECL']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'VARDECL'])
+VARDECL --> ['let', 'id', <function createLeaf at 0x00000256BF3F0700>, 'colon', 'TYPE', <function createLeafType at 0x00000256C0403D90>, 'REPTVARDECL4', <function createDimNode at 0x00000256C04200D0>, <function createVardeclNode at 0x00000256C0420160>, 'semi']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id', 'let'])
+let --> let
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon'])
+colon --> colon
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction:
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE'])
+TYPE --> ['id']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4'])
+REPTVARDECL4 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['STATEMENT']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'STATEMENT'])
+STATEMENT --> ['STATESTART', 'semi']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATESTART'])
+STATESTART --> ['id', <function createLeaf at 0x00000256BF3F0700>, <function createAttributeNode at 0x00000256C04211B0>, 'STATEVARORFUNC']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC', <function createAttributeNode at 0x00000256C04211B0>, <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC'])
+STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR'])
+REPTSTATEVAR --> ['dot', 'STATESTART']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATESTART', 'dot'])
+dot --> dot
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATESTART'])
+STATESTART --> ['id', <function createLeaf at 0x00000256BF3F0700>, <function createAttributeNode at 0x00000256C04211B0>, 'STATEVARORFUNC']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC', <function createAttributeNode at 0x00000256C04211B0>, <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC'])
+STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR'])
+REPTSTATEVAR --> ['ASSIGNOP', <function createLeafEpsilon at 0x00000256C0420040>, 'EXPR', <function createExprNode at 0x00000256C0421120>, <function createAssignNode at 0x00000256C0421090>]
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'EXPR', <function createLeafEpsilon at 0x00000256C0420040>, 'ASSIGNOP'])
+ASSIGNOP --> ['equal']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'EXPR', <function createLeafEpsilon at 0x00000256C0420040>, 'equal'])
+equal --> equal
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x =
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x00000256BF3F0700>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['STATEMENT']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'STATEMENT'])
+STATEMENT --> ['STATESTART', 'semi']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATESTART'])
+STATESTART --> ['id', <function createLeaf at 0x00000256BF3F0700>, <function createAttributeNode at 0x00000256C04211B0>, 'STATEVARORFUNC']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC', <function createAttributeNode at 0x00000256C04211B0>, <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC'])
+STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR'])
+REPTSTATEVAR --> ['dot', 'STATESTART']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATESTART', 'dot'])
+dot --> dot
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATESTART'])
+STATESTART --> ['id', <function createLeaf at 0x00000256BF3F0700>, <function createAttributeNode at 0x00000256C04211B0>, 'STATEVARORFUNC']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC', <function createAttributeNode at 0x00000256C04211B0>, <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC'])
+STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR'])
+REPTSTATEVAR --> ['ASSIGNOP', <function createLeafEpsilon at 0x00000256C0420040>, 'EXPR', <function createExprNode at 0x00000256C0421120>, <function createAssignNode at 0x00000256C0421090>]
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'EXPR', <function createLeafEpsilon at 0x00000256C0420040>, 'ASSIGNOP'])
+ASSIGNOP --> ['equal']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'EXPR', <function createLeafEpsilon at 0x00000256C0420040>, 'equal'])
+equal --> equal
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y =
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x00000256BF3F0700>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['STATEMENT']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'STATEMENT'])
+STATEMENT --> ['return', 'lpar', <function createLeafEpsilon at 0x00000256C0420040>, 'EXPR', <function createExprNode at 0x00000256C0421120>, <function createReturnNode at 0x00000256C0420430>, 'rpar', 'semi']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'EXPR', <function createLeafEpsilon at 0x00000256C0420040>, 'lpar', 'return'])
+return --> return
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'EXPR', <function createLeafEpsilon at 0x00000256C0420040>, 'lpar'])
+lpar --> lpar
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x00000256BF3F0700>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createReturnNode at 0x00000256C0420430>, <function createExprNode at 0x00000256C0421120>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'rpar'])
+rpar --> rpar
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction)
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3', 'rcurbr'])
+rcurbr --> rcurbr
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'REPTIMPLDEF3'])
+REPTIMPLDEF3 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createImplBodyNode at 0x00000256C0420CA0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr'])
+rcurbr --> rcurbr
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0'])
+REPTPROG0 --> ['STRUCTORIMPLORFUNC', 'REPTPROG0']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'STRUCTORIMPLORFUNC'])
+STRUCTORIMPLORFUNC --> ['FUNCDEF']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'FUNCDEF'])
+FUNCDEF --> ['FUNCHEAD', 'FUNCBODY']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'FUNCBODY', 'FUNCHEAD'])
+FUNCHEAD --> ['func', 'id', <function createLeaf at 0x00000256BF3F0700>, 'lpar', 'FPARAMS', <function createParamListNode at 0x00000256C04201F0>, 'rpar', 'arrow', 'RETURNTYPE', <function createLeafType at 0x00000256C0403D90>, <function createFuncDefNode at 0x00000256C0420280>]
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'FPARAMS', 'lpar', <function createLeaf at 0x00000256BF3F0700>, 'id', 'func'])
+func --> func
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'FPARAMS', 'lpar', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'FPARAMS', 'lpar'])
+lpar --> lpar
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main(
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'FPARAMS'])
+FPARAMS --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x00000256C04201F0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow', 'rpar'])
+rpar --> rpar
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main()
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE', 'arrow'])
+arrow --> arrow
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() ->
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'RETURNTYPE'])
+RETURNTYPE --> ['void']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x00000256C0420280>, <function createLeafType at 0x00000256C0403D90>, 'void'])
+void --> void
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'FUNCBODY'])
+FUNCBODY --> ['lcurbr', <function createLeafEpsilon at 0x00000256C0420040>, 'REPTFUNCBODY1', <function createFuncBodyNode at 0x00000256C0420940>, 'rcurbr']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', <function createLeafEpsilon at 0x00000256C0420040>, 'lcurbr'])
+lcurbr --> lcurbr
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['VARDECL']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'VARDECL'])
+VARDECL --> ['let', 'id', <function createLeaf at 0x00000256BF3F0700>, 'colon', 'TYPE', <function createLeafType at 0x00000256C0403D90>, 'REPTVARDECL4', <function createDimNode at 0x00000256C04200D0>, <function createVardeclNode at 0x00000256C0420160>, 'semi']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id', 'let'])
+let --> let
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon', <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE', 'colon'])
+colon --> colon
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco:
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'TYPE'])
+TYPE --> ['id']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4', <function createLeafType at 0x00000256C0403D90>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco: myclass
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'REPTVARDECL4'])
+REPTVARDECL4 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x00000256C0420160>, <function createDimNode at 0x00000256C04200D0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco: myclass;
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['STATEMENT']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'STATEMENT'])
+STATEMENT --> ['STATESTART', 'semi']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATESTART'])
+STATESTART --> ['id', <function createLeaf at 0x00000256BF3F0700>, <function createAttributeNode at 0x00000256C04211B0>, 'STATEVARORFUNC']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC', <function createAttributeNode at 0x00000256C04211B0>, <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco: myclass;
+  taco
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC'])
+STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR'])
+REPTSTATEVAR --> ['dot', 'STATESTART']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATESTART', 'dot'])
+dot --> dot
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco: myclass;
+  taco.
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATESTART'])
+STATESTART --> ['id', <function createLeaf at 0x00000256BF3F0700>, <function createAttributeNode at 0x00000256C04211B0>, 'STATEVARORFUNC']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC', <function createAttributeNode at 0x00000256C04211B0>, <function createLeaf at 0x00000256BF3F0700>, 'id'])
+id --> id
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco: myclass;
+  taco.z
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC'])
+STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['INDICE', 'REPTSTATEVARORFUNC0']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0', 'INDICE'])
+INDICE --> ['lsqbr', 'ARITHEXPR', <function createIndiceNode at 0x00000256C0420DC0>, 'rsqbr']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0', 'rsqbr', <function createIndiceNode at 0x00000256C0420DC0>, 'ARITHEXPR', 'lsqbr'])
+lsqbr --> lsqbr
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco: myclass;
+  taco.z[
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0', 'rsqbr', <function createIndiceNode at 0x00000256C0420DC0>, 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0', 'rsqbr', <function createIndiceNode at 0x00000256C0420DC0>, 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0', 'rsqbr', <function createIndiceNode at 0x00000256C0420DC0>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['intlit', <function createLeaf at 0x00000256BF3F0700>]
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0', 'rsqbr', <function createIndiceNode at 0x00000256C0420DC0>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', <function createLeaf at 0x00000256BF3F0700>, 'intlit'])
+intlit --> intlit
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco: myclass;
+  taco.z[2
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0', 'rsqbr', <function createIndiceNode at 0x00000256C0420DC0>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0', 'rsqbr', <function createIndiceNode at 0x00000256C0420DC0>, 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0', 'rsqbr', <function createIndiceNode at 0x00000256C0420DC0>, 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0', 'rsqbr', <function createIndiceNode at 0x00000256C0420DC0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0', 'rsqbr'])
+rsqbr --> rsqbr
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco: myclass;
+  taco.z[2]
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR'])
+REPTSTATEVAR --> ['ASSIGNOP', <function createLeafEpsilon at 0x00000256C0420040>, 'EXPR', <function createExprNode at 0x00000256C0421120>, <function createAssignNode at 0x00000256C0421090>]
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'EXPR', <function createLeafEpsilon at 0x00000256C0420040>, 'ASSIGNOP'])
+ASSIGNOP --> ['equal']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'EXPR', <function createLeafEpsilon at 0x00000256C0420040>, 'equal'])
+equal --> equal
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco: myclass;
+  taco.z[2] =
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['floatlit', <function createLeaf at 0x00000256BF3F0700>]
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', <function createLeaf at 0x00000256BF3F0700>, 'floatlit'])
+floatlit --> floatlit
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco: myclass;
+  taco.z[2] = 13.4
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x00000256C0421090>, <function createExprNode at 0x00000256C0421120>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco: myclass;
+  taco.z[2] = 13.4;
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['epsilon']
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x00000256C0420940>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x00000256C0421240>, 'REPTPROG0', 'rcurbr'])
+rcurbr --> rcurbr
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco: myclass;
+  taco.z[2] = 13.4;
+}

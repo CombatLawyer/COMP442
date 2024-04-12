@@ -20,6 +20,13 @@ else:
 
 # Queue that will contain all the lexemes
 lexicon = deque()
+
+outputFileName = f"{filename}.outlextokens"
+# If file does not exist, create it, otherwise overwrite the old one
+if not os.path.exists(outputFileName):
+    f = open(outputFileName, "x")
+else:
+    f = open(outputFileName, "w")
     
 while 1:
     lexeme = lexicalAnalyzer.nextToken(file)
@@ -39,6 +46,7 @@ while 1:
     
     # Append all lexemes into the queue
     lexicon.append([lexeme[0], lexeme[1], lexeme[2], lexeme[3]])
+    print(([lexeme[0], lexeme[1], lexeme[2], lexeme[3]]), file=f)
 
 # Send lexicon to be parsed
 grammarParser.parseToken(lexicon, filename)
@@ -46,20 +54,4 @@ grammarParser.parseToken(lexicon, filename)
 # Close all the files that were open  
 file.close()
 e.close()
-
-'''
-Legacy code for printing productions
-outputFileName = f"{filename}.outlextokens"
-# If file does not exist, create it, otherwise overwrite the old one
-if not os.path.exists(outputFileName):
-    f = open(outputFileName, "x")
-else:
-    f = open(outputFileName, "w")
-else:
-    if lexeme[2] not in lexicon.keys():
-        lexicon[lexeme[2]] = []
-    lexicon[lexeme[2]].append([lexeme[1], lexeme[0], lexeme[2], lexeme[3]])
-for line in lexicon:
-    print(*lexicon[line], file=f)
 f.close()
-'''

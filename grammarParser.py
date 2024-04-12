@@ -4,6 +4,7 @@ import os
 from collections import deque
 import networkx as nx
 import moonCodeGenerator
+import math
 
 # Initialize the stack used for sematinc actions
 semantic = deque()
@@ -52,6 +53,9 @@ class Leaf():
     def setParent(self, parent):
         self.parent = parent
 
+"""
+Class used to keep track of symbol table contents
+"""
 class Table():
     def __init__(self, id):
         self.name = id
@@ -87,6 +91,9 @@ class Table():
     def addClasses(self, table):
         self.classes.append(table)
 
+"""
+Class used to describe a function in a symbol table object
+"""
 class Function():
     def __init__(self, id, returnType, visibility):
         self.name = id
@@ -155,6 +162,20 @@ Creates a sign leaf, used to specify that whatever after is signed
 """     
 def createLeafSign(line, notused):
     leaf = Leaf("Sign", line)
+    semantic.append(leaf)
+
+"""
+Creates an operator leaf which allows the evaluation of conditions
+"""    
+def createOperatorLeaf(line, value):
+    leaf = Leaf("Operator", line, value)
+    semantic.append(leaf)
+
+"""
+Creates a math operator leaf which allows math operations in expressions
+"""    
+def createMathOperatorLeaf(line, value):
+    leaf = Leaf("MathOperator", line, value)
     semantic.append(leaf)
 
 """
@@ -242,12 +263,13 @@ def createReturnNode():
     semantic.append(node)
 
 """
-Function creates a conditional node which groups a conditional right and left half
+Function creates a conditional node which groups a conditional right and left half and the operator that will evaluate the relationship
 """ 
 def createConditionNode():
     leftValue = semantic.pop()
+    operator = semantic.pop()
     rightValue = semantic.pop()
-    node = Node("ConditionNode", [rightValue, leftValue])
+    node = Node("ConditionNode", [rightValue, operator, leftValue])
     rightValue.setParent(node)
     leftValue.setParent(node)
     semantic.append(node)
@@ -330,7 +352,7 @@ def createElseNode():
 """
 This is never used, supposed to capture what is in between parenthesis when a factor production uses it
 """    
-def createFuncArgNode():
+def createParenthesisNode():
     args = []
     
     # Search for the epsilon placed at the start of the block
@@ -338,7 +360,7 @@ def createFuncArgNode():
         leaf = semantic.pop()
         args.append(leaf)
     args.reverse()
-    node = Node("FuncArgs", args)
+    node = Node("ParenthesisNode", args)
     for child in args:
         child.setParent(node)
         
@@ -493,10 +515,11 @@ def createSignedNode():
     
 """
 Indice nodes will check the stack and check if id is prsent under the top of the stack (this indicates that this current id or intlit 
-is an indice of that id). If another indice node is found there, then ther indice node is remade with the new indice added.
+is an indice of that id). If another indice node is found there, then ther indice node is remade with the new indice added. If an attribute node is found
+it will try to join nest itself inside.
 """    
 def createIndiceNode():
-    if semantic[-2].getNodeType() in ["id"]:
+    if semantic[-2].getNodeType() in ["id", "AttributeNode"]:
         indice = semantic.pop()
         array = semantic.pop()
         node = Node("IndiceNode", [array, indice])
@@ -517,9 +540,11 @@ The add node takes in two values (right and left) and indicates that an add oper
 """
 def createAddNode():
     rightValue = semantic.pop()
+    operator = semantic.pop()
     leftValue = semantic.pop()
-    node = Node("AddOp", [rightValue, leftValue])
+    node = Node("AddOp", [rightValue, operator, leftValue])
     rightValue.setParent(node)
+    operator.setParent(node)
     leftValue.setParent(node)
     semantic.append(node)
 
@@ -528,9 +553,11 @@ The mult node takes in two values (right and left) and indicates that an add ope
 """    
 def createMultNode():
     rightValue = semantic.pop()
+    operator = semantic.pop()
     leftValue = semantic.pop()
-    node = Node("MultOp", [rightValue, leftValue])
+    node = Node("MultOp", [rightValue, operator, leftValue])
     rightValue.setParent(node)
+    operator.setParent(node)
     leftValue.setParent(node)
     semantic.append(node)
 
@@ -588,7 +615,7 @@ Otherwise if its an id it will group the id and the the id it is associated with
 the new attribute.
 """ 
 def createAttributeNode():
-    if semantic[-2].getNodeType() == "id":
+    if semantic[-2].getNodeType() in ["id", "IndiceNode"]:
         attribute = semantic.pop()
         parentId = semantic.pop()
         node = Node("AttributeNode", [parentId, attribute])
@@ -631,7 +658,7 @@ table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
          "ASSIGNOP": {"equal": ["equal"]},
          "ENDBR": {"rsqbr": [createLeafDim, "rsqbr"], "intlit": ["intlit", createLeaf, createLeafDim, "rsqbr"]},
          "EXPR": {"lpar": ["ARITHEXPR", "RELEXPREND"], "id": ["ARITHEXPR", "RELEXPREND"], "minus": ["ARITHEXPR", "RELEXPREND"], "plus": ["ARITHEXPR", "RELEXPREND"], "not": ["ARITHEXPR", "RELEXPREND"], "floatlit": ["ARITHEXPR", "RELEXPREND"], "intlit": ["ARITHEXPR", "RELEXPREND"]},
-         "FACTOR": {"lpar": ["lpar", createLeafEpsilon, "ARITHEXPR", createFuncArgNode, "rpar"], "id":["id", createLeaf, "VARORFUNC", "REPTFACTOR2"], "minus": ["SIGN", createLeafSign, "FACTOR", createSignedNode], "plus": ["SIGN", createLeafSign, "FACTOR", createSignedNode], "not": ["not", "FACTOR"], "floatlit": ["floatlit", createLeaf], "intlit": ["intlit", createLeaf]},
+         "FACTOR": {"lpar": ["lpar", createLeafEpsilon, "ARITHEXPR", createParenthesisNode, "rpar"], "id":["id", createLeaf, "VARORFUNC", "REPTFACTOR2"], "minus": ["SIGN", createLeafSign, "FACTOR", createSignedNode], "plus": ["SIGN", createLeafSign, "FACTOR", createSignedNode], "not": ["not", "FACTOR"], "floatlit": ["floatlit", createLeaf], "intlit": ["intlit", createLeaf]},
          "FPARAMS": {"rpar": ["epsilon"], "id": ["id", createLeaf, "colon", "TYPE", createLeafType, "REPTFPARAMS3", createDimNode, createVardeclNode, "REPTFPARAMS4"]},
          "FPARAMSTAIL": {"comma": ["comma", "id", createLeaf, "colon", "TYPE", createLeafType, "REPTFPARAMSTAIL4", createDimNode]},
          "FUNCBODY": {"lcurbr": ["lcurbr", createLeafEpsilon, "REPTFUNCBODY1", createFuncBodyNode, "rcurbr"]},
@@ -645,7 +672,7 @@ table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
          "MULTOP": {"and": ["and"], "div": ["div"], "mult": ["mult"]},
          "OPTSTRUCTDECL2": {"lcurbr": ["epsilon"], "inherits": ["inherits", "id", createLeaf, "REPTOPTSTRUCTDECL22"]},
          "PROG": {"struct": ["REPTPROG0"], "impl": ["REPTPROG0"], "func": ["REPTPROG0"]},
-         "RELEXPR": {"lpar": ["ARITHEXPR", "RELOP", "ARITHEXPR", createConditionNode], "id": ["ARITHEXPR", "RELOP", "ARITHEXPR", createConditionNode], "minus": ["ARITHEXPR", "RELOP", "ARITHEXPR", createConditionNode], "plus": ["ARITHEXPR", "RELOP", "ARITHEXPR", createConditionNode], "not": ["ARITHEXPR", "RELOP", "ARITHEXPR", createConditionNode], "floatlit": ["ARITHEXPR", "RELOP", "ARITHEXPR", createConditionNode], "intlit": ["ARITHEXPR", "RELOP", "ARITHEXPR", createConditionNode]},
+         "RELEXPR": {"lpar": ["ARITHEXPR", "RELOP", createOperatorLeaf, "ARITHEXPR", createConditionNode], "id": ["ARITHEXPR", "RELOP", createOperatorLeaf, "ARITHEXPR", createConditionNode], "minus": ["ARITHEXPR", "RELOP", createOperatorLeaf, "ARITHEXPR", createConditionNode], "plus": ["ARITHEXPR", "RELOP", createOperatorLeaf, "ARITHEXPR", createConditionNode], "not": ["ARITHEXPR", "RELOP", createOperatorLeaf, "ARITHEXPR", createConditionNode], "floatlit": ["ARITHEXPR", "RELOP", createOperatorLeaf, "ARITHEXPR", createConditionNode], "intlit": ["ARITHEXPR", "RELOP", createOperatorLeaf, "ARITHEXPR", createConditionNode]},
          "RELEXPREND": {"rpar": ["epsilon"], "semi": ["epsilon"], "comma": ["epsilon"], "geq": ["RELOP" "ARITHEXPR"], "leq": ["RELOP" "ARITHEXPR"], "gt": ["RELOP" "ARITHEXPR"], "lt": ["RELOP" "ARITHEXPR"], "neq": ["RELOP" "ARITHEXPR"], "eq": ["RELOP" "ARITHEXPR"]},
          "RELOP": {"geq": ["geq"], "leq": ["leq"], "gt": ["gt"], "lt": ["lt"], "neq": ["neq"], "eq": ["eq"]},
          "REPTAPARAMS1": {"rpar": ["epsilon"], "comma": ["APARAMSTAIL", "REPTAPARAMS1"]},
@@ -668,8 +695,8 @@ table = {"ADDOP": {"minus": ["minus"], "plus": ["plus"], "or": ["or"]},
          "REPTVARIDNEST20": {"rpar": ["epsilon"], "dot": ["epsilon"], "lsqbr": ["INDICE", "REPTVARIDNEST20"]},
          "REPTVARORFUNC0": {"rpar": ["epsilon"], "dot": ["epsilon"], "semi": ["epsilon"], "minus": ["epsilon"], "plus": ["epsilon"], "comma": ["epsilon"], "geq": ["epsilon"], "leq": ["epsilon"], "gt": ["epsilon"], "lt": ["epsilon"], "neq": ["epsilon"], "eq": ["epsilon"], "and": ["epsilon"], "div": ["epsilon"], "mult": ["epsilon"], "rsqbr": ["epsilon"], "lsqbr": ["INDICE", "REPTVARORFUNC0"], "or": ["epsilon"]},
          "RETURNTYPE": {"id": ["TYPE"], "float": ["TYPE"], "integer": ["TYPE"], "void": ["void"]},
-         "RIGHTRECARITHEXPR": {"rpar": ["epsilon"], "semi": ["epsilon"], "minus": ["ADDOP", "TERM", createAddNode, "RIGHTRECARITHEXPR"], "plus": ["ADDOP", "TERM", createAddNode, "RIGHTRECARITHEXPR"], "comma": ["epsilon"], "geq": ["epsilon"], "leq": ["epsilon"], "gt": ["epsilon"], "lt": ["epsilon"], "neq": ["epsilon"], "eq": ["epsilon"], "rsqbr": ["epsilon"], "or": ["ADDOP", "TERM", createOrNode, "RIGHTRECARITHEXPR"]},
-         "RIGHTRECTERM": {"rpar": ["epsilon"], "semi": ["epsilon"], "minus": ["epsilon"], "plus": ["epsilon"], "comma": ["epsilon"], "geq": ["epsilon"], "leq": ["epsilon"], "gt": ["epsilon"], "lt": ["epsilon"], "neq": ["epsilon"], "eq": ["epsilon"], "and": ["MULTOP", "FACTOR", createAndNode, "RIGHTRECTERM"], "div": ["MULTOP", "FACTOR", createMultNode, "RIGHTRECTERM"], "mult": ["MULTOP", "FACTOR", createMultNode, "RIGHTRECTERM"], "rsqbr": ["epsilon"], "or": ["epsilon"]},
+         "RIGHTRECARITHEXPR": {"rpar": ["epsilon"], "semi": ["epsilon"], "minus": ["ADDOP", createMathOperatorLeaf, "TERM", createAddNode, "RIGHTRECARITHEXPR"], "plus": ["ADDOP", createMathOperatorLeaf, "TERM", createAddNode, "RIGHTRECARITHEXPR"], "comma": ["epsilon"], "geq": ["epsilon"], "leq": ["epsilon"], "gt": ["epsilon"], "lt": ["epsilon"], "neq": ["epsilon"], "eq": ["epsilon"], "rsqbr": ["epsilon"], "or": ["ADDOP", "TERM", createOrNode, "RIGHTRECARITHEXPR"]},
+         "RIGHTRECTERM": {"rpar": ["epsilon"], "semi": ["epsilon"], "minus": ["epsilon"], "plus": ["epsilon"], "comma": ["epsilon"], "geq": ["epsilon"], "leq": ["epsilon"], "gt": ["epsilon"], "lt": ["epsilon"], "neq": ["epsilon"], "eq": ["epsilon"], "and": ["MULTOP", "FACTOR", createAndNode, "RIGHTRECTERM"], "div": ["MULTOP", createMathOperatorLeaf, "FACTOR", createMultNode, "RIGHTRECTERM"], "mult": ["MULTOP", createMathOperatorLeaf, "FACTOR", createMultNode, "RIGHTRECTERM"], "rsqbr": ["epsilon"], "or": ["epsilon"]},
          "SIGN": {"minus": ["minus"], "plus": ["plus"]},
          "START": {"struct": [createLeafEpsilon, "PROG", createProgNode], "impl": [createLeafEpsilon, "PROG", createProgNode], "func": [createLeafEpsilon, "PROG", createProgNode]},
          "STATBLOCK": {"id": ["STATEMENT"], "semi": ["epsilon"], "lcurbr": ["lcurbr", "REPTSTATBLOCK1", "rcurbr"], "return": ["STATEMENT"], "write": ["STATEMENT"], "read": ["STATEMENT"], "while": ["STATEMENT"], "else": ["epsilon"], "if": ["STATEMENT"]},
@@ -1045,7 +1072,7 @@ def parseToken(passedLexicon, filename):
             if callable(stack[-1]):
                 if stack[-1] == createLeaf:
                     createLeaf(previousLexeme[1], previousLexeme[2], previousLexeme[0])
-                elif stack[-1] in [createLeafVisibility, createLeafType, createLeafDim, createLeafSign]:
+                elif stack[-1] in [createLeafVisibility, createLeafType, createLeafDim, createLeafSign, createOperatorLeaf, createMathOperatorLeaf]:
                     stack[-1](previousLexeme[2], previousLexeme[0])
                 else:
                     stack[-1]()
@@ -1137,7 +1164,15 @@ def parseToken(passedLexicon, filename):
         
     moonCodeGenerator.beginProgram(f"{filename}.m")
         
-    moonCodeGenerator.allocateMemory(globalSymbolTable)
+    reservedMemory = moonCodeGenerator.allocateMemory(globalSymbolTable)
+    
+    # This is used to reserve function variables after
+    global functionVarReservation
+    functionVarReservation = ""
+    
+    # This is used to put the function code right after the halt
+    global functionCode
+    functionCode = ""
         
     # Open the semantic error file to write to or create it if necessary
     semanticErrors = f"{filename}.outsemanticerrors"
@@ -1147,9 +1182,19 @@ def parseToken(passedLexicon, filename):
     else:
         semanticErrorsFile = open(semanticErrors, "w")
     
+    # This is used to reserve the intermediated used in expressions
+    global additionalAllocation
+    additionalAllocation = ""
+    
     # Generate symbol table and check semantic rules
     for node in semantic:
         checkClasses(node, semanticErrorsFile)
+    
+    # Print the additional content to the end of the moon code
+    moonCodeGenerator.printAllocation(functionCode)    
+    moonCodeGenerator.printAllocation(reservedMemory)
+    moonCodeGenerator.printAllocation(functionVarReservation)
+    moonCodeGenerator.printAllocation(additionalAllocation)
         
     astFile.close()
     symbolTableFile.close()
@@ -1222,6 +1267,9 @@ def printNode(node, spaces, file):
         for child in children:
             printNode(child, spaces+1, file)
 
+"""
+This first run is to generate an AST to allow the initial reservation of objects to be done in the first pass
+"""
 def generateSymbolTable(root):
     tree = deque()
     tree.append(root)
@@ -1251,9 +1299,13 @@ def generateSymbolTable(root):
                         for var in decl.getChildren()[1].getChildren()[1].getChildren():
                             varName = var.getChildren()[0].getValue()
                             varType = var.getChildren()[1].getValue()
+                            for dim in var.getChildren()[2].getChildren():
+                                varType += dim.getValue()
                             functionTable.addParam(varName, varType)
                     else:
                         type = decl.getChildren()[1].getChildren()[1].getValue()
+                        for dim in decl.getChildren()[1].getChildren()[2].getChildren():
+                            type = type + dim.getValue()
                         classTable.addData(name, type, visibility)
                 tree.pop()
                 continue
@@ -1270,17 +1322,18 @@ def generateSymbolTable(root):
                         for var in implStack[-1].getChildren()[1].getChildren():
                             varName = var.getChildren()[0].getValue()
                             varType = var.getChildren()[1].getValue()
+                            for dim in var.getChildren()[2].getChildren():
+                                varType += dim.getValue()
                             if implName + "." + implFuncName + "." + implReturnType in context:
-                                func = context[implName + "." + implFuncName + "." + implReturnType]
-                                if (varName, varType) in func.getParam():
-                                    # print("exists")
-                                    # Filler code to show that I can tell if variables exist
-                                    a = "a"
+                                func = context.pop(implName + "." + implFuncName + "." + implReturnType)
+                            
                         implStack.pop()
                         for nodes in implStack[-1].getChildren():
                             if nodes.getNodeType() == "VarDecl":
                                 functionVarName = nodes.getChildren()[0].getValue()
                                 functionVarType = nodes.getChildren()[1].getValue()
+                                for dim in nodes.getChildren()[2].getChildren():
+                                    functionVarType += dim.getValue()
                                 func.addLocal(functionVarName, functionVarType)
                         implStack.pop()
                     else:
@@ -1297,9 +1350,11 @@ def generateSymbolTable(root):
                 tree.pop()
                 for nodes in tree[-1].getChildren():
                     if nodes.getNodeType() == "VarDecl":
-                        functionVarName = nodes.getChildren()[0].getValue()
-                        functionVarType = nodes.getChildren()[1].getValue()
-                        globalFunc.addLocal(functionVarName, functionVarType)
+                        varName = nodes.getChildren()[0].getValue()
+                        varType = nodes.getChildren()[1].getValue()
+                        for dim in nodes.getChildren()[2].getChildren():
+                            varType += dim.getValue()
+                        globalFunc.addLocal(varName, varType)
                 tree.pop()
                 continue
 
@@ -1416,6 +1471,11 @@ file = file to print symbol table to
 warning = file to print errors and warning to
 """            
 def checkClasses(root, warning):
+    
+    # Using this to add memory for addtional variables
+    global additionalAllocation
+    global functionVarReservation
+    global functionCode
     
     # Going through the AST
     tree = deque()
@@ -1579,6 +1639,8 @@ def checkClasses(root, warning):
                             localContext.append(name)
                             
                         type = decl.getChildren()[1].getChildren()[1].getValue()
+                        for dim in decl.getChildren()[1].getChildren()[2].getChildren():
+                            type += dim.getValue()
                         
                         # Check in parent classes if a variable with the same name exists
                         otherNodes = list(inheritence)
@@ -1636,12 +1698,17 @@ def checkClasses(root, warning):
                             implStack.pop()
                             continue
                         
+                        functionParameters = []
+                        
                         # Process function parameters and ensure all the parameters are accounted for
                         for var in implStack[-1].getChildren()[1].getChildren():
                             varName = var.getChildren()[0].getValue()
                             varType = var.getChildren()[1].getValue()
+                            functionParameters.append([varName, varType])
                             if (varName, varType) in functionVariables:
                                 functionVariables.remove((varName, varType))
+                                
+                        functionVarReservation += moonCodeGenerator.reserveFunction(implName, implFuncName, functionParameters, implReturnType)
                         
                         # Pop off the function definition and begin processing function body
                         implStack.pop()
@@ -1776,8 +1843,9 @@ def checkClasses(root, warning):
                                     
                                     # If the variable is the wrong type
                                     elif implVariables[returnObject] != implReturnType:
-                                        semanticErrors.append((f"Semantic Error: type error in return statement for {implFuncName}", returnLine))
-                                        break
+                                        if (not (implVariables[returnObject] == "int") and (implReturnType == "integer")):
+                                            semanticErrors.append((f"Semantic Error: type error in return statement for {implFuncName}", returnLine))
+                                            break
                                 else:
                                     if returnObjectType == "int":
                                         returnObjectType = "integer"
@@ -1813,10 +1881,13 @@ def checkClasses(root, warning):
                 functionVarName = ""
                 stringParam = ""
                 
+                functionParameters = []
+                
                 # Retrieve function parameters
                 for var in funcParamList.getChildren()[::-1]:
                     functionVarName = var.getChildren()[0].getValue()
                     functionVarType = var.getChildren()[1].getValue()
+                    functionParameters.append([functionVarName, functionVarType])
                     for dim in var.getChildren()[2].getChildren():
                         functionVarType += dim.getValue()
                     stringParam += f"{functionVarType} {functionVarName}, "
@@ -1844,6 +1915,12 @@ def checkClasses(root, warning):
                     
                     # Now process the function body
                     tree.pop()
+                
+                # Prints the code that goes before the function call (ready to call the tag of the function)    
+                functionVarReservation += moonCodeGenerator.reserveFunction("global", funcName, functionParameters, funcReturnType)
+                if funcName != "main":
+                    moonCodeGenerator.beginFunctionCode("global", funcName)
+                
                 calls = iter(tree[-1].getChildren())
                 for nodes in calls:
                     
@@ -1877,26 +1954,51 @@ def checkClasses(root, warning):
                     # Assignment node processing
                     if (nodes.getNodeType() == "AssignVar"):
                         nodeType = nodes.getChildren()[0].getNodeType()
-                        
-                        # Determine whats on the RHS and then get the correct data
+                        objAttribute = None
+                        objIndex = None
+                        # Determine whats on the LHS and then get the correct data
                         if nodeType == "id":
                             variable = nodes.getChildren()[0].getValue()
                             nodeLine = nodes.getChildren()[0].getLine()
                         elif nodeType in ["AttributeNode", "IndiceNode"]:
-                            variable = nodes.getChildren()[0].getChildren()[0].getValue()
-                            nodeLine = nodes.getChildren()[0].getChildren()[0].getLine()
+                            if nodes.getChildren()[0].getChildren()[0].getNodeType() == "id":
+                                variable = nodes.getChildren()[0].getChildren()[0].getValue()
+                                nodeLine = nodes.getChildren()[0].getChildren()[0].getLine()
+                            elif nodes.getChildren()[0].getChildren()[0].getNodeType() == "AttributeNode":
+                                variable = nodes.getChildren()[0].getChildren()[0].getChildren()[0].getValue()
+                                nodeLine = nodes.getChildren()[0].getChildren()[0].getChildren()[0].getLine()
+                                objAttribute = nodes.getChildren()[0].getChildren()[0].getChildren()[1].getValue()
+                                objIndex = int(nodes.getChildren()[0].getChildren()[1].getValue())
+                            elif nodes.getChildren()[0].getChildren()[0].getNodeType() == "IndiceNode":
+                                variable = nodes.getChildren()[0].getChildren()[0].getChildren()[0].getValue()
+                                nodeLine = nodes.getChildren()[0].getChildren()[0].getChildren()[0].getLine()
+                                objIndex = int(nodes.getChildren()[0].getChildren()[0].getChildren()[1].getValue())
+                                objAttribute = nodes.getChildren()[0].getChildren()[1].getValue()
                         
                         # See if the variable exists in the local context
                         if variable in localContext:
                             endType = localContext[variable]
+                            if objAttribute:
+                                if "[" not in endType:
+                                    if objAttribute not in definedClasses[endType]:
+                                        print("semantic error")
+                                    else:
+                                        arrayType = definedClasses[endType][objAttribute]
+                                        if arrayType == "float":
+                                            indexSize = 8
+                                        else:
+                                            indexSize = 4
+                                else:
+                                    if objAttribute not in definedClasses[endType[:endType.index("[")]]:
+                                        print("semantic error")
                         else:
                             print("semantic error")
                         
-                        # Process the LHS
+                        # Process the RHS
                         if nodeType == "id":
                             exprNode = nodes.getChildren()[1].getChildren()
                             
-                            # Determine what is on the LHS
+                            # Determine what is on the RHS
                             if isinstance(exprNode, list):
                                 
                                 # If its an attribute node
@@ -1950,10 +2052,79 @@ def checkClasses(root, warning):
                                         semanticErrors.append((f"Semantic Error: undeclared variable {variableName} in local scope", exprNode[0].getLine()))
                                 
                                 # If its just a literal in the exprNode        
-                                elif len(exprNode) == 1:
+                                elif exprNode[0].getNodeType() in ["intlit", "floatlit"]:
                                     value = exprNode[0].getValue()
-                                    moonCodeGenerator.setVariable(variable, value, 0)
-                        
+                                    
+                                    # Depending on if it has an attribute, it will be offset in a different way
+                                    if objAttribute:
+                                        moonCodeGenerator.setMemberVariable(variable, value, endType, objAttribute, indexSize*objIndex)
+                                    else:
+                                        moonCodeGenerator.setVariable(variable, value, 0)
+
+                                else:
+                                    
+                                    # Decompose Expression node
+                                    expressionTerms = exprNode[0].getChildren()
+                                    operationsStack = deque()
+                                    termsStack = deque()
+                                    while expressionTerms:
+                                        
+                                        # Split the expression node into operators and terms
+                                        removeIndexes = []
+                                        for i in range(len(expressionTerms)):
+                                            if expressionTerms[i].getNodeType() == "MathOperator":
+                                                operationsStack.append(expressionTerms[i].getValue())
+                                                removeIndexes.append(i)
+                                        
+                                        # Delete operators that have been recorded
+                                        for i in removeIndexes[::-1]:
+                                            del expressionTerms[i]
+                                            
+                                        # Create a new list for the next cycle if more nodes need to be decomposed
+                                        newList = []
+                                        for i in range(len(expressionTerms)):
+                                            if isinstance(expressionTerms[i], Leaf):
+                                                termsStack.append(expressionTerms[i].getValue())
+                                            else:
+                                                newList.extend(expressionTerms[i].getChildren())
+                                                termsStack.append((expressionTerms[i].getChildren()[0].getValue(), expressionTerms[i].getChildren()[2].getValue()))
+                                        expressionTerms = newList
+                                    
+                                    # This dictionary will store the intermediate variables the result is stored in
+                                    intermediateDictionary = {}
+                                    
+                                    while operationsStack:
+                                        
+                                        # Pop the operator stack
+                                        currentOperator = operationsStack.pop()
+                                        
+                                        # Get the first term, if its an itermediate replace it with the intermediate variable
+                                        term1 = termsStack.pop()
+                                        if term1 in intermediateDictionary:
+                                            term1 = intermediateDictionary[term1]
+                                            
+                                        # Get the second term, if its an itermediate replace it with the intermediate variable
+                                        term2 = termsStack.pop()
+                                        if term2 in intermediateDictionary:
+                                            term2 = intermediateDictionary[term2]
+                                            
+                                        # Call the specific method based on the operator
+                                        if currentOperator == "*":
+                                            intermediate = moonCodeGenerator.createMultOperation(term1, term2)
+                                        elif currentOperator == "-":
+                                            intermediate = moonCodeGenerator.createSubOperation(term1, term2)
+                                        elif currentOperator == "/":
+                                            intermediate = moonCodeGenerator.createDivOperation(term1, term2)
+                                        elif currentOperator == "+":
+                                            intermediate = moonCodeGenerator.createAddOperation(term1, term2)
+                                        
+                                        # Record intermediate and ensure it gets reserved
+                                        intermediateDictionary[(term2, term1)] = f"t{intermediate}"
+                                        functionVarReservation += moonCodeGenerator.reserveSingleParam(f"t{intermediate}", endType)
+                                    
+                                    # Assign the final operation to the variable
+                                    moonCodeGenerator.setMemberVariableToVariable(variable, f"t{intermediate}", 0)
+                                    
                         # Attribute node processing
                         elif nodeType == "AttributeNode":
                             
@@ -1975,25 +2146,105 @@ def checkClasses(root, warning):
                                 if attributeName not in definedClasses[objectType]:                  
                                     semanticErrors.append((f"Semantic Error: undeclared member {attributeName}", objectLine))
                                     continue
-                            else:
                                 
-                                # Doing indexing now
-                                for indice in nodes.getChildren()[0].getChildren()[1:]:
-                                    if indice in localContext:
-                                        
-                                        # If it was an id, the id cannot belong to something that isnt an integer
-                                        if localContext[indice] != "integer":
-                                            semanticErrors.append((f"Semantic Error: cannot use non-integer array index for {variable}", nodeLine))
-                                            continue
+                                exprNode = nodes.getChildren()[1].getChildren()                       
+                                   
+                                # Determine what is on the RHS
+                                if isinstance(exprNode, list):
                                     
-                                    # Otherwise if its a number it number be an intlit
-                                    elif indice.getNodeType() != "intlit":
-                                        semanticErrors.append((f"Semantic Error: cannot use non-integer array index for {variable}", nodeLine))
-                                        continue
-                                
-                                # If the number of children doesnt equal the number of dimension on the variable
+                                    # If its an attribute node
+                                    if exprNode[0].getNodeType() == "AttributeNode":
+                                        objectName = exprNode[0].getChildren()[0].getValue()
+                                        objectType = localContext[objectName]
+                                        objectLine = exprNode[0].getChildren()[0].getLine()
+                                        attributeName = exprNode[0].getChildren()[1].getValue()
+                                        
+                                        # If the attribute for the class is defined in the context
+                                        if attributeName in definedClasses[objectType]:
+                                            expectedNumArgs = len(definedClasses[objectType][attributeName][0])
+                                            
+                                            # Too many or too little arguments
+                                            if len(exprNode[1].getChildren()) != expectedNumArgs:
+                                                semanticErrors.append((f"Semantic Error: function {attributeName} was given invalid number of arguments", objectLine))
+                                                continue
+                                            index = 0
+                                            
+                                            # Comapre the parameter types one at a time, only return the error on the last 
+                                            for node in exprNode[1].getChildren():
+                                                if node.getChildren()[0].getValue() != None:
+                                                    type = node.getChildren()[0].getNodeType()[:-3]
+                                                    if type != definedClasses[objectType][attributeName][0][index][1]:
+                                                        semanticErrors.append((f"Semantic Error: function {attributeName} was given an invalid type of argument", objectLine))
+                                                        break
+                                                    index += 1
+                                                else:
+                                                    if node.getChildren()[0].getNodeType() == "SignedNode":
+                                                        type = node.getChildren()[0].getChildren()[1].getNodeType()[:-3]
+                                                    if type != definedClasses[objectType][attributeName][0][index][1]:
+                                                        semanticErrors.append((f"Semantic Error: function {attributeName} was given an invalid type of argument", objectLine))
+                                                        break
+                                                    index += 1
+                                        else:
+                                        
+                                            # If its a function param list that means the function was not recognized
+                                            if exprNode[1].getNodeType() == "FuncParamList":
+                                                semanticErrors.append((f"Semantic Error: undeclared function {attributeName}", objectLine))
+                                                continue
+                                            
+                                            # Otherwise its an undeclared member
+                                            else:
+                                                semanticErrors.append((f"Semantic Error: undeclared member {attributeName}", objectLine))
+                                                continue
+                                    
+                                    # If its just an id check if the id is defined in this context
+                                    elif exprNode[0].getNodeType() == "id":
+                                        variableName = exprNode[0].getValue()
+                                        if variableName not in localContext:
+                                            semanticErrors.append((f"Semantic Error: undeclared variable {variableName} in local scope", exprNode[0].getLine()))
+                                    
+                                    # If its just a literal in the exprNode        
+                                    elif len(exprNode) == 1:
+                                        value = exprNode[0].getValue()
+                                        moonCodeGenerator.setMemberVariable(objectName, value, objectType, attributeName, 0)
+                            
+                            # If the number of children doesnt equal the number of dimension on the variable
+                            if nodes.getChildren()[0].getNodeType() == "IndiceNode" or nodes.getChildren()[0].getChildren()[0].getNodeType() == "IndiceNode":
                                 if len(nodes.getChildren()[0].getChildren()[1:]) != endType.count("["):
                                     semanticErrors.append((f"Semantic Error: use of array {variable} with wrong number of dimensions", nodeLine))
+                                    continue
+                                    
+                                else:
+                                    if objAttribute:
+                                        exprNode = nodes.getChildren()[1].getChildren() 
+                                        if len(exprNode) == 1:
+                                            value = exprNode[0].getValue()
+                                            if objAttribute:
+                                                
+                                                # Generate allocation code for the data member
+                                                indexes = []
+                                                indices = nodes.getChildren()[0].getChildren()[0].getChildren()[1:]
+                                                for i in indices:
+                                                    indexes.append(i.getValue())
+                                                totalOffset = math.prod(indexes)
+                                                moonCodeGenerator.setIndexedContentMember(variable, value, endType[:endType.index("[")], objAttribute, totalOffset)
+                                    else:
+                                        # Doing indexing now
+                                        for indice in nodes.getChildren()[0].getChildren()[1:]:
+                                            if indice in localContext:
+                                                
+                                                # If it was an id, the id cannot belong to something that isnt an integer
+                                                if localContext[indice] != "integer":
+                                                    semanticErrors.append((f"Semantic Error: cannot use non-integer array index for {variable}", nodeLine))
+                                                    continue
+                                            
+                                            # Otherwise if its a number it number be an intlit
+                                            elif indice.getNodeType() != "intlit":
+                                                semanticErrors.append((f"Semantic Error: cannot use non-integer array index for {variable}", nodeLine))
+                                                continue
+                                    
+                                    # If the number of children doesnt equal the number of dimension on the variable
+                                    if len(nodes.getChildren()[0].getChildren()[1:]) != endType.count("["):
+                                        semanticErrors.append((f"Semantic Error: use of array {variable} with wrong number of dimensions", nodeLine))
                         
                         # Indice node processing
                         elif nodeType == "IndiceNode":
@@ -2011,15 +2262,93 @@ def checkClasses(root, warning):
                                 elif indice.getNodeType() != "intlit":
                                     semanticErrors.append((f"Semantic Error: cannot use non-integer array index for {variable}", nodeLine))
                                     continue
+                                
+                                accessIndex = int(indice.getValue()) * 4
+                                
+                                exprNode = nodes.getChildren()[1].getChildren()                       
+                                   
+                                # Determine what is on the RHS
+                                if isinstance(exprNode, list):
+                                    
+                                    # If its an attribute node
+                                    if exprNode[0].getNodeType() == "AttributeNode":
+                                        objectName = exprNode[0].getChildren()[0].getValue()
+                                        objectType = localContext[objectName]
+                                        objectLine = exprNode[0].getChildren()[0].getLine()
+                                        attributeName = exprNode[0].getChildren()[1].getValue()
+                                        
+                                        # If the attribute for the class is defined in the context
+                                        if attributeName in definedClasses[objectType]:
+                                            expectedNumArgs = len(definedClasses[objectType][attributeName][0])
+                                            
+                                            # Too many or too little arguments
+                                            if len(exprNode[1].getChildren()) != expectedNumArgs:
+                                                semanticErrors.append((f"Semantic Error: function {attributeName} was given invalid number of arguments", objectLine))
+                                                continue
+                                            index = 0
+                                            
+                                            # Comapre the parameter types one at a time, only return the error on the last 
+                                            for node in exprNode[1].getChildren():
+                                                if node.getChildren()[0].getValue() != None:
+                                                    type = node.getChildren()[0].getNodeType()[:-3]
+                                                    if type != definedClasses[objectType][attributeName][0][index][1]:
+                                                        semanticErrors.append((f"Semantic Error: function {attributeName} was given an invalid type of argument", objectLine))
+                                                        break
+                                                    index += 1
+                                                else:
+                                                    if node.getChildren()[0].getNodeType() == "SignedNode":
+                                                        type = node.getChildren()[0].getChildren()[1].getNodeType()[:-3]
+                                                    if type != definedClasses[objectType][attributeName][0][index][1]:
+                                                        semanticErrors.append((f"Semantic Error: function {attributeName} was given an invalid type of argument", objectLine))
+                                                        break
+                                                    index += 1
+                                        else:
+                                        
+                                            # If its a function param list that means the function was not recognized
+                                            if exprNode[1].getNodeType() == "FuncParamList":
+                                                semanticErrors.append((f"Semantic Error: undeclared function {attributeName}", objectLine))
+                                                continue
+                                            
+                                            # Otherwise its an undeclared member
+                                            else:
+                                                semanticErrors.append((f"Semantic Error: undeclared member {attributeName}", objectLine))
+                                                continue
+                                    
+                                    # If its just an id check if the id is defined in this context
+                                    elif exprNode[0].getNodeType() == "id":
+                                        variableName = exprNode[0].getValue()
+                                        if variableName not in localContext:
+                                            semanticErrors.append((f"Semantic Error: undeclared variable {variableName} in local scope", exprNode[0].getLine()))
+                                    
+                                    # If its just a literal in the exprNode        
+                                    elif len(exprNode) == 1:
+                                        value = exprNode[0].getValue()
+                                        if objAttribute:
+                                            moonCodeGenerator.setMemberVariable(variable, value, endType, objAttribute, indexSize*objIndex)
+                                        else:
+                                            moonCodeGenerator.setVariable(variable, value, accessIndex)
                             
-                            # If the number of children doesnt equal the number of dimension on the variable
-                            if len(nodes.getChildren()[0].getChildren()[1:]) != endType.count("["):
-                                semanticErrors.append((f"Semantic Error: use of array {variable} with wrong number of dimensions", nodeLine))
-                                continue
+                            if nodes.getChildren()[0].getNodeType() == "IndiceNode":
+                                
+                                if nodes.getChildren()[0].getChildren()[0].getNodeType() != "AttributeNode":
+                                    
+                                    # If the number of children doesnt equal the number of dimension on the variable
+                                    if len(nodes.getChildren()[0].getChildren()[1:]) != endType.count("["):
+                                        semanticErrors.append((f"Semantic Error: use of array {variable} with wrong number of dimensions", nodeLine))
+                                        continue
+                                    
+                                else:
+                                    finalType = definedClasses[localContext[nodes.getChildren()[0].getChildren()[0].getChildren()[0].getValue()]][nodes.getChildren()[0].getChildren()[0].getChildren()[1].getValue()]
+                                    
+                                    # If the number of children doesnt equal the number of dimension on the variable
+                                    if len(nodes.getChildren()[0].getChildren()[1:]) != finalType.count("["):
+                                        semanticErrors.append((f"Semantic Error: use of array {variable} with wrong number of dimensions", nodeLine))
+                                        continue
                     
                     # If a free id is called its likely a function call
-                    if nodes.getNodeType() == "id":
+                    elif nodes.getNodeType() == "id":
                         functionCall = nodes.getValue()
+                        functionParametersValues = []
                         
                         # The function paramlist is in the next node so we need to call iter
                         functionVars = next(calls)
@@ -2042,8 +2371,11 @@ def checkClasses(root, warning):
                                     # If its a leaf
                                     if node.getChildren()[0].getValue() != None:
                                         type = node.getChildren()[0].getNodeType()[:-3]
+                                        functionParametersValues.append(node.getChildren()[0].getValue())
                                         
                                         # If the types don't match up
+                                        if type == "int":
+                                            type = "integer"
                                         if type != globalDefinedFunctions[functionCall][0][index][1]:
                                             semanticErrors.append((f"Semantic Error: function {functionCall} was given an invalid type of argument", functionLine))
                                             break
@@ -2059,6 +2391,10 @@ def checkClasses(root, warning):
                                             semanticErrors.append((f"Semantic Error: function {functionCall} was given an invalid type of argument", functionLine))
                                             break
                                         index += 1
+                                if funcName == "main":
+                                    functionParametersName = globalDefinedFunctions[functionCall]
+                                    moonCodeGenerator.createFunctionBreakCode("global", functionCall, functionParametersValues, functionParametersName)
+                                    functionVarReservation += moonCodeGenerator.reserveFunctionParam(functionParametersName)
                             else:
                                 
                                 # This is because of function overloading leads to having a list of possible options, check each pair
@@ -2102,7 +2438,113 @@ def checkClasses(root, warning):
                         
                         # If the function isn't defined
                         else:
-                            semanticErrors.append((f"Semantic Error: undefined free function {functionCall}", functionLine))                       
+                            semanticErrors.append((f"Semantic Error: undefined free function {functionCall}", functionLine))
+                    
+                    # Write node processing
+                    elif nodes.getNodeType() == "WriteNode":
+                        exprNode = nodes.getChildren()
+                        if len(exprNode.getChildren()) == 1:
+                            
+                            # Determine what the node contains, generate code depending on what is contained
+                            if exprNode.getChildren()[0].getNodeType() == "id":
+                                variableName = exprNode.getChildren()[0].getValue()
+                                if variableName not in localContext:
+                                    semanticErrors.append((f"Semantic Error: undeclared variable {variableName} in local scope", exprNode.getChildren()[0].getLine()))
+                                if funcName == "main":
+                                    if localContext[variableName] == "float":
+                                        moonCodeGenerator.writeContent(variableName, 0)
+                                        moonCodeGenerator.writeContent(variableName, 8)
+                                    else:
+                                        moonCodeGenerator.writeContent(variableName, 0)
+                                else:
+                                    functionCode += moonCodeGenerator.writeFunctionWriteCode(variableName)
+                            
+                            # Indice node code       
+                            elif exprNode.getChildren()[0].getNodeType() == "IndiceNode":
+                                variableName = exprNode.getChildren()[0].getChildren()[0].getValue()
+                                variableType = localContext[variableName]
+                                index = exprNode.getChildren()[0].getChildren()[1:]
+                                totalOffset = []
+                                for i in index:
+                                    totalOffset.append(i.getValue())
+                                totalOffset = math.prod(totalOffset)
+                                if "int" in variableType:
+                                    totalOffset = 4 * int(totalOffset)
+                                elif "float" in variableType:
+                                    totalOffset = 8 * int(totalOffset)
+                                moonCodeGenerator.writeContent(variableName, totalOffset)
+                            
+                            # Attribute node code
+                            elif exprNode.getChildren()[0].getNodeType() == "AttributeNode":
+                                
+                                # If its nested with an indice node
+                                if exprNode.getChildren()[0].getChildren()[0].getNodeType() == "id":
+                                    variableName = exprNode.getChildren()[0].getChildren()[0].getValue()
+                                    variableType = localContext[variableName]
+                                    attribute = exprNode.getChildren()[0].getChildren()[1].getValue()
+                                    moonCodeGenerator.writeContentMember(variableName, variableType, attribute, 0)
+                                    
+                                elif exprNode.getChildren()[0].getChildren()[0].getNodeType() == "IndiceNode":
+                                    variableName = exprNode.getChildren()[0].getChildren()[0].getChildren()[0].getValue()
+                                    variableType = localContext[variableName].split("[")[0]
+                                    attribute = exprNode.getChildren()[0].getChildren()[1].getValue()
+                                    index = exprNode.getChildren()[0].getChildren()[0].getChildren()[1:]
+                                    totalOffset = []
+                                    for i in index:
+                                        totalOffset.append(i.getValue())
+                                    totalOffset = math.prod(totalOffset)
+                                    moonCodeGenerator.writeIndexedContentMember(variableName, variableType, attribute, int(totalOffset))
+                    
+                    # Generate if node block code
+                    elif nodes.getNodeType() == "IfNode":
+                        
+                        # Deal with the condition first
+                        conditionElements = nodes.getChildren().getChildren()
+                        if conditionElements[0].getNodeType() != "ExprNode":
+                            term1 = conditionElements[0].getValue()
+                        if conditionElements[2].getNodeType() != "ExprNode":
+                            term2 = conditionElements[2].getValue()
+                        operator = conditionElements[1].getValue()
+                        additionalAllocation += moonCodeGenerator.createConditional(term1, term2, operator)
+                        
+                        # Write code for the then block after
+                        elseVar = moonCodeGenerator.thenBlock()
+                        
+                        # Process nodes in the block
+                        processNode(next(calls).getChildren(), localContext, definedClasses, semanticErrors)
+                        
+                        # Write code for the else block
+                        endVar = moonCodeGenerator.elseBlock(elseVar)
+                        
+                        # Process nodes in the block
+                        processNode(next(calls).getChildren(), localContext, definedClasses, semanticErrors)
+                        moonCodeGenerator.endBlock(endVar)
+                   
+                    # Generate while node block code
+                    elif nodes.getNodeType() == "WhileNode":
+                        
+                        # Deal with the condition first
+                        conditionElements = nodes.getChildren().getChildren()
+                        conditionElements = nodes.getChildren().getChildren()
+                        if conditionElements[0].getNodeType() != "ExprNode":
+                            term1 = conditionElements[0].getValue()
+                        if conditionElements[2].getNodeType() != "ExprNode":
+                            term2 = conditionElements[2].getValue()
+                        operator = conditionElements[1].getValue()
+                        
+                        # Write code for the block after
+                        whileBlock = moonCodeGenerator.createWhileConditional()
+                        additionalAllocation += moonCodeGenerator.createConditional(term1, term2, operator)
+                        
+                        # And the code that terminates/enables the loop
+                        endblock = moonCodeGenerator.createWhileBlock()
+                        
+                        # Process nodes in the block
+                        processNode(next(calls).getChildren(), localContext, definedClasses, semanticErrors)
+                        moonCodeGenerator.endWhileBlock(whileBlock, endblock)
+                
+                if (funcName != "main"):
+                    functionCode += moonCodeGenerator.endFunctionCode()
                 tree.pop()
                 continue
             
@@ -2117,6 +2559,8 @@ def checkClasses(root, warning):
     for func in context:
         values = func.split(".")
         semanticErrors.append((f"Semantic Error: undefined member declaration in {values[0]}.{values[1]}", context[func][1]))
+        
+    moonCodeGenerator.endCode()
 
     # Print semantic errors to the file
     semanticErrors.sort(key=lambda x: x[1])
@@ -2125,4 +2569,168 @@ def checkClasses(root, warning):
             print(error[0], file=warning)
         else:
             print(error[0] + f" found on line {error[1]}.", file=warning)
-    
+
+"""
+Code to process nodes in blocks
+nodes: current node being processed
+context: current defined variables in the context and their types
+classes: dictionary of classes and the variables they contain
+errorFile: file to print semantic errors to
+
+"""            
+def processNode(nodes, context, classes, errorFile):
+    global functionVarReservation
+    for node in nodes:
+        if node.getNodeType() == "WriteNode":
+            exprNode = node.getChildren()
+            if len(exprNode.getChildren()) == 1:
+                if exprNode.getChildren()[0].getNodeType() == "id":
+                    variableName = exprNode.getChildren()[0].getValue()
+                    if variableName not in context:
+                        errorFile.append((f"Semantic Error: undeclared variable {variableName} in local scope", exprNode.getChildren()[0].getLine()))
+                    if context[variableName] == "float":
+                        moonCodeGenerator.writeContent(variableName, 0)
+                        moonCodeGenerator.writeContent(variableName, 8)
+                    else:
+                        moonCodeGenerator.writeContent(variableName, 0)
+        # Assignment node processing
+        if (node.getNodeType() == "AssignVar"):
+            nodeType = node.getChildren()[0].getNodeType()
+            
+            # Determine whats on the RHS and then get the correct data
+            if nodeType == "id":
+                variable = node.getChildren()[0].getValue()
+                nodeLine = node.getChildren()[0].getLine()
+            elif nodeType in ["AttributeNode", "IndiceNode"]:
+                variable = node.getChildren()[0].getChildren()[0].getValue()
+                nodeLine = node.getChildren()[0].getChildren()[0].getLine()
+            
+            # See if the variable exists in the local context
+            if variable in context:
+                endType = context[variable]
+            else:
+                print("semantic error")
+            
+            # Process the LHS
+            if nodeType == "id":
+                exprNode = node.getChildren()[1].getChildren()
+                
+                # Determine what is on the LHS
+                if isinstance(exprNode, list):
+                    
+                    # If its an attribute node
+                    if exprNode[0].getNodeType() == "AttributeNode":
+                        objectName = exprNode[0].getChildren()[0].getValue()
+                        objectType = context[objectName]
+                        objectLine = exprNode[0].getChildren()[0].getLine()
+                        attributeName = exprNode[0].getChildren()[1].getValue()
+                        
+                        # If the attribute for the class is defined in the context
+                        if attributeName in classes[objectType]:
+                            expectedNumArgs = len(classes[objectType][attributeName][0])
+                            
+                            # Too many or too little arguments
+                            if len(exprNode[1].getChildren()) != expectedNumArgs:
+                                classes.append((f"Semantic Error: function {attributeName} was given invalid number of arguments", objectLine))
+                                continue
+                            index = 0
+                            
+                            # Comapre the parameter types one at a time, only return the error on the last 
+                            for node in exprNode[1].getChildren():
+                                if node.getChildren()[0].getValue() != None:
+                                    type = node.getChildren()[0].getNodeType()[:-3]
+                                    if type != classes[objectType][attributeName][0][index][1]:
+                                        errorFile.append((f"Semantic Error: function {attributeName} was given an invalid type of argument", objectLine))
+                                        break
+                                    index += 1
+                                else:
+                                    if node.getChildren()[0].getNodeType() == "SignedNode":
+                                        type = node.getChildren()[0].getChildren()[1].getNodeType()[:-3]
+                                    if type != classes[objectType][attributeName][0][index][1]:
+                                        errorFile.append((f"Semantic Error: function {attributeName} was given an invalid type of argument", objectLine))
+                                        break
+                                    index += 1
+                        else:
+                            
+                            # If its a function param list that means the function was not recognized
+                            if exprNode[1].getNodeType() == "FuncParamList":
+                                errorFile.append((f"Semantic Error: undeclared function {attributeName}", objectLine))
+                                continue
+                            
+                            # Otherwise its an undeclared member
+                            else:
+                                errorFile.append((f"Semantic Error: undeclared member {attributeName}", objectLine))
+                                continue
+                    
+                    # If its just an id check if the id is defined in this context
+                    elif exprNode[0].getNodeType() == "id":
+                        variableName = exprNode[0].getValue()
+                        if variableName not in context:
+                            errorFile.append((f"Semantic Error: undeclared variable {variableName} in local scope", exprNode[0].getLine()))
+                    
+                    # If its just a literal in the exprNode        
+                    elif exprNode[0].getNodeType() in ["intlit", "floatlit"]:
+                        value = exprNode[0].getValue()
+                        moonCodeGenerator.setVariable(variable, value, 0)
+
+                    else:
+                        
+                        # Decompose Expression node
+                        expressionTerms = exprNode[0].getChildren()
+                        operationsStack = deque()
+                        termsStack = deque()
+                        while expressionTerms:
+                            
+                            # Split expression into operators and terms
+                            removeIndexes = []
+                            for i in range(len(expressionTerms)):
+                                if expressionTerms[i].getNodeType() == "MathOperator":
+                                    operationsStack.append(expressionTerms[i].getValue())
+                                    removeIndexes.append(i)
+                            
+                            # Remove collected operators
+                            for i in removeIndexes[::-1]:
+                                del expressionTerms[i]
+                            newList = []
+                            
+                            # Split nodes that still contain children otherwise record leaves in term stack
+                            for i in range(len(expressionTerms)):
+                                if isinstance(expressionTerms[i], Leaf):
+                                    termsStack.append(expressionTerms[i].getValue())
+                                else:
+                                    newList.extend(expressionTerms[i].getChildren())
+                                    termsStack.append((expressionTerms[i].getChildren()[0].getValue(), expressionTerms[i].getChildren()[2].getValue()))
+                            expressionTerms = newList
+                        
+                        # Keep track of intermediates using this dictionary
+                        intermediateDictionary = {}
+                        
+                        while operationsStack:
+                            
+                            # Pop stacks for operator and terms
+                            currentOperator = operationsStack.pop()
+                            term1 = termsStack.pop()
+                            
+                            # If term is an intermediate replace it with the variable that contains the value of the intermediate
+                            if term1 in intermediateDictionary:
+                                term1 = intermediateDictionary[term1]
+                            term2 = termsStack.pop()
+                            if term2 in intermediateDictionary:
+                                term2 = intermediateDictionary[term2]
+                                
+                            # Generate code depening on what operator is used
+                            if currentOperator == "*":
+                                intermediate = moonCodeGenerator.createMultOperation(term1, term2)
+                            elif currentOperator == "-":
+                                intermediate = moonCodeGenerator.createSubOperation(term1, term2)
+                            elif currentOperator == "/":
+                                intermediate = moonCodeGenerator.createDivOperation(term1, term2)
+                            elif currentOperator == "+":
+                                intermediate = moonCodeGenerator.createAddOperation(term1, term2)
+                            
+                            # Store intermediates and ensure they are reserved
+                            intermediateDictionary[(term2, term1)] = f"t{intermediate}"
+                            functionVarReservation += moonCodeGenerator.reserveSingleParam(f"t{intermediate}", endType)
+                        
+                        # Collect final value and do the assignment
+                        moonCodeGenerator.setMemberVariableToVariable(variable, f"t{intermediate}", 0)

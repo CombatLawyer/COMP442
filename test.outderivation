@@ -1,221 +1,2825 @@
 deque(['$', 'START'])
-START --> [<function createLeafEpsilon at 0x000001DDB07D7760>, 'PROG', <function createProgNode at 0x000001DDB07E89D0>]
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'PROG'])
+START --> [<function createLeafEpsilon at 0x0000015B683FC940>, 'PROG', <function createProgNode at 0x0000015B683FDB40>]
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'PROG'])
 PROG --> ['REPTPROG0']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0'])
 REPTPROG0 --> ['STRUCTORIMPLORFUNC', 'REPTPROG0']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'STRUCTORIMPLORFUNC'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'STRUCTORIMPLORFUNC'])
 STRUCTORIMPLORFUNC --> ['FUNCDEF']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'FUNCDEF'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'FUNCDEF'])
 FUNCDEF --> ['FUNCHEAD', 'FUNCBODY']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'FUNCBODY', 'FUNCHEAD'])
-FUNCHEAD --> ['func', 'id', <function createLeaf at 0x000001DDAF7BC700>, 'lpar', 'FPARAMS', <function createParamListNode at 0x000001DDB07D7910>, 'rpar', 'arrow', 'RETURNTYPE', <function createLeafType at 0x000001DDB07D75B0>, <function createFuncDefNode at 0x000001DDB07D79A0>]
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x000001DDB07D79A0>, <function createLeafType at 0x000001DDB07D75B0>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x000001DDB07D7910>, 'FPARAMS', 'lpar', <function createLeaf at 0x000001DDAF7BC700>, 'id', 'func'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'FUNCBODY', 'FUNCHEAD'])
+FUNCHEAD --> ['func', 'id', <function createLeaf at 0x0000015B673D0700>, 'lpar', 'FPARAMS', <function createParamListNode at 0x0000015B683FCAF0>, 'rpar', 'arrow', 'RETURNTYPE', <function createLeafType at 0x0000015B683FC670>, <function createFuncDefNode at 0x0000015B683FCB80>]
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x0000015B683FCB80>, <function createLeafType at 0x0000015B683FC670>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x0000015B683FCAF0>, 'FPARAMS', 'lpar', <function createLeaf at 0x0000015B673D0700>, 'id', 'func'])
 func --> func
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x000001DDB07D79A0>, <function createLeafType at 0x000001DDB07D75B0>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x000001DDB07D7910>, 'FPARAMS', 'lpar', <function createLeaf at 0x000001DDAF7BC700>, 'id'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x0000015B683FCB80>, <function createLeafType at 0x0000015B683FC670>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x0000015B683FCAF0>, 'FPARAMS', 'lpar', <function createLeaf at 0x0000015B673D0700>, 'id'])
 id --> id
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func main
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x000001DDB07D79A0>, <function createLeafType at 0x000001DDB07D75B0>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x000001DDB07D7910>, 'FPARAMS', 'lpar'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x0000015B683FCB80>, <function createLeafType at 0x0000015B683FC670>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x0000015B683FCAF0>, 'FPARAMS', 'lpar'])
 lpar --> lpar
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func main(
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x000001DDB07D79A0>, <function createLeafType at 0x000001DDB07D75B0>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x000001DDB07D7910>, 'FPARAMS'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x0000015B683FCB80>, <function createLeafType at 0x0000015B683FC670>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x0000015B683FCAF0>, 'FPARAMS'])
 FPARAMS --> ['epsilon']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x000001DDB07D79A0>, <function createLeafType at 0x000001DDB07D75B0>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x000001DDB07D7910>, 'epsilon'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x0000015B683FCB80>, <function createLeafType at 0x0000015B683FC670>, 'RETURNTYPE', 'arrow', 'rpar', <function createParamListNode at 0x0000015B683FCAF0>, 'epsilon'])
 epsilon --> epsilon
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x000001DDB07D79A0>, <function createLeafType at 0x000001DDB07D75B0>, 'RETURNTYPE', 'arrow', 'rpar'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x0000015B683FCB80>, <function createLeafType at 0x0000015B683FC670>, 'RETURNTYPE', 'arrow', 'rpar'])
 rpar --> rpar
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func main()
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x000001DDB07D79A0>, <function createLeafType at 0x000001DDB07D75B0>, 'RETURNTYPE', 'arrow'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x0000015B683FCB80>, <function createLeafType at 0x0000015B683FC670>, 'RETURNTYPE', 'arrow'])
 arrow --> arrow
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func main() ->
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x000001DDB07D79A0>, <function createLeafType at 0x000001DDB07D75B0>, 'RETURNTYPE'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x0000015B683FCB80>, <function createLeafType at 0x0000015B683FC670>, 'RETURNTYPE'])
 RETURNTYPE --> ['void']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x000001DDB07D79A0>, <function createLeafType at 0x000001DDB07D75B0>, 'void'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'FUNCBODY', <function createFuncDefNode at 0x0000015B683FCB80>, <function createLeafType at 0x0000015B683FC670>, 'void'])
 void --> void
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func main() -> void
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'FUNCBODY'])
-FUNCBODY --> ['lcurbr', <function createLeafEpsilon at 0x000001DDB07D7760>, 'REPTFUNCBODY1', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'rcurbr']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', <function createLeafEpsilon at 0x000001DDB07D7760>, 'lcurbr'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'FUNCBODY'])
+FUNCBODY --> ['lcurbr', <function createLeafEpsilon at 0x0000015B683FC940>, 'REPTFUNCBODY1', <function createFuncBodyNode at 0x0000015B683FD240>, 'rcurbr']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', <function createLeafEpsilon at 0x0000015B683FC940>, 'lcurbr'])
 lcurbr --> lcurbr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func main() -> void
 {
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1'])
 REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
 VARDECLORSTAT --> ['VARDECL']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'VARDECL'])
-VARDECL --> ['let', 'id', <function createLeaf at 0x000001DDAF7BC700>, 'colon', 'TYPE', <function createLeafType at 0x000001DDB07D75B0>, 'REPTVARDECL4', <function createDimNode at 0x000001DDB07D77F0>, <function createVardeclNode at 0x000001DDB07D7880>, 'semi']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'REPTVARDECL4', <function createLeafType at 0x000001DDB07D75B0>, 'TYPE', 'colon', <function createLeaf at 0x000001DDAF7BC700>, 'id', 'let'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'VARDECL'])
+VARDECL --> ['let', 'id', <function createLeaf at 0x0000015B673D0700>, 'colon', 'TYPE', <function createLeafType at 0x0000015B683FC670>, 'REPTVARDECL4', <function createDimNode at 0x0000015B683FC9D0>, <function createVardeclNode at 0x0000015B683FCA60>, 'semi']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE', 'colon', <function createLeaf at 0x0000015B673D0700>, 'id', 'let'])
 let --> let
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func main() -> void
 {
   let
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'REPTVARDECL4', <function createLeafType at 0x000001DDB07D75B0>, 'TYPE', 'colon', <function createLeaf at 0x000001DDAF7BC700>, 'id'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE', 'colon', <function createLeaf at 0x0000015B673D0700>, 'id'])
 id --> id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func main() -> void
 {
   let a
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'REPTVARDECL4', <function createLeafType at 0x000001DDB07D75B0>, 'TYPE', 'colon'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE', 'colon'])
 colon --> colon
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func main() -> void
 {
   let a:
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'REPTVARDECL4', <function createLeafType at 0x000001DDB07D75B0>, 'TYPE'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE'])
 TYPE --> ['integer']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'REPTVARDECL4', <function createLeafType at 0x000001DDB07D75B0>, 'integer'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'integer'])
 integer --> integer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func main() -> void
 {
   let a: integer
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'REPTVARDECL4'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4'])
 REPTVARDECL4 --> ['epsilon']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'epsilon'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'epsilon'])
 epsilon --> epsilon
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi'])
 semi --> semi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func main() -> void
 {
   let a: integer;
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1'])
 REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
 VARDECLORSTAT --> ['VARDECL']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'VARDECL'])
-VARDECL --> ['let', 'id', <function createLeaf at 0x000001DDAF7BC700>, 'colon', 'TYPE', <function createLeafType at 0x000001DDB07D75B0>, 'REPTVARDECL4', <function createDimNode at 0x000001DDB07D77F0>, <function createVardeclNode at 0x000001DDB07D7880>, 'semi']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'REPTVARDECL4', <function createLeafType at 0x000001DDB07D75B0>, 'TYPE', 'colon', <function createLeaf at 0x000001DDAF7BC700>, 'id', 'let'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'VARDECL'])
+VARDECL --> ['let', 'id', <function createLeaf at 0x0000015B673D0700>, 'colon', 'TYPE', <function createLeafType at 0x0000015B683FC670>, 'REPTVARDECL4', <function createDimNode at 0x0000015B683FC9D0>, <function createVardeclNode at 0x0000015B683FCA60>, 'semi']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE', 'colon', <function createLeaf at 0x0000015B673D0700>, 'id', 'let'])
 let --> let
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func main() -> void
 {
   let a: integer;
   let
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'REPTVARDECL4', <function createLeafType at 0x000001DDB07D75B0>, 'TYPE', 'colon', <function createLeaf at 0x000001DDAF7BC700>, 'id'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE', 'colon', <function createLeaf at 0x0000015B673D0700>, 'id'])
 id --> id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func main() -> void
 {
   let a: integer;
   let b
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'REPTVARDECL4', <function createLeafType at 0x000001DDB07D75B0>, 'TYPE', 'colon'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE', 'colon'])
 colon --> colon
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func main() -> void
 {
   let a: integer;
   let b:
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'REPTVARDECL4', <function createLeafType at 0x000001DDB07D75B0>, 'TYPE'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE'])
 TYPE --> ['integer']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'REPTVARDECL4', <function createLeafType at 0x000001DDB07D75B0>, 'integer'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'integer'])
 integer --> integer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func main() -> void
 {
   let a: integer;
   let b: integer
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'REPTVARDECL4'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4'])
 REPTVARDECL4 --> ['epsilon']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x000001DDB07D7880>, <function createDimNode at 0x000001DDB07D77F0>, 'epsilon'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'epsilon'])
 epsilon --> epsilon
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi'])
 semi --> semi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func main() -> void
 {
   let a: integer;
   let b: integer;
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1'])
 REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
-VARDECLORSTAT --> ['STATEMENT']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'STATEMENT'])
-STATEMENT --> ['STATESTART', 'semi']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', 'STATESTART'])
-STATESTART --> ['id', <function createLeaf at 0x000001DDAF7BC700>, <function createAttributeNode at 0x000001DDB07E8940>, 'STATEVARORFUNC']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC', <function createAttributeNode at 0x000001DDB07E8940>, <function createLeaf at 0x000001DDAF7BC700>, 'id'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['VARDECL']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'VARDECL'])
+VARDECL --> ['let', 'id', <function createLeaf at 0x0000015B673D0700>, 'colon', 'TYPE', <function createLeafType at 0x0000015B683FC670>, 'REPTVARDECL4', <function createDimNode at 0x0000015B683FC9D0>, <function createVardeclNode at 0x0000015B683FCA60>, 'semi']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE', 'colon', <function createLeaf at 0x0000015B673D0700>, 'id', 'let'])
+let --> let
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE', 'colon', <function createLeaf at 0x0000015B673D0700>, 'id'])
 id --> id
 
-func main() -> void
-{
-  let a: integer;
-  let b: integer;
-  a
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC'])
-STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
-REPTSTATEVARORFUNC0 --> ['epsilon']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'epsilon'])
-epsilon --> epsilon
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR'])
-REPTSTATEVAR --> ['ASSIGNOP', <function createLeafEpsilon at 0x000001DDB07D7760>, 'EXPR', <function createExprNode at 0x000001DDB07E88B0>, <function createAssignNode at 0x000001DDB07E8820>]
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x000001DDB07E8820>, <function createExprNode at 0x000001DDB07E88B0>, 'EXPR', <function createLeafEpsilon at 0x000001DDB07D7760>, 'ASSIGNOP'])
-ASSIGNOP --> ['equal']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x000001DDB07E8820>, <function createExprNode at 0x000001DDB07E88B0>, 'EXPR', <function createLeafEpsilon at 0x000001DDB07D7760>, 'equal'])
-equal --> equal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func main() -> void
 {
   let a: integer;
   let b: integer;
-  a =
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x000001DDB07E8820>, <function createExprNode at 0x000001DDB07E88B0>, 'EXPR'])
-EXPR --> ['ARITHEXPR', 'RELEXPREND']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x000001DDB07E8820>, <function createExprNode at 0x000001DDB07E88B0>, 'RELEXPREND', 'ARITHEXPR'])
-ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x000001DDB07E8820>, <function createExprNode at 0x000001DDB07E88B0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
-TERM --> ['FACTOR', 'RIGHTRECTERM']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x000001DDB07E8820>, <function createExprNode at 0x000001DDB07E88B0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
-FACTOR --> ['intlit', <function createLeaf at 0x000001DDAF7BC700>]
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x000001DDB07E8820>, <function createExprNode at 0x000001DDB07E88B0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', <function createLeaf at 0x000001DDAF7BC700>, 'intlit'])
+  let c
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE', 'colon'])
+colon --> colon
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c:
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE'])
+TYPE --> ['integer']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'integer'])
+integer --> integer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4'])
+REPTVARDECL4 --> ['ARRAYSIZE', 'REPTVARDECL4']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', 'ARRAYSIZE'])
+ARRAYSIZE --> ['lsqbr', <function createLeafEpsilon at 0x0000015B683FC940>, 'ENDBR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', 'ENDBR', <function createLeafEpsilon at 0x0000015B683FC940>, 'lsqbr'])
+lsqbr --> lsqbr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', 'ENDBR'])
+ENDBR --> ['intlit', <function createLeaf at 0x0000015B673D0700>, <function createLeafDim at 0x0000015B683FC5E0>, 'rsqbr']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', 'rsqbr', <function createLeafDim at 0x0000015B683FC5E0>, <function createLeaf at 0x0000015B673D0700>, 'intlit'])
 intlit --> intlit
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func main() -> void
 {
   let a: integer;
   let b: integer;
-  a = 8
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x000001DDB07E8820>, <function createExprNode at 0x000001DDB07E88B0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
-RIGHTRECTERM --> ['epsilon']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x000001DDB07E8820>, <function createExprNode at 0x000001DDB07E88B0>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+  let c: integer[7
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', 'rsqbr'])
+rsqbr --> rsqbr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7]
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4'])
+REPTVARDECL4 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'epsilon'])
 epsilon --> epsilon
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x000001DDB07E8820>, <function createExprNode at 0x000001DDB07E88B0>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
-RIGHTRECARITHEXPR --> ['epsilon']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x000001DDB07E8820>, <function createExprNode at 0x000001DDB07E88B0>, 'RELEXPREND', 'epsilon'])
-epsilon --> epsilon
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x000001DDB07E8820>, <function createExprNode at 0x000001DDB07E88B0>, 'RELEXPREND'])
-RELEXPREND --> ['epsilon']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x000001DDB07E8820>, <function createExprNode at 0x000001DDB07E88B0>, 'epsilon'])
-epsilon --> epsilon
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1', 'semi'])
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi'])
 semi --> semi
 
-func main() -> void
-{
-  let a: integer;
-  let b: integer;
-  a = 8;
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'REPTFUNCBODY1'])
-REPTFUNCBODY1 --> ['epsilon']
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x000001DDB07E80D0>, 'epsilon'])
-epsilon --> epsilon
-deque(['$', <function createProgNode at 0x000001DDB07E89D0>, 'REPTPROG0', 'rcurbr'])
-rcurbr --> rcurbr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func main() -> void
 {
   let a: integer;
   let b: integer;
-  a = 8;
+  let c: integer[7];
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['VARDECL']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'VARDECL'])
+VARDECL --> ['let', 'id', <function createLeaf at 0x0000015B673D0700>, 'colon', 'TYPE', <function createLeafType at 0x0000015B683FC670>, 'REPTVARDECL4', <function createDimNode at 0x0000015B683FC9D0>, <function createVardeclNode at 0x0000015B683FCA60>, 'semi']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE', 'colon', <function createLeaf at 0x0000015B673D0700>, 'id', 'let'])
+let --> let
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE', 'colon', <function createLeaf at 0x0000015B673D0700>, 'id'])
+id --> id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE', 'colon'])
+colon --> colon
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f:
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'TYPE'])
+TYPE --> ['float']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4', <function createLeafType at 0x0000015B683FC670>, 'float'])
+float --> float
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'REPTVARDECL4'])
+REPTVARDECL4 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createVardeclNode at 0x0000015B683FCA60>, <function createDimNode at 0x0000015B683FC9D0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['STATEMENT']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'STATEMENT'])
+STATEMENT --> ['STATESTART', 'semi']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'STATESTART'])
+STATESTART --> ['id', <function createLeaf at 0x0000015B673D0700>, <function createAttributeNode at 0x0000015B683FDAB0>, 'STATEVARORFUNC']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC', <function createAttributeNode at 0x0000015B683FDAB0>, <function createLeaf at 0x0000015B673D0700>, 'id'])
+id --> id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC'])
+STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR'])
+REPTSTATEVAR --> ['ASSIGNOP', <function createLeafEpsilon at 0x0000015B683FC940>, 'EXPR', <function createExprNode at 0x0000015B683FDA20>, <function createAssignNode at 0x0000015B683FD990>]
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR', <function createLeafEpsilon at 0x0000015B683FC940>, 'ASSIGNOP'])
+ASSIGNOP --> ['equal']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR', <function createLeafEpsilon at 0x0000015B683FC940>, 'equal'])
+equal --> equal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a =
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['intlit', <function createLeaf at 0x0000015B673D0700>]
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', <function createLeaf at 0x0000015B673D0700>, 'intlit'])
+intlit --> intlit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['STATEMENT']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'STATEMENT'])
+STATEMENT --> ['STATESTART', 'semi']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'STATESTART'])
+STATESTART --> ['id', <function createLeaf at 0x0000015B673D0700>, <function createAttributeNode at 0x0000015B683FDAB0>, 'STATEVARORFUNC']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC', <function createAttributeNode at 0x0000015B683FDAB0>, <function createLeaf at 0x0000015B673D0700>, 'id'])
+id --> id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC'])
+STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR'])
+REPTSTATEVAR --> ['ASSIGNOP', <function createLeafEpsilon at 0x0000015B683FC940>, 'EXPR', <function createExprNode at 0x0000015B683FDA20>, <function createAssignNode at 0x0000015B683FD990>]
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR', <function createLeafEpsilon at 0x0000015B683FC940>, 'ASSIGNOP'])
+ASSIGNOP --> ['equal']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR', <function createLeafEpsilon at 0x0000015B683FC940>, 'equal'])
+equal --> equal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b =
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['intlit', <function createLeaf at 0x0000015B673D0700>]
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', <function createLeaf at 0x0000015B673D0700>, 'intlit'])
+intlit --> intlit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['STATEMENT']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'STATEMENT'])
+STATEMENT --> ['while', 'lpar', 'RELEXPR', <function createWhileNode at 0x0000015B683FCE50>, 'rpar', <function createLeafEpsilon at 0x0000015B683FC940>, 'STATBLOCK', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'semi']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, 'RELEXPR', 'lpar', 'while'])
+while --> while
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, 'RELEXPR', 'lpar'])
+lpar --> lpar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, 'RELEXPR'])
+RELEXPR --> ['ARITHEXPR', 'RELOP', <function createOperatorLeaf at 0x0000015B683FC820>, 'ARITHEXPR', <function createConditionNode at 0x0000015B683FCDC0>]
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x0000015B673D0700>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x0000015B673D0700>, 'id'])
+id --> id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'RELOP'])
+RELOP --> ['gt']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR', <function createOperatorLeaf at 0x0000015B683FC820>, 'gt'])
+gt --> gt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b >
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x0000015B673D0700>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x0000015B673D0700>, 'id'])
+id --> id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar', <function createWhileNode at 0x0000015B683FCE50>, <function createConditionNode at 0x0000015B683FCDC0>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK', <function createLeafEpsilon at 0x0000015B683FC940>, 'rpar'])
+rpar --> rpar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'STATBLOCK'])
+STATBLOCK --> ['lcurbr', 'REPTSTATBLOCK1', 'rcurbr']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'lcurbr'])
+lcurbr --> lcurbr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1'])
+REPTSTATBLOCK1 --> ['STATEMENT', 'REPTSTATBLOCK1']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'STATEMENT'])
+STATEMENT --> ['write', 'lpar', <function createLeafEpsilon at 0x0000015B683FC940>, 'EXPR', <function createExprNode at 0x0000015B683FDA20>, <function createWriteNode at 0x0000015B683FCC10>, 'rpar', 'semi']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR', <function createLeafEpsilon at 0x0000015B683FC940>, 'lpar', 'write'])
+write --> write
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR', <function createLeafEpsilon at 0x0000015B683FC940>, 'lpar'])
+lpar --> lpar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x0000015B673D0700>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x0000015B673D0700>, 'id'])
+id --> id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'rpar'])
+rpar --> rpar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a)
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi'])
+semi --> semi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1'])
+REPTSTATBLOCK1 --> ['STATEMENT', 'REPTSTATBLOCK1']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'STATEMENT'])
+STATEMENT --> ['STATESTART', 'semi']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'STATESTART'])
+STATESTART --> ['id', <function createLeaf at 0x0000015B673D0700>, <function createAttributeNode at 0x0000015B683FDAB0>, 'STATEVARORFUNC']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'STATEVARORFUNC', <function createAttributeNode at 0x0000015B683FDAB0>, <function createLeaf at 0x0000015B673D0700>, 'id'])
+id --> id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'STATEVARORFUNC'])
+STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'REPTSTATEVAR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', 'REPTSTATEVAR'])
+REPTSTATEVAR --> ['ASSIGNOP', <function createLeafEpsilon at 0x0000015B683FC940>, 'EXPR', <function createExprNode at 0x0000015B683FDA20>, <function createAssignNode at 0x0000015B683FD990>]
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR', <function createLeafEpsilon at 0x0000015B683FC940>, 'ASSIGNOP'])
+ASSIGNOP --> ['equal']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR', <function createLeafEpsilon at 0x0000015B683FC940>, 'equal'])
+equal --> equal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a =
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x0000015B673D0700>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x0000015B673D0700>, 'id'])
+id --> id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['ADDOP', <function createMathOperatorLeaf at 0x0000015B683FC8B0>, 'TERM', <function createAddNode at 0x0000015B683FD750>, 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x0000015B683FD750>, 'TERM', <function createMathOperatorLeaf at 0x0000015B683FC8B0>, 'ADDOP'])
+ADDOP --> ['plus']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x0000015B683FD750>, 'TERM', <function createMathOperatorLeaf at 0x0000015B683FC8B0>, 'plus'])
+plus --> plus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a +
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x0000015B683FD750>, 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x0000015B683FD750>, 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['intlit', <function createLeaf at 0x0000015B673D0700>]
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x0000015B683FD750>, 'RIGHTRECTERM', <function createLeaf at 0x0000015B673D0700>, 'intlit'])
+intlit --> intlit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x0000015B683FD750>, 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', <function createAddNode at 0x0000015B683FD750>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1', 'semi'])
+semi --> semi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'REPTSTATBLOCK1'])
+REPTSTATBLOCK1 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createWhileBlockNode at 0x0000015B683FCEE0>, 'rcurbr'])
+rcurbr --> rcurbr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  }
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  };
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['STATEMENT']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'STATEMENT'])
+STATEMENT --> ['STATESTART', 'semi']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'STATESTART'])
+STATESTART --> ['id', <function createLeaf at 0x0000015B673D0700>, <function createAttributeNode at 0x0000015B683FDAB0>, 'STATEVARORFUNC']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC', <function createAttributeNode at 0x0000015B683FDAB0>, <function createLeaf at 0x0000015B673D0700>, 'id'])
+id --> id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  };
+  f
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'STATEVARORFUNC'])
+STATEVARORFUNC --> ['REPTSTATEVARORFUNC0', 'REPTSTATEVAR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'REPTSTATEVARORFUNC0'])
+REPTSTATEVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'REPTSTATEVAR'])
+REPTSTATEVAR --> ['ASSIGNOP', <function createLeafEpsilon at 0x0000015B683FC940>, 'EXPR', <function createExprNode at 0x0000015B683FDA20>, <function createAssignNode at 0x0000015B683FD990>]
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR', <function createLeafEpsilon at 0x0000015B683FC940>, 'ASSIGNOP'])
+ASSIGNOP --> ['equal']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR', <function createLeafEpsilon at 0x0000015B683FC940>, 'equal'])
+equal --> equal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  };
+  f =
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['floatlit', <function createLeaf at 0x0000015B673D0700>]
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', <function createLeaf at 0x0000015B673D0700>, 'floatlit'])
+floatlit --> floatlit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  };
+  f = 13.8
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', <function createAssignNode at 0x0000015B683FD990>, <function createExprNode at 0x0000015B683FDA20>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  };
+  f = 13.8;
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['VARDECLORSTAT', 'REPTFUNCBODY1']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'VARDECLORSTAT'])
+VARDECLORSTAT --> ['STATEMENT']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'STATEMENT'])
+STATEMENT --> ['write', 'lpar', <function createLeafEpsilon at 0x0000015B683FC940>, 'EXPR', <function createExprNode at 0x0000015B683FDA20>, <function createWriteNode at 0x0000015B683FCC10>, 'rpar', 'semi']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR', <function createLeafEpsilon at 0x0000015B683FC940>, 'lpar', 'write'])
+write --> write
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  };
+  f = 13.8;
+  write
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR', <function createLeafEpsilon at 0x0000015B683FC940>, 'lpar'])
+lpar --> lpar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  };
+  f = 13.8;
+  write(
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'EXPR'])
+EXPR --> ['ARITHEXPR', 'RELEXPREND']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'ARITHEXPR'])
+ARITHEXPR --> ['TERM', 'RIGHTRECARITHEXPR']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'TERM'])
+TERM --> ['FACTOR', 'RIGHTRECTERM']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'FACTOR'])
+FACTOR --> ['id', <function createLeaf at 0x0000015B673D0700>, 'VARORFUNC', 'REPTFACTOR2']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC', <function createLeaf at 0x0000015B673D0700>, 'id'])
+id --> id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  };
+  f = 13.8;
+  write(f
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'VARORFUNC'])
+VARORFUNC --> ['REPTVARORFUNC0']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'REPTVARORFUNC0'])
+REPTVARORFUNC0 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'REPTFACTOR2'])
+REPTFACTOR2 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'RIGHTRECTERM'])
+RIGHTRECTERM --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'RIGHTRECARITHEXPR'])
+RIGHTRECARITHEXPR --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND', 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'RELEXPREND'])
+RELEXPREND --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar', <function createWriteNode at 0x0000015B683FCC10>, <function createExprNode at 0x0000015B683FDA20>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi', 'rpar'])
+rpar --> rpar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  };
+  f = 13.8;
+  write(f)
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1', 'semi'])
+semi --> semi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  };
+  f = 13.8;
+  write(f);
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'REPTFUNCBODY1'])
+REPTFUNCBODY1 --> ['epsilon']
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr', <function createFuncBodyNode at 0x0000015B683FD240>, 'epsilon'])
+epsilon --> epsilon
+deque(['$', <function createProgNode at 0x0000015B683FDB40>, 'REPTPROG0', 'rcurbr'])
+rcurbr --> rcurbr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func main() -> void
+{
+  let a: integer;
+  let b: integer;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  };
+  f = 13.8;
+  write(f);
 }

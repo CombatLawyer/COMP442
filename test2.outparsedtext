@@ -1,0 +1,25 @@
+
+struct myclass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myclass;
+};
+
+impl myclass {
+  func build(x: integer, y:integer) -> myclass
+  {
+    let newfunction: myclass;
+    newfunction.x = x;
+    newfunction.y = y;
+    return (newfunction);
+  }
+}
+
+
+func main() -> void
+{
+  let taco: myclass;
+  taco.z[2] = 13.4;
+}

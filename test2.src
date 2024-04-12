@@ -1,0 +1,25 @@
+// ====== Class declarations ====== //
+struct myClass {
+  private let x: integer;
+  private let y: integer;
+  private let z: float[3];
+
+  public func build(x: integer, y:integer) -> myClass;
+};
+
+impl myClass {
+  func build(x: integer, y:integer) -> myClass
+  {
+    let newFunction: myClass;
+    newFunction.x = x;
+    newFunction.y = y;
+    return (newFunction);
+  }
+}
+
+// ====== main ====== //
+func main() -> void
+{
+  let taco: myclass;
+  taco.z[2] = 13.4;
+}

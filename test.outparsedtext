@@ -1,7 +1,42 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func main() -> void
 {
   let a: integer;
   let b: integer;
-  a = 8;
+  let c: integer[7];
+  let f: float;
+  a = 1;
+  b = 9;
+  while (b > a)
+  {
+    write(a);
+    a = a + 1;
+  };
+  f = 13.8;
+  write(f);
 }
